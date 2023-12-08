@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:qassim/core/utils/app_localization.dart';
+import 'package:qassim/core/utils/app_paths.dart';
 import 'package:qassim/core/utils/app_router.dart';
 import 'package:qassim/core/utils/constants.dart';
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
       title: 'Qassim',
       debugShowCheckedModeBanner: false,
       routes: AppRouter.routes,
+      initialRoute: AppPathName.kOpenScreen,
       locale: appLanguage.appLocal,
       supportedLocales: AppConstants.supportedLocales,
       localizationsDelegates: const [
