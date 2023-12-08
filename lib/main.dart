@@ -5,6 +5,7 @@ import 'package:qassim/core/utils/app_router.dart';
 import 'package:qassim/core/utils/constants.dart';
 
 void main() async {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   AppLanguage appLanguage = AppLanguage();
   await appLanguage.fetchLocale();
   runApp(MyApp(
