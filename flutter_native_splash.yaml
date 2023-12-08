@@ -1,13 +1,13 @@
 flutter_native_splash:
   color: "#EDDDAB"
-  image: assets/images/black_light_logo.png
+  image: assets/images/black_light_logoo.png
   #branding: assets/branding-development.png
   #color_dark: "#121212"
   #image_dark: assets/logo-development.png
   #branding_dark: assets/branding-development.png
 
   android_12:
-    image: assets/images/black_light_logo.png
+    image: assets/images/black_light_logoo.png
     icon_background_color: "#EDDDAB"
     #image_dark: assets/logo-development.png
     #icon_background_color_dark: "#121212"
