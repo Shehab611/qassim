@@ -1,0 +1,4 @@
+abstract final class AppPathName {
+
+
+}

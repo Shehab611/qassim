@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:qassim/core/utils/app_localization.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:qassim/core/utils/app_localization.dart';
+import 'package:qassim/core/utils/app_router.dart';
 import 'package:qassim/core/utils/constants.dart';
-void main() {
-  runApp(const MyApp());
+
+void main() async {
+  AppLanguage appLanguage = AppLanguage();
+  await appLanguage.fetchLocale();
+  runApp(MyApp(
+    appLanguage: appLanguage,
+  ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key, this.appLanguage});
-  final AppLanguage? appLanguage;
-  // This widget is the root of your application.
+  const MyApp({super.key,required this.appLanguage});
+
+  final AppLanguage appLanguage;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Qassim',
       debugShowCheckedModeBanner: false,
-      locale: AppLanguage().appLocal,
+      routes: AppRouter.routes,
+      locale: appLanguage.appLocal,
       supportedLocales: AppConstants.supportedLocales,
       localizationsDelegates: const [
         AppLocalizations.delegate,
@@ -26,4 +34,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
