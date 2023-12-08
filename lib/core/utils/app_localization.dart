@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:qassim/core/utils/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -8,8 +9,6 @@ class AppLocalizations {
   final Locale locale;
 
   AppLocalizations({required this.locale});
-
-  get rootBundle => null;
 
   // Helper method to keep the code in the widgets concise
   // Localizations are accessed using an InheritedWidget "of" syntax
@@ -25,8 +24,10 @@ class AppLocalizations {
 
   Future<bool> load() async {
     // Load the language JSON file from the "lang" folder
+    //error in loading the string
     String jsonString =
     await rootBundle.loadString('assets/localizations/${locale.languageCode}.json');
+
     Map<String, dynamic> jsonMap = json.decode(jsonString);
 
     _localizedStrings = jsonMap.map((key, value) {
