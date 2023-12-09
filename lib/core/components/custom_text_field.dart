@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:qassim/core/utils/design_utils/app_colors.dart';
 import 'package:qassim/core/utils/design_utils/app_sizes.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -42,7 +43,7 @@ class CustomTextField extends StatefulWidget {
     this.titleText,
     this.nextFocus,
     this.isEnabled = true,
-    this.borderColor = const Color(0xFFBFBFBF),
+    this.borderColor=AppColors.complementaryColor4,
     this.inputType = TextInputType.text,
     this.inputAction = TextInputAction.next,
     this.maxLines = 1,
@@ -107,10 +108,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
           readOnly: widget.readOnly,
           onTap: widget.onTap,
           autovalidateMode: AutovalidateMode.onUserInteraction,
-          style: const TextStyle().copyWith(fontSize: AppSizes.fontSizeLarge),
+          style: const TextStyle(fontSize: AppSizes.fontSizeLarge,color:AppColors.complementaryColor3),
           textInputAction: widget.inputAction,
           keyboardType: widget.inputType,
-          cursorColor: Theme.of(context).primaryColor,
+          cursorColor: AppColors.complementaryColor3,
           textCapitalization: widget.capitalization,
           enabled: widget.isEnabled,
           autofocus: false,
@@ -145,7 +146,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
-                    color: Theme.of(context).primaryColor, //widget.borderColor,
+                    color: AppColors.complementaryColor3, //widget.borderColor,
                     width: widget.showBorder ? 0 : .75,
                   )),
               enabledBorder: OutlineInputBorder(
@@ -154,7 +155,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     color: widget.borderColor,
                     width: widget.showBorder ? 0 : .75,
                   )),
-              fillColor: Theme.of(context).cardColor,
+              fillColor: AppColors.lighterShadeColor2,
               floatingLabelStyle: widget.showLabelText
                   ? const TextStyle().copyWith(
                       fontSize: AppSizes.fontSizeDefault,
