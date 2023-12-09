@@ -26,10 +26,7 @@ class MyApp extends StatelessWidget {
       title: 'Qassim',
       theme: ThemeData(
           scaffoldBackgroundColor: AppColors.primaryColor,
-          elevatedButtonTheme: ElevatedButtonThemeData(
-              style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.elevatedButtonBackground,
-          ))),
+          ),
       debugShowCheckedModeBanner: false,
       routes: AppRouter.routes,
       initialRoute: AppPathName.kOpenScreen,
