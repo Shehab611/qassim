@@ -1,4 +1,10 @@
 {
+  "email_is_required": "البريد الإلكتروني مطلوب",
+  "invalid_email_address": "عنوان البريد الإلكتروني غير صحيح",
+  "password_is_required": "كلمة المرور مطلوبة",
+  "password_chars_is_not_valid": "أقل عدد من الأحرف هو 8",
+  "confirm_password_required": "تأكيد كلمة المرور مطلوب",
+  "confirm_password_not_matched": "تأكيد كلمة المرور غير متطابق",
   "login": "تسجيل الدخول",
   "register": "انشاء حساب جديد"
 }
