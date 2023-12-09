@@ -8,4 +8,16 @@ abstract final class AppNavigator {
         context,
         AppPathName.kOpenScreen,
       );
+
+  static navigateToLoginScreen(BuildContext context) =>
+      Navigator.popAndPushNamed(
+        context,
+        AppPathName.kLoginScreen,
+      );
+
+  static navigateToRegisterScreen(BuildContext context) =>
+      Navigator.popAndPushNamed(
+        context,
+        AppPathName.kRegisterScreen,
+      );
 }
