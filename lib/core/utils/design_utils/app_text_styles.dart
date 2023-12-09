@@ -5,7 +5,7 @@ import 'package:qassim/core/utils/design_utils/app_sizes.dart';
 abstract final class AppTextStyles{
   static const elevatedButtonTextStyle =  TextStyle(
     color: AppColors.elevatedButtonTextColor,
-    fontSize: AppSizes.elevatedButtonTextSize,
+    fontSize: AppSizes.fontSizeExtraLarge,
     fontWeight: FontWeight.w600
   );
 
