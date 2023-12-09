@@ -6,5 +6,7 @@
   "confirm_password_required": "Confirm Password Is Required",
   "confirm_password_not_matched": "Confirm Password is Not Matched",
   "login": "Login",
-  "register": "Register"
+  "register": "Register",
+  "email": "Email",
+  "password": "Password"
 }
