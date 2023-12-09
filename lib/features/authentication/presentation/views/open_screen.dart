@@ -13,9 +13,7 @@ class OpenScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Center(
-            child: Image.asset(AppImages.blackLightLogo),
-          ),
+          Image.asset(AppImages.blackLightLogo),
           ButtonBar(
             alignment: MainAxisAlignment.spaceAround,
             children: [
