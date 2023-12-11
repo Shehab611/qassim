@@ -8,5 +8,7 @@
   "login": "Login",
   "register": "Register",
   "email": "Email",
-  "password": "Password"
+  "password": "Password",
+  "forget_password": "Forget Password?",
+  "don't_have_account": "Don't have an account? "
 }
