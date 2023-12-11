@@ -5,10 +5,16 @@
   "password_chars_is_not_valid": "The Minimum Numbers of Characters is 8",
   "confirm_password_required": "Confirm Password Is Required",
   "confirm_password_not_matched": "Confirm Password is Not Matched",
+  "full_name_required": "Name Is Required",
+  "phone_number_required": "Phone Number Is Required",
   "login": "Login",
   "register": "Register",
   "email": "Email",
   "password": "Password",
   "forget_password": "Forget Password?",
-  "don't_have_account": "Don't have an account? "
+  "don't_have_account": "Don't have an account? ",
+  "have_account": "Have an account? ",
+  "confirm_password": "Confirm Password",
+  "full_name": "Full Name",
+  "phone_number": "Phone Number"
 }

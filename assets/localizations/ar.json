@@ -5,10 +5,17 @@
   "password_chars_is_not_valid": "أقل عدد من الأحرف هو 8",
   "confirm_password_required": "تأكيد كلمة المرور مطلوب",
   "confirm_password_not_matched": "تأكيد كلمة المرور غير متطابق",
+  "full_name_required": "الأسم مطلوب",
+  "phone_number_required": "رقم الجوال مطلوب",
   "login": "تسجيل الدخول",
   "register": "انشاء حساب جديد",
   "email": "البريد الإلكتروني",
   "password": "كلمة المرور",
   "forget_password": "هل نسيت كلمة المرور؟",
-  "don't_have_account": "ليس لديك حساب؟ "
+  "don't_have_account": "ليس لديك حساب؟ ",
+  "have_account": "لديك حساب؟ ",
+  "confirm_password": "تأكيد كلمة المرور",
+  "full_name": "الأسم كامل",
+  "phone_number": "رقم الجوال"
+
 }
