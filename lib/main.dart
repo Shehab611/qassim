@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           ))),
       debugShowCheckedModeBanner: false,
       routes: AppRouter.routes,
-      initialRoute: AppPathName.kLoginScreen,
+      initialRoute: AppPathName.kRegisterScreen,
       locale: appLanguage.appLocal,
       supportedLocales: AppConstants.supportedLocales,
       localizationsDelegates: const [
