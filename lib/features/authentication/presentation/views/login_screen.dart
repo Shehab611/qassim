@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:qassim/core/components/custom_text_field.dart';
+import 'package:qassim/core/usable_functions/validate_check.dart';
 import 'package:qassim/core/utils/app_localization.dart';
 import 'package:qassim/core/utils/app_navigator.dart';
 import 'package:qassim/core/utils/design_utils/app_colors.dart';
@@ -14,7 +15,6 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     // backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child:
             Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
@@ -31,11 +31,13 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   CustomTextField(
                     labelText: AppLocalizations.of(context).translate('email'),
+                    validator:(value) =>ValidateCheck.validateEmail(value, context),
                   ),
                   CustomTextField(
                     labelText:
                         AppLocalizations.of(context).translate('password'),
                     isPassword: true,
+                    validator:(value) =>ValidateCheck.validatePassword(value, context),
                   ),
                   Align(
                     alignment: Alignment.lerp(
