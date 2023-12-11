@@ -8,5 +8,10 @@ abstract final class AppTextStyles{
     fontSize: AppSizes.fontSizeExtraLarge,
     fontWeight: FontWeight.w600
   );
+  static const textButtonTextStyle = TextStyle(
+    fontSize: AppSizes.fontSizeLarge,
+      fontWeight: FontWeight.w600,
+    color: AppColors.complementaryColor3
+  );
 
 }
