@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qassim/core/utils/app_localization.dart';
 
-class ValidateCheck {
+abstract final class ValidateCheck {
   static String? validateEmail(
     String? value,
     BuildContext context,
