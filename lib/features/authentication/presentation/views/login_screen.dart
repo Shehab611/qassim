@@ -71,7 +71,7 @@ class LoginScreen extends StatelessWidget {
                   TextSpan(
                       text: AppLocalizations.of(context).translate('register'),
                       style: AppTextStyles.textButtonTextStyle
-                          .copyWith(color: AppColors.complementaryColor1),
+                          .copyWith(color: AppColors.complementaryColor2),
                       recognizer: TapGestureRecognizer()..onTap = () {
                         AppNavigator.navigateToRegisterScreen(context);
                       })
