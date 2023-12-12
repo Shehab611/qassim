@@ -36,7 +36,7 @@ abstract final class AppSizes {
   static const double paddingSizeDefault = 15.0;
 
   /// padding size 17
-  static const double paddingSizeDefaultAddress = 17.0;
+  static const double paddingSizeSeventeen = 17.0;
 
   /// padding size 20
   static const double paddingSizeLarge = 20.0;
