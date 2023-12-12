@@ -30,25 +30,30 @@ class RegisterScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   CustomTextField(
+                    prefixIcon: Icons.person,
                   labelText: AppLocalizations.of(context).translate('full_name'),
                     validator: (value) =>ValidateCheck.validateEmptyText(value, context, 'full_name_required') ,
                 ),
 
                   CustomTextField(
+                    prefixIcon: Icons.alternate_email,
                     labelText: AppLocalizations.of(context).translate('email'),
                     validator:(value) =>ValidateCheck.validateEmail(value, context),
                   ),
                   CustomTextField(
+                    prefixIcon: Icons.call,
                     labelText: AppLocalizations.of(context).translate('phone_number'),
                     validator: (value) =>ValidateCheck.validateEmptyText(value, context, 'phone_number_required') ,
                   ),
                   CustomTextField(
+                    prefixIcon: Icons.lock,
                     labelText:
                     AppLocalizations.of(context).translate('password'),
                     isPassword: true,
                     validator:(value) =>ValidateCheck.validatePassword(value, context),
                   ),
                   CustomTextField(
+                    prefixIcon: Icons.lock,
                     labelText:
                     AppLocalizations.of(context).translate('confirm_password'),
                     isPassword: true,
