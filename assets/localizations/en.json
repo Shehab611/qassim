@@ -17,5 +17,6 @@
   "confirm_password": "Confirm Password",
   "full_name": "Full Name",
   "phone_number": "Phone Number",
-  "continue": "Continue"
+  "continue": "Continue",
+  "change_password": "Change Password"
 }

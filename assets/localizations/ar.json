@@ -17,6 +17,7 @@
   "confirm_password": "تأكيد كلمة المرور",
   "full_name": "الأسم كامل",
   "phone_number": "رقم الجوال",
-  "continue": "أكمل"
+  "continue": "أكمل",
+  "change_password": "تغير كلمة المرور"
 
 }
