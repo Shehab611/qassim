@@ -42,6 +42,7 @@ class RegisterScreen extends StatelessWidget {
                   ),
                   CustomTextField(
                     prefixIcon: Icons.call,
+                    inputType: TextInputType.number,
                     labelText: AppLocalizations.of(context).translate('phone_number'),
                     validator: (value) =>ValidateCheck.validateEmptyText(value, context, 'phone_number_required') ,
                   ),
