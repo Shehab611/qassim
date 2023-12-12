@@ -29,11 +29,13 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  CustomTextField(
+                  CustomTextField(prefixIcon:Icons.alternate_email ,
+
                     labelText: AppLocalizations.of(context).translate('email'),
                     validator:(value) =>ValidateCheck.validateEmail(value, context),
                   ),
                   CustomTextField(
+                    prefixIcon: Icons.lock,
                     labelText:
                         AppLocalizations.of(context).translate('password'),
                     isPassword: true,
