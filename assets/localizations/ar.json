@@ -18,6 +18,7 @@
   "full_name": "الأسم كامل",
   "phone_number": "رقم الجوال",
   "continue": "أكمل",
-  "change_password": "تغير كلمة المرور"
+  "change_password": "تغير كلمة المرور",
+  "cancel": "إلغاء"
 
 }
