@@ -25,8 +25,8 @@ class CustomTextField extends StatefulWidget {
   final int maxLines;
   final TextCapitalization capitalization;
   final double borderRadius;
-  final String? prefixIcon;
-  final String? suffixIcon;
+  final IconData? prefixIcon;
+  final IconData? suffixIcon;
   final double suffixIconSize;
   final bool showBorder;
   final bool showLabelText;
@@ -197,12 +197,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
                               bottomLeft:
                                   Radius.circular(widget.borderRadius))),
                       child: Center(
-                          child: Image.asset(widget.prefixIcon!,
-                              height: 20,
-                              width: 20,
-                              color: Theme.of(context)
-                                  .primaryColor
-                                  .withOpacity(.6))))
+                          child: Icon(widget.prefixIcon!,
+                              size: 20,
+                              color:AppColors.complementaryColor1)))
                   : null,
               suffixIcon: widget.isPassword
                   ? IconButton(
@@ -218,12 +215,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
                           child: Padding(
                             padding:
                                 const EdgeInsets.all(AppSizes.paddingSizeSmall),
-                            child: InkWell(
-                                onTap: widget.suffixOnTap,
-                                child: Image.asset(
-                                  widget.suffixIcon!,
-                                  color: Theme.of(context).hintColor,
-                                )),
+                            child: Icon(
+                              widget.suffixIcon!,
+                              color: Theme.of(context).hintColor,
+                            ),
                           ))
                       : null),
           onFieldSubmitted: (text) => widget.nextFocus != null
