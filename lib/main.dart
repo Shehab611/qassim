@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           ))),
       debugShowCheckedModeBanner: false,
       routes: AppRouter.routes,
-      initialRoute: AppPathName.kForgetPasswordFirstScreen,
+      initialRoute: AppPathName.kChangePasswordScreen,
       locale: appLanguage.appLocal,
       supportedLocales: AppConstants.supportedLocales,
       localizationsDelegates: const [

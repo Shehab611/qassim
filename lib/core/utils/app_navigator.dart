@@ -28,15 +28,15 @@ abstract final class AppNavigator {
         AppPathName.kOtpScreen,
       );
 
-  static navigateToForgetPasswordFirstScreen(BuildContext context) =>
+  static navigateToForgetPasswordScreen(BuildContext context) =>
       Navigator.popAndPushNamed(
         context,
-        AppPathName.kForgetPasswordFirstScreen,
+        AppPathName.kForgetPasswordScreen,
       );
 
-  static navigateToForgetPasswordSecondScreen(BuildContext context) =>
+  static navigateToChangePasswordScreen(BuildContext context) =>
       Navigator.popAndPushNamed(
         context,
-        AppPathName.kForgetPasswordSecondScreen,
+        AppPathName.kChangePasswordScreen,
       );
 }

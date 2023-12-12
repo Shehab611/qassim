@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:qassim/features/authentication/presentation/views/forget_password_first_screen.dart';
-import 'package:qassim/features/authentication/presentation/views/forget_password_second_screen.dart';
+import 'package:qassim/features/authentication/presentation/views/forget_password_screen.dart';
+import 'package:qassim/features/authentication/presentation/views/change_password_screen.dart';
 import 'package:qassim/features/authentication/presentation/views/login_screen.dart';
 import 'package:qassim/features/authentication/presentation/views/open_screen.dart';
 import 'package:qassim/features/authentication/presentation/views/otp_screen.dart';
@@ -14,7 +14,7 @@ abstract final class AppRouter {
     AppPathName.kLoginScreen: (BuildContext context) => const LoginScreen(),
     AppPathName.kRegisterScreen: (BuildContext context) => const RegisterScreen(),
     AppPathName.kOtpScreen: (BuildContext context) => const OtpScreen(),
-    AppPathName.kForgetPasswordFirstScreen: (BuildContext context) => const ForgetPasswordFirstScreen(),
-    AppPathName.kForgetPasswordSecondScreen: (BuildContext context) => const ForgetPasswordSecondScreen(),
+    AppPathName.kForgetPasswordScreen: (BuildContext context) => const ForgetPasswordScreen(),
+    AppPathName.kChangePasswordScreen: (BuildContext context) => const ChangePasswordScreen(),
   };
 }

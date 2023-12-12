@@ -7,8 +7,8 @@ import 'package:qassim/core/utils/design_utils/app_images.dart';
 import 'package:qassim/core/utils/design_utils/app_sizes.dart';
 import 'package:qassim/core/utils/design_utils/app_text_styles.dart';
 
-class ForgetPasswordFirstScreen extends StatelessWidget {
-  const ForgetPasswordFirstScreen({super.key});
+class ForgetPasswordScreen extends StatelessWidget {
+  const ForgetPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
