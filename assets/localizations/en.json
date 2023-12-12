@@ -20,5 +20,6 @@
   "continue": "Continue",
   "change_password": "Change Password",
   "cancel": "Cancel",
-  "email_verification": "Email Verification"
+  "email_verification": "Email Verification",
+  "code_send_to": "Enter The Code Sent to "
 }

@@ -20,6 +20,7 @@
   "continue": "أكمل",
   "change_password": "تغير كلمة المرور",
   "cancel": "إلغاء",
-  "email_verification": "التأكد من البريد الإلكتروني"
+  "email_verification": "التأكد من البريد الإلكتروني",
+  "code_send_to": "أدخل الرقم الذي أُرسل الي  "
 
 }
