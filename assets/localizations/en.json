@@ -19,5 +19,6 @@
   "phone_number": "Phone Number",
   "continue": "Continue",
   "change_password": "Change Password",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "email_verification": "Email Verification"
 }

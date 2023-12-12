@@ -19,6 +19,7 @@
   "phone_number": "رقم الجوال",
   "continue": "أكمل",
   "change_password": "تغير كلمة المرور",
-  "cancel": "إلغاء"
+  "cancel": "إلغاء",
+  "email_verification": "التأكد من البريد الإلكتروني"
 
 }
