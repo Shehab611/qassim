@@ -1,3 +1,5 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:qassim/core/utils/app_localization.dart';
@@ -10,8 +12,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   AppLanguage appLanguage = AppLanguage();
   await appLanguage.fetchLocale();
-  runApp(MyApp(
-    appLanguage: appLanguage,
+  runApp( DevicePreview(
+    enabled: !kReleaseMode,
+    builder: (context) =>  MyApp(
+      appLanguage: appLanguage,
+    ),
   ));
 }
 
@@ -32,7 +37,7 @@ class MyApp extends StatelessWidget {
           ))),
       debugShowCheckedModeBanner: false,
       routes: AppRouter.routes,
-      initialRoute: AppPathName.kRegisterScreen,
+      initialRoute: AppPathName.kForgetPasswordFirstScreen,
       locale: appLanguage.appLocal,
       supportedLocales: AppConstants.supportedLocales,
       localizationsDelegates: const [
