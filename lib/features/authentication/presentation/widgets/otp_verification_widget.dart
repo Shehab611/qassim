@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:qassim/core/utils/app_localization.dart';
@@ -37,8 +38,8 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
   void startTimer() {
     _timer = Timer.periodic(
       const Duration(seconds: 1),
-          (Timer timer) => setState(
-            () {
+      (Timer timer) => setState(
+        () {
           if (_timerValue < 1) {
             timer.cancel();
             _reSendFlag = true;
@@ -80,7 +81,8 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
           Form(
             key: _formKey,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppSizes.paddingSizeExtraLarge),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: AppSizes.paddingSizeExtraLarge),
               child: PinCodeTextField(
                 appContext: context,
                 length: 6,
@@ -94,7 +96,7 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
                 keyboardType: TextInputType.number,
                 validator: (v) {
                   if (v!.length < 6) {
-                    _errorController.add(ErrorAnimationType.shake);
+                    ///do this in validation on code
                     return AppLocalizations.of(context)
                         .translate('otp_invalid');
                   } else {
@@ -105,7 +107,16 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
                   _formKey.currentState?.validate();
                   setState(() {});
                 },
-                onChanged: (value) {},
+                onSubmitted: (v) {
+                  if (v.length < 6) {
+                    _errorController.add(ErrorAnimationType.shake);
+                  }
+                },
+                onSaved: (v) {
+                  if (v!.length < 6) {
+                    _errorController.add(ErrorAnimationType.shake);
+                  }
+                },
                 beforeTextPaste: (text) {
                   return true;
                 },
@@ -122,7 +133,8 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
               Visibility(
                 visible: _reSendFlag,
                 replacement: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: AppSizes.paddingSizeDefault),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AppSizes.paddingSizeDefault),
                   child: Text(
                     _timerValue.toString(),
                     style: AppTextStyles.textButtonTextStyle.copyWith(
@@ -140,15 +152,14 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
               )
             ],
           ),
-          ElevatedButton(onPressed: (){},
-              child: Text(AppLocalizations.of(context).translate('confirm'),style: AppTextStyles.elevatedButtonTextStyle,))
+          ElevatedButton(
+              onPressed: () {},
+              child: Text(
+                AppLocalizations.of(context).translate('confirm'),
+                style: AppTextStyles.elevatedButtonTextStyle,
+              ))
         ],
       ),
     );
   }
-
-
 }
-
-
-
