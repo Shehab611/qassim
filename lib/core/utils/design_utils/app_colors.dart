@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 abstract final class AppColors {
   static const primaryColor = Color(0xffEDDDAB);
   static const elevatedButtonBackground = complementaryColor1;
-  static const elevatedButtonTextColor = Color(0xffFFFAE0);
+  static const elevatedButtonTextColor = lighterShadeColor1;
   static const darkerShadeColor1  = Color(0xffC6BB93);
   static const darkerShadeColor2  = Color(0xffA89F76);
   static const darkerShadeColor3  = Color(0xff8B835B);

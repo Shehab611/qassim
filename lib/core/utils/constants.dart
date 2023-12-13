@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 abstract final class AppConstants{
-  static List locale = ['en', 'ar',];
+  static List<String> locale = ['en', 'ar',];
   static String defaultLanguage = 'ar';
   static List<Locale> supportedLocales = const [
     Locale('en', 'US'),

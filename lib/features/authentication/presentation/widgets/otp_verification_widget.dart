@@ -1,9 +1,10 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:qassim/core/utils/app_localization.dart';
 import 'package:qassim/core/utils/design_utils/app_colors.dart';
-
+import 'package:qassim/core/utils/design_utils/app_sizes.dart';
+import 'package:qassim/core/utils/design_utils/app_text_styles.dart';
 
 class OtpVerificationWidget extends StatefulWidget {
   const OtpVerificationWidget({super.key});
@@ -19,16 +20,15 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
   late Timer _timer;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final PinTheme _pinTheme = PinTheme(
-    shape: PinCodeFieldShape.box,
-    borderRadius: BorderRadius.circular(5),
-    errorBorderColor: AppColors.complementaryColor3,
-    inactiveFillColor: Colors.white,
-    selectedFillColor: Colors.white,
-    activeFillColor: Colors.white,
-    selectedColor: AppColors.complementaryColor1,
-    activeColor: AppColors.complementaryColor1,
-    inactiveColor: AppColors.complementaryColor4
-  );
+      shape: PinCodeFieldShape.box,
+      borderRadius: BorderRadius.circular(5),
+      errorBorderColor: AppColors.complementaryColor3,
+      inactiveFillColor: Colors.white,
+      selectedFillColor: Colors.white,
+      activeFillColor: Colors.white,
+      selectedColor: AppColors.complementaryColor1,
+      activeColor: AppColors.complementaryColor1,
+      inactiveColor: AppColors.complementaryColor4);
   final TextEditingController _textEditingController = TextEditingController();
   late StreamController<ErrorAnimationType> _errorController;
   bool _isValidate = false;
@@ -78,7 +78,8 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
                 validator: (v) {
                   if (v!.length < 6) {
                     _errorController.add(ErrorAnimationType.shake);
-                    return "otp is not valid";
+                    return AppLocalizations.of(context)
+                        .translate('otp_invalid');
                   } else {
                     return null;
                   }
@@ -98,32 +99,26 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              "Didn't receive the code? ",
-              style: TextStyle(color: Colors.black54, fontSize: 15),
+            Text(
+              AppLocalizations.of(context).translate('didn\'t_rcv_code'),
+              style: AppTextStyles.textButtonTextStyle,
             ),
             Visibility(
               visible: _reSendFlag,
-              replacement: TextButton(
-                onPressed: () {
-
-                },
+              replacement: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppSizes.paddingSizeDefault),
                 child: Text(
                   _timerValue.toString(),
-                  style: const TextStyle(
-
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14),
+                  style: AppTextStyles.textButtonTextStyle.copyWith(
+                      color: AppColors.complementaryColor2, fontSize: 16),
                 ),
               ),
               child: TextButton(
-                onPressed: () {
-                },
-                child: const Text(
-                  "RESEND",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14),
+                onPressed: () {},
+                child: Text(
+                  AppLocalizations.of(context).translate('resend'),
+                  style: AppTextStyles.textButtonTextStyle.copyWith(
+                      color: AppColors.complementaryColor2, fontSize: 16),
                 ),
               ),
             )
@@ -131,14 +126,12 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
         ),
         (_isValidate)
             ? Padding(
-          padding: const EdgeInsets.only(top: 30),
-          child: SlidingAnimationButton(
-            slidingAnimation: _slidingAnimation,
-            onPressedFunction: () {
-
-            },
-          ),
-        )
+                padding: const EdgeInsets.only(top: 30),
+                child: SlidingAnimationButton(
+                  slidingAnimation: _slidingAnimation,
+                  onPressedFunction: () {},
+                ),
+              )
             : const Center()
       ],
     );
@@ -164,8 +157,8 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
   void startTimer() {
     _timer = Timer.periodic(
       const Duration(seconds: 1),
-          (Timer timer) => setState(
-            () {
+      (Timer timer) => setState(
+        () {
           if (_timerValue < 1) {
             timer.cancel();
             _reSendFlag = true;
@@ -176,13 +169,14 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
       ),
     );
   }
-
 }
+
 class SlidingAnimationButton extends StatelessWidget {
   const SlidingAnimationButton(
       {super.key,
-        required this.slidingAnimation,
-        required this.onPressedFunction});
+      required this.slidingAnimation,
+      required this.onPressedFunction});
+
   final Animation<Offset> slidingAnimation;
   final void Function() onPressedFunction;
 
@@ -193,11 +187,11 @@ class SlidingAnimationButton extends StatelessWidget {
       builder: (context, _) {
         return SlideTransition(
           position: slidingAnimation,
-          child: FloatingActionButton(
-              onPressed: onPressedFunction,
-              child: const Icon(Icons.arrow_forward_rounded)),
+          child:ElevatedButton(onPressed: (){},
+              child: Text(AppLocalizations.of(context).translate('confirm'),style: AppTextStyles.elevatedButtonTextStyle,)),
         );
       },
     );
   }
 }
+
