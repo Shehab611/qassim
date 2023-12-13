@@ -7,11 +7,14 @@ import 'package:qassim/core/utils/app_routes_utils/app_paths.dart';
 import 'package:qassim/core/utils/app_routes_utils/app_router.dart';
 import 'package:qassim/core/utils/app_constants.dart';
 import 'package:qassim/core/utils/design_utils/app_colors.dart';
+import 'package:qassim/service_locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   AppLanguage appLanguage = AppLanguage();
   await appLanguage.fetchLocale();
+  await initServicesLocator();
+
   runApp( DevicePreview(
     enabled: !kReleaseMode,
     builder: (context) =>  MyApp(
