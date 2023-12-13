@@ -12,8 +12,11 @@ import 'package:qassim/service_locator.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   AppLanguage appLanguage = AppLanguage();
-  await appLanguage.fetchLocale();
-  await initServicesLocator();
+  Future.wait([
+    appLanguage.fetchLocale(),
+   initServicesLocator()
+  ]);
+
 
   runApp( DevicePreview(
     enabled: !kReleaseMode,

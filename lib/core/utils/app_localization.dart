@@ -71,12 +71,11 @@ class AppLanguage extends ChangeNotifier {
 
   Locale get appLocal => _appLocale;
 
-  fetchLocale() async {
+  Future <void> fetchLocale() async {
     var prefs = await SharedPreferences.getInstance();
     if (prefs.getString('language_code') == null) {
       _appLocale = Locale(AppConstants.defaultLanguage);
       await prefs.setString('language_code', AppConstants.defaultLanguage);
-      return Null;
     } else {
       _appLocale = Locale(prefs.getString('language_code')!);
     }
