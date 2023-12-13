@@ -7,6 +7,8 @@
   "confirm_password_not_matched": "تأكيد كلمة المرور غير متطابق",
   "full_name_required": "الأسم مطلوب",
   "phone_number_required": "رقم الجوال مطلوب",
+  "no_connection": "لا يوجد اتصال بالانترنت",
+  "connected": "متصل بالانترنت",
   "login": "تسجيل الدخول",
   "register": "انشاء حساب جديد",
   "email": "البريد الإلكتروني",

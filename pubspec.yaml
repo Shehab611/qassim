@@ -44,6 +44,9 @@ dependencies:
   pin_code_fields: ^8.0.1
   flutter_launcher_icons: ^0.13.1
   rename: ^3.0.1
+  dio: ^5.4.0
+  get_it: ^7.6.4
+  connectivity: ^3.0.6
 
 flutter_launcher_icons:
   android: "launcher_icon"

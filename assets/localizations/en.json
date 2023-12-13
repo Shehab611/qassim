@@ -7,6 +7,8 @@
   "confirm_password_not_matched": "Confirm Password is Not Matched",
   "full_name_required": "Name Is Required",
   "phone_number_required": "Phone Number Is Required",
+  "no_connection": "No Internet connection",
+  "connected": "Connected to the Internet",
   "login": "Login",
   "register": "Register",
   "email": "Email",
