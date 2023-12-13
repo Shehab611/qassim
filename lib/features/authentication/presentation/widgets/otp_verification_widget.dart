@@ -16,7 +16,6 @@ class OtpVerificationWidget extends StatefulWidget {
 class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
     with TickerProviderStateMixin {
   late AnimationController _animationController;
-  late Animation<Offset> _slidingAnimation;
   late Timer _timer;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final PinTheme _pinTheme = PinTheme(
@@ -31,10 +30,25 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
       inactiveColor: AppColors.complementaryColor4);
   final TextEditingController _textEditingController = TextEditingController();
   late StreamController<ErrorAnimationType> _errorController;
-  bool _isValidate = false;
   bool _reSendFlag = false;
 
   int _timerValue = 240;
+
+  void startTimer() {
+    _timer = Timer.periodic(
+      const Duration(seconds: 1),
+          (Timer timer) => setState(
+            () {
+          if (_timerValue < 1) {
+            timer.cancel();
+            _reSendFlag = true;
+          } else {
+            _timerValue = _timerValue - 1;
+          }
+        },
+      ),
+    );
+  }
 
   @override
   void initState() {
@@ -58,12 +72,15 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Form(
-          key: _formKey,
-          child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 30),
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * .37,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Form(
+            key: _formKey,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: AppSizes.paddingSizeExtraLarge),
               child: PinCodeTextField(
                 appContext: context,
                 length: 6,
@@ -86,112 +103,52 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
                 },
                 onCompleted: (v) {
                   _formKey.currentState?.validate();
-                  initSlidingAnimation();
-                  _isValidate = true;
                   setState(() {});
                 },
                 onChanged: (value) {},
                 beforeTextPaste: (text) {
                   return true;
                 },
-              )),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              AppLocalizations.of(context).translate('didn\'t_rcv_code'),
-              style: AppTextStyles.textButtonTextStyle,
+              ),
             ),
-            Visibility(
-              visible: _reSendFlag,
-              replacement: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: AppSizes.paddingSizeDefault),
-                child: Text(
-                  _timerValue.toString(),
-                  style: AppTextStyles.textButtonTextStyle.copyWith(
-                      color: AppColors.complementaryColor2, fontSize: 16),
-                ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                AppLocalizations.of(context).translate('didn\'t_rcv_code'),
+                style: AppTextStyles.textButtonTextStyle,
               ),
-              child: TextButton(
-                onPressed: () {},
-                child: Text(
-                  AppLocalizations.of(context).translate('resend'),
-                  style: AppTextStyles.textButtonTextStyle.copyWith(
-                      color: AppColors.complementaryColor2, fontSize: 16),
+              Visibility(
+                visible: _reSendFlag,
+                replacement: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: AppSizes.paddingSizeDefault),
+                  child: Text(
+                    _timerValue.toString(),
+                    style: AppTextStyles.textButtonTextStyle.copyWith(
+                        color: AppColors.complementaryColor2, fontSize: 16),
+                  ),
                 ),
-              ),
-            )
-          ],
-        ),
-        (_isValidate)
-            ? Padding(
-                padding: const EdgeInsets.only(top: 30),
-                child: SlidingAnimationButton(
-                  slidingAnimation: _slidingAnimation,
-                  onPressedFunction: () {},
+                child: TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    AppLocalizations.of(context).translate('resend'),
+                    style: AppTextStyles.textButtonTextStyle.copyWith(
+                        color: AppColors.complementaryColor2, fontSize: 16),
+                  ),
                 ),
               )
-            : const Center()
-      ],
-    );
-  }
-
-  void initSlidingAnimation() {
-    _slidingAnimation =
-        Tween<Offset>(begin: const Offset(-5, 0), end: Offset.zero)
-            .animate(_animationController);
-    _animationController.forward();
-  }
-
-  ScaffoldFeatureController<SnackBar, SnackBarClosedReason> snackBar(
-      String? message) {
-    return ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message!),
-        duration: const Duration(seconds: 2),
+            ],
+          ),
+          ElevatedButton(onPressed: (){},
+              child: Text(AppLocalizations.of(context).translate('confirm'),style: AppTextStyles.elevatedButtonTextStyle,))
+        ],
       ),
     );
   }
 
-  void startTimer() {
-    _timer = Timer.periodic(
-      const Duration(seconds: 1),
-      (Timer timer) => setState(
-        () {
-          if (_timerValue < 1) {
-            timer.cancel();
-            _reSendFlag = true;
-          } else {
-            _timerValue = _timerValue - 1;
-          }
-        },
-      ),
-    );
-  }
+
 }
 
-class SlidingAnimationButton extends StatelessWidget {
-  const SlidingAnimationButton(
-      {super.key,
-      required this.slidingAnimation,
-      required this.onPressedFunction});
 
-  final Animation<Offset> slidingAnimation;
-  final void Function() onPressedFunction;
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: slidingAnimation,
-      builder: (context, _) {
-        return SlideTransition(
-          position: slidingAnimation,
-          child:ElevatedButton(onPressed: (){},
-              child: Text(AppLocalizations.of(context).translate('confirm'),style: AppTextStyles.elevatedButtonTextStyle,)),
-        );
-      },
-    );
-  }
-}
 
