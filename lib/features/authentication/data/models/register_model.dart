@@ -1,29 +1,5 @@
 import 'package:equatable/equatable.dart';
 
-final class RegisterResponseModel extends Equatable {
-  final String _success;
-  final String _accessToken;
-
-  const RegisterResponseModel(this._success, this._accessToken);
-
-  String get success => _success;
-
-  String get accessToken => _accessToken;
-
-  factory RegisterResponseModel.fromJson(Map<String, dynamic> json) {
-    return RegisterResponseModel(
-      json['success'] as String,
-      json['access_token'] as String,
-    );
-  }
-
-  @override
-  List<Object?> get props => [_success, _accessToken];
-
-  @override
-  bool get stringify => true;
-}
-
 final class RegisterDataModel extends Equatable {
   final String name;
   final String email;
