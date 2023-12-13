@@ -39,10 +39,6 @@ final class RegisterDataModel extends Equatable {
     required this.passwordConfirmation,
   });
 
-  @override
-  List<Object?> get props =>
-      [name, email, phone, password, passwordConfirmation];
-
   factory RegisterDataModel.fromJson(Map<String, dynamic> json) {
     return RegisterDataModel(
       name: json['name'] as String,
@@ -62,4 +58,11 @@ final class RegisterDataModel extends Equatable {
       'passwordConfirmation': passwordConfirmation,
     };
   }
+
+  @override
+  List<Object?> get props =>
+      [name, email, phone, password, passwordConfirmation];
+
+  @override
+  bool get stringify => true;
 }
