@@ -3,9 +3,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:qassim/core/utils/app_localization.dart';
-import 'package:qassim/core/utils/app_paths.dart';
-import 'package:qassim/core/utils/app_router.dart';
-import 'package:qassim/core/utils/constants.dart';
+import 'package:qassim/core/utils/app_routes_utils/app_paths.dart';
+import 'package:qassim/core/utils/app_routes_utils/app_router.dart';
+import 'package:qassim/core/utils/app_constants.dart';
 import 'package:qassim/core/utils/design_utils/app_colors.dart';
 
 void main() async {
