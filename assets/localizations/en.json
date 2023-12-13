@@ -24,5 +24,6 @@
   "code_send_to": "Enter The Code Sent to ",
   "otp_invalid": "You have Entered Invalid OTP",
   "didn't_rcv_code": "Didn't Receive the Code?",
-  "resend": "Resend OTP"
+  "resend": "Resend OTP",
+  "confirm": "Confirm"
 }
