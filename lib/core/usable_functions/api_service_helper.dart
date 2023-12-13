@@ -6,23 +6,23 @@ import 'package:qassim/core/utils/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DioClient {
-  final String baseUrl;
-  final LoggingInterceptor loggingInterceptor;
-  final SharedPreferences sharedPreferences;
+  final String _baseUrl;
+  final LoggingInterceptor _loggingInterceptor;
+  final SharedPreferences _sharedPreferences;
 
   Dio? dio;
   String? token;
 
-  DioClient(this.baseUrl,{
-        required this.loggingInterceptor,
-        required this.sharedPreferences,
-      }) {
-    token = sharedPreferences.getString(AppConstants.userLoginToken);
+  DioClient(this._baseUrl,{
+        required LoggingInterceptor loggingInterceptor,
+        required SharedPreferences sharedPreferences,
+      }) : _sharedPreferences = sharedPreferences, _loggingInterceptor = loggingInterceptor {
+    token = _sharedPreferences.getString(AppConstants.userLoginToken);
     if (kDebugMode) {
       print("NNNN $token");
     }
     dio
-      ?..options.baseUrl = baseUrl
+      ?..options.baseUrl = _baseUrl
       ..options.connectTimeout = AppConstants.connectionTimeOut
       ..options.receiveTimeout = AppConstants.connectionTimeOut
       ..httpClientAdapter
@@ -31,7 +31,7 @@ class DioClient {
         'Authorization': 'Bearer $token',
         'Accept': 'application/json',
       };
-    dio!.interceptors.add(loggingInterceptor);
+    dio!.interceptors.add(_loggingInterceptor);
   }
 
   void updateHeader(String? token,) {
