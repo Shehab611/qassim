@@ -9,10 +9,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 final sl = GetIt.instance;
 
-Future<void> init() async {
+Future<void> initServicesLocator() async {
   //Core
   sl.registerLazySingleton(() => NetworkInfo(sl()));
-  sl.registerLazySingleton(() => DioClient(ApiEndPoints.baseUrl,loggingInterceptor: sl(), sharedPreferences: sl()));
+  sl.registerLazySingleton(() => DioClient(ApiEndPoints.baseUrl,sl(),loggingInterceptor: sl(), sharedPreferences: sl()));
+
 
   // External
   final sharedPreferences = await SharedPreferences.getInstance();

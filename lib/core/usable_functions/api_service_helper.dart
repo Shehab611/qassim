@@ -10,10 +10,11 @@ class DioClient {
   final LoggingInterceptor _loggingInterceptor;
   final SharedPreferences _sharedPreferences;
 
-  Dio? _dio;
+  final Dio? _dio;
   String? _token;
 
-  DioClient(this._baseUrl,{
+  DioClient(this._baseUrl,
+      this._dio,{
         required LoggingInterceptor loggingInterceptor,
         required SharedPreferences sharedPreferences,
       }) : _sharedPreferences = sharedPreferences, _loggingInterceptor = loggingInterceptor {
@@ -35,8 +36,8 @@ class DioClient {
   }
 
   void updateHeader(String? token,) {
-    token = token ?? this._token;
-    this._token = token;
+    token = token ?? _token;
+    _token = token;
     _dio!.options.headers = {
       'Content-Type': 'application/json; charset=UTF-8',
       'Authorization': 'Bearer $token',
