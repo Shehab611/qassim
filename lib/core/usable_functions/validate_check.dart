@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:qassim/core/utils/app_localization.dart';
 
 abstract final class ValidateCheck {
+  static bool validate(GlobalKey<FormState> formKey){
+    return formKey.currentState!.validate();
+  }
+
   static String? validateEmail(
     String? value,
     BuildContext context,
