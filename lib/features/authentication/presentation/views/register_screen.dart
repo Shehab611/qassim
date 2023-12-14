@@ -52,6 +52,7 @@ class RegisterScreen extends StatelessWidget {
                         CustomTextField(
                           controller: cubit.emailController,
                           prefixIcon: Icons.alternate_email,
+                          inputType: TextInputType.emailAddress,
                           labelText:
                               AppLocalizations.of(context).translate('email'),
                           validator: (value) =>

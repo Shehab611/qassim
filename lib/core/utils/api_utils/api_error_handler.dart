@@ -83,15 +83,17 @@ abstract final class ApiErrorHandler {
 abstract final  class ApiChecker {
 
   static void checkApi(ApiResponse apiResponse,BuildContext context) {
-  if(apiResponse.response?.statusCode == 301){
     var errorResponse = apiResponse.error.errors as Map<String,dynamic>;
-    bool taken=errorResponse['email'][0].toString().contains('already been taken');
-    if(taken){
-      showCustomSnackBar(AppLocalizations.of(context).translate('email_taken'), context);
-    }else{
-      print(errorResponse['email'][0]);
+    if(errorResponse['email'] != null) {
+      bool taken =
+          errorResponse['email'][0].toString().contains('already been taken');
+      if (taken) {
+        showCustomSnackBar(
+            AppLocalizations.of(context).translate('email_taken'), context);
+      } else {
+        print(errorResponse['email'][0]);
+      }
     }
-
-  }
+    print(errorResponse);
   }
 }

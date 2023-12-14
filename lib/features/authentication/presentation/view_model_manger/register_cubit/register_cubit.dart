@@ -66,17 +66,18 @@ class RegisterCubit extends Cubit<RegisterState> {
           email: _emailController.text,
           name: _nameController.text,
           phone: _phoneController.text,
-          password: _passwordController.text,
-          passwordConfirmation: _passwordConfirmationController.text);
+          password: _passwordController.text.trim(),
+          passwordConfirmation: _passwordConfirmationController.text.trim());
+
       ApiResponse apiResponse =
           await registerRepo.register(registerDataModel: registerDataModel);
       if (apiResponse.response?.statusCode != null &&
-          apiResponse.response?.statusCode == 200) {
+          apiResponse.response?.statusCode == 201) {
         emit(RegisterSuccessfulState(apiResponse.response!.data));
       } else {
         if (context.mounted) {
-          emit(const RegisterFailedState());
           ApiChecker.checkApi(apiResponse, context);
+          emit(const RegisterFailedState());
         }
       }
     }

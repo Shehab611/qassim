@@ -55,7 +55,7 @@ final class RegisterDataModel extends Equatable {
       'email': email,
       'phone': phone,
       'password': password,
-      'passwordConfirmation': passwordConfirmation,
+      'password_confirmation': passwordConfirmation,
     };
   }
 
