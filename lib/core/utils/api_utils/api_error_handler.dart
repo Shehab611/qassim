@@ -5,7 +5,7 @@ import 'package:qassim/core/utils/api_utils/api_error_response.dart';
 import 'package:qassim/core/utils/api_utils/api_response.dart';
 import 'package:qassim/core/utils/app_localization.dart';
 
-class ApiErrorHandler {
+abstract final class ApiErrorHandler {
   static dynamic getMessage(error) {
     dynamic errorDescription = "";
     if (error is Exception) {
@@ -80,7 +80,7 @@ class ApiErrorHandler {
 }
 
 
-class ApiChecker {
+abstract final  class ApiChecker {
 
   static void checkApi(ApiResponse apiResponse,BuildContext context) {
   if(apiResponse.response?.statusCode == 301){
