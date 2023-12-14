@@ -32,11 +32,12 @@ class RegisterScreen extends StatelessWidget {
                 AppImages.blackLightLogo,
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.58,
+                height: MediaQuery.of(context).size.height * 0.65,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: AppSizes.paddingSizeDefault),
                   child: Form(
+                    key: cubit.formKey,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
