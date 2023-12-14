@@ -11,14 +11,14 @@ final sl = GetIt.instance;
 
 Future<void> initServicesLocator() async {
   //Core
-  sl.registerLazySingleton(() => NetworkInfo(sl()));
-  sl.registerLazySingleton(() => DioClient(ApiEndPoints.baseUrl,sl(),loggingInterceptor: sl(), sharedPreferences: sl()));
+  sl.registerLazySingleton<NetworkInfo>(() => NetworkInfo(sl<Connectivity>()));
+  sl.registerLazySingleton<DioClient>(() => DioClient(ApiEndPoints.baseUrl,sl<Dio>(),loggingInterceptor: sl<LoggingInterceptor>(), sharedPreferences: sl<SharedPreferences>()));
 
 
   // External
   final sharedPreferences = await SharedPreferences.getInstance();
-  sl.registerLazySingleton(() => sharedPreferences);
-  sl.registerLazySingleton(() => Dio());
-  sl.registerLazySingleton(() => LoggingInterceptor());
-  sl.registerLazySingleton(() => Connectivity());
+  sl.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
+  sl.registerLazySingleton<Dio>(() => Dio());
+  sl.registerLazySingleton<LoggingInterceptor>(() => LoggingInterceptor());
+  sl.registerLazySingleton<Connectivity>(() => Connectivity());
 }

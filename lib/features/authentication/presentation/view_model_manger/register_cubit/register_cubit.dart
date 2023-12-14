@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qassim/core/usable_functions/validate_check.dart';
 import 'package:qassim/core/utils/api_utils/api_response.dart';
-import 'package:qassim/core/utils/app_routes_utils/app_navigator.dart';
+import 'package:qassim/core/utils/app_constants.dart';
 import 'package:qassim/features/authentication/data/models/register_model.dart';
 import 'package:qassim/features/authentication/data/repositories/register/register_repo.dart';
+import 'package:qassim/service_locator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'register_state.dart';
 
@@ -43,10 +45,12 @@ class RegisterCubit extends Cubit<RegisterState> {
 //#endregion
 
   //#region private methods
-  _navigateToLoginScreen(BuildContext context) {
-    AppNavigator.navigateToLoginScreen(context);
+  void _navigateToHomeScreen(BuildContext context) {
+    //AppNavigator.navigateToHomeScreen(context);
   }
-
+  void _saveUserToken(String token){
+    sl<SharedPreferences>().setString(AppConstants.userLoginTokenSharedPreferenceKey, token);
+  }
   //#endregion
 
   //#region public methods
@@ -58,16 +62,19 @@ class RegisterCubit extends Cubit<RegisterState> {
           phone: _phoneController.text,
           password: _passwordController.text,
           passwordConfirmation: _passwordConfirmationController.text);
-      ApiResponse apiResponse =
-          await registerRepo.register(registerDataModel: registerDataModel);
+      ApiResponse apiResponse = await registerRepo.register(registerDataModel: registerDataModel);
       if (apiResponse.response?.statusCode != null && apiResponse.response?.statusCode == 200) {
-        emit(const RegisterSuccessfulState());
+        emit(RegisterSuccessfulState(apiResponse.response!.data));
+      }else{
+
       }
     }
   }
 
-  void onRegisterSuccess(BuildContext context){
-    _navigateToLoginScreen(context);
+  void onRegisterSuccess(BuildContext context,data){
+    RegisterResponseModel responseModel = RegisterResponseModel.fromJson(data);
+    _saveUserToken(responseModel.accessToken);
+    _navigateToHomeScreen(context);
   }
 //#endregion
 }

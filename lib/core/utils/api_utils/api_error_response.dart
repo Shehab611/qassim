@@ -1,28 +1,16 @@
 class ErrorResponse {
-  List<Errors>? errors;
+  Map<String,dynamic>? errors;
 
   ErrorResponse({this.errors});
 
   ErrorResponse.fromJson(Map<String, dynamic> json) {
     if (json['errors'] != null) {
-      errors = <Errors>[];
-      json['errors'].forEach((v) {
-        errors!.add(Errors.fromJson(v));
+      errors = {};
+      json['errors'].forEach((String k,v) {
+      errors!.putIfAbsent(k, () => v);
       });
     }
   }
 
 }
 
-class Errors {
-  String? code;
-  String? message;
-
-  Errors({this.code, this.message});
-
-  Errors.fromJson(Map<String, dynamic> json) {
-    code = json['code'];
-    message = json['message'];
-  }
-
-}

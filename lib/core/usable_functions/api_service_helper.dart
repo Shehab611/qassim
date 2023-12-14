@@ -18,12 +18,12 @@ class DioClient {
         required LoggingInterceptor loggingInterceptor,
         required SharedPreferences sharedPreferences,
       }) : _sharedPreferences = sharedPreferences, _loggingInterceptor = loggingInterceptor {
-    _token = _sharedPreferences.getString(AppConstants.userLoginToken);
+    _token = _sharedPreferences.getString(AppConstants.userLoginTokenSharedPreferenceKey);
     if (kDebugMode) {
       print("NNNN $_token");
     }
-    _dio
-      ?..options.baseUrl = _baseUrl
+    _dio!
+      ..options.baseUrl = _baseUrl
       ..options.connectTimeout = AppConstants.connectionTimeOut
       ..options.receiveTimeout = AppConstants.connectionTimeOut
       ..httpClientAdapter
@@ -32,7 +32,7 @@ class DioClient {
         'Authorization': 'Bearer $_token',
         'Accept': 'application/json',
       };
-    _dio!.interceptors.add(_loggingInterceptor);
+    _dio.interceptors.add(_loggingInterceptor);
   }
 
   void updateHeader(String? token,) {

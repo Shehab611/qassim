@@ -27,12 +27,12 @@ abstract final class AppConstants {
 
 
   //#region private shared preferences keys
-  static const String _userLoginToken = 'userLoginToken';
+  static const String _userLoginTokenSharedPreferenceKey = 'userLoginToken';
 
   //#endregion
 
 
   //#region shared preferences keys getters
-  static String get userLoginToken=>_userLoginToken;
+  static String get userLoginTokenSharedPreferenceKey=>_userLoginTokenSharedPreferenceKey;
 //#endregion
 }
