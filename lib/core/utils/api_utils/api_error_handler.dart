@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:qassim/core/components/custom_snack_bar.dart';
 import 'package:qassim/core/utils/api_utils/api_error_response.dart';
+import 'package:qassim/core/utils/api_utils/api_response.dart';
+import 'package:qassim/core/utils/app_localization.dart';
 
 class ApiErrorHandler {
   static dynamic getMessage(error) {
@@ -73,5 +76,22 @@ class ApiErrorHandler {
       errorDescription = "is not a subtype of exception";
     }
     return errorDescription;
+  }
+}
+
+
+class ApiChecker {
+
+  static void checkApi(ApiResponse apiResponse,BuildContext context) {
+  if(apiResponse.response?.statusCode == 301){
+    var errorResponse = apiResponse.error.errors as Map<String,dynamic>;
+    bool taken=errorResponse['email'][0].toString().contains('already been taken');
+    if(taken){
+      showCustomSnackBar(AppLocalizations.of(context).translate('email_taken'), context);
+    }else{
+      print(errorResponse['email'][0]);
+    }
+
+  }
   }
 }
