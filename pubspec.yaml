@@ -49,6 +49,7 @@ dependencies:
   connectivity: ^3.0.6
   equatable: ^2.0.5
   fluttertoast: ^8.2.4
+  get: ^4.6.6
 
 flutter_launcher_icons:
   android: "launcher_icon"
