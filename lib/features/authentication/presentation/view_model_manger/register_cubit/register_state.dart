@@ -17,10 +17,10 @@ class RegisterLoadingState extends RegisterState {
 }
 
 class RegisterSuccessfulState extends RegisterState {
-  final dynamic data;
-  const RegisterSuccessfulState(this.data);
+
+  const RegisterSuccessfulState();
   @override
-  List<Object> get props => [data];
+  List<Object> get props => [];
 }
 
 class RegisterFailedState extends RegisterState {

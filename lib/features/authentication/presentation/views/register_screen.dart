@@ -20,7 +20,7 @@ class RegisterScreen extends StatelessWidget {
           child: BlocConsumer<RegisterCubit, RegisterState>(
         listener: (context, state) {
           if (state is RegisterSuccessfulState) {
-            RegisterCubit.get(context).onRegisterSuccess(context, state.data);
+            RegisterCubit.get(context).onRegisterSuccess(context);
           }
         },
         builder: (context, state) {

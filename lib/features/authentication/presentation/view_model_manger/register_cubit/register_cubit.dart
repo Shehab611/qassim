@@ -4,12 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qassim/core/usable_functions/validate_check.dart';
 import 'package:qassim/core/utils/api_utils/api_error_handler.dart';
 import 'package:qassim/core/utils/api_utils/api_response.dart';
-import 'package:qassim/core/utils/app_constants.dart';
 import 'package:qassim/core/utils/app_routes_utils/app_navigator.dart';
 import 'package:qassim/features/authentication/data/models/register_model.dart';
 import 'package:qassim/features/authentication/data/repositories/register/register_repo.dart';
-import 'package:qassim/service_locator.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 part 'register_state.dart';
 
@@ -46,18 +43,6 @@ class RegisterCubit extends Cubit<RegisterState> {
 
 //#endregion
 
-  //#region private methods
-  void _navigateToHomeScreen(BuildContext context) {
-    //AppNavigator.navigateToHomeScreen(context);
-  }
-
-  void _saveUserToken(String token) {
-    sl<SharedPreferences>()
-        .setString(AppConstants.userLoginTokenSharedPreferenceKey, token);
-  }
-
-  //#endregion
-
   //#region public methods
   Future<void> register(BuildContext context) async {
     if (ValidateCheck.validate(_formKey)) {
@@ -73,7 +58,7 @@ class RegisterCubit extends Cubit<RegisterState> {
           await registerRepo.register(registerDataModel: registerDataModel);
       if (apiResponse.response?.statusCode != null &&
           apiResponse.response?.statusCode == 201) {
-        emit(RegisterSuccessfulState(apiResponse.response!.data));
+        emit(const RegisterSuccessfulState());
       } else {
         if (context.mounted) {
           ApiChecker.checkApi(apiResponse, context);
@@ -83,13 +68,11 @@ class RegisterCubit extends Cubit<RegisterState> {
     }
   }
 
-  void onRegisterSuccess(BuildContext context, data) {
-    RegisterResponseModel responseModel = RegisterResponseModel.fromJson(data);
-    _saveUserToken(responseModel.accessToken);
-    _navigateToHomeScreen(context);
+  void onRegisterSuccess(BuildContext context) {
+    navigateToLoginScreen(context);
   }
 
-  void navigateToLoginScreen(BuildContext context){
+  void navigateToLoginScreen(BuildContext context) {
     AppNavigator.navigateToLoginScreen(context);
   }
 //#endregion
