@@ -11,8 +11,8 @@ import 'package:qassim/features/authentication/data/repositories/register/regist
 part 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
-  RegisterCubit(this.registerRepo) : super(const RegisterInitial());
-  final RegisterRepo registerRepo;
+  RegisterCubit(this._registerRepo) : super(const RegisterInitial());
+  final RegisterRepo _registerRepo;
 
   static RegisterCubit get(BuildContext context) => BlocProvider.of(context);
 
@@ -64,7 +64,7 @@ class RegisterCubit extends Cubit<RegisterState> {
           passwordConfirmation: _passwordConfirmationController.text.trim());
 
       ApiResponse apiResponse =
-          await registerRepo.register(registerDataModel: registerDataModel);
+          await _registerRepo.register(registerDataModel: registerDataModel);
       if (apiResponse.response?.statusCode != null &&
           apiResponse.response?.statusCode == 201) {
         emit(const RegisterSuccessfulState());

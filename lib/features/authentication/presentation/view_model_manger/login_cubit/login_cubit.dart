@@ -10,8 +10,8 @@ import 'package:qassim/features/authentication/data/repositories/login/login_rep
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit(this.loginRepo) : super(const LoginInitial());
-  final LoginRepo loginRepo;
+  LoginCubit(this._loginRepo) : super(const LoginInitial());
+  final LoginRepo _loginRepo;
 
   static LoginCubit get(BuildContext context) => BlocProvider.of(context);
 
@@ -41,7 +41,7 @@ class LoginCubit extends Cubit<LoginState> {
 
 
   Future<void> _addDataToLocalDb(User user) async {
-    await loginRepo.addUserDataToDB(user: user);
+    await _loginRepo.addUserDataToDB(user: user);
   }
 
   //#endregion
@@ -50,7 +50,7 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> login(BuildContext context) async {
     if (ValidateCheck.validate(_formKey)) {
       emit(const LoginLoadingState());
-      ApiResponse apiResponse = await loginRepo.login(
+      ApiResponse apiResponse = await _loginRepo.login(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
       if (apiResponse.response?.statusCode != null &&
