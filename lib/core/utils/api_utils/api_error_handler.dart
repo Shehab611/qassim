@@ -37,6 +37,7 @@ abstract final class ApiErrorHandler {
                     errorDescription = error.response!.data['message'];
                   }
                   break;
+                case 301:
                 case 404:
                 case 500:
                 case 503:
