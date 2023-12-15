@@ -22,6 +22,4 @@ Future<void> initServicesLocator() async {
   sl.registerLazySingleton<LoggingInterceptor>(() => LoggingInterceptor());
   sl.registerLazySingleton<Connectivity>(() => Connectivity());
 
-
-
 }
