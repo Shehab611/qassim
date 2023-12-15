@@ -22,4 +22,13 @@ class User {
       accessToken: json['user']['access_token'] as String,
     );
   }
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'email': email,
+      'phone': phone,
+      'access_token': accessToken,
+    };
+  }
 }
