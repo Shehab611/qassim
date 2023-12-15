@@ -13,6 +13,14 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this.loginRepo) : super(const LoginInitial());
   final LoginRepo loginRepo;
 
+  static LoginCubit get(BuildContext context) => BlocProvider.of(context);
+
+  @override
+  Future<void> close() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    return super.close();
+  }
   //#region private variables
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
@@ -28,6 +36,7 @@ class LoginCubit extends Cubit<LoginState> {
   GlobalKey<FormState> get formKey => _formKey;
 
 //#endregion
+
   //#region private methods
 
 
@@ -36,6 +45,7 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   //#endregion
+
   //#region public methods
   Future<void> login(BuildContext context) async {
     if (ValidateCheck.validate(_formKey)) {
