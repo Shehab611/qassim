@@ -81,8 +81,7 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   void navigateToHomeScreen(BuildContext context) {
-    print('its successful');
-    //AppNavigator.navigateToHomeScreen(context);
+    AppNavigator.navigateToHomeScreen(context);
   }
 
   void navigateToRegisterScreen(BuildContext context) {

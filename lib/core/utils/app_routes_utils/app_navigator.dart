@@ -39,4 +39,10 @@ abstract final class AppNavigator {
         context,
         AppPathName.kChangePasswordScreen,
       );
+
+  static navigateToHomeScreen(BuildContext context) =>
+      Navigator.popAndPushNamed(
+        context,
+        AppPathName.kHomeScreen,
+      );
 }
