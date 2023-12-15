@@ -4,9 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qassim/core/usable_functions/validate_check.dart';
 import 'package:qassim/core/utils/api_utils/api_error_handler.dart';
 import 'package:qassim/core/utils/api_utils/api_response.dart';
+import 'package:qassim/core/utils/app_constants.dart';
 import 'package:qassim/core/utils/app_routes_utils/app_navigator.dart';
 import 'package:qassim/features/authentication/data/models/login_model.dart';
 import 'package:qassim/features/authentication/data/repositories/login/login_repo.dart';
+import 'package:qassim/service_locator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'login_state.dart';
 
@@ -22,6 +25,7 @@ class LoginCubit extends Cubit<LoginState> {
     _passwordController.dispose();
     return super.close();
   }
+
   //#region private variables
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
@@ -40,9 +44,13 @@ class LoginCubit extends Cubit<LoginState> {
 
   //#region private methods
 
-
   Future<void> _addDataToLocalDb(User user) async {
     await _loginRepo.addUserDataToDB(user: user);
+  }
+
+  Future<void> _saveUserToken(String token) async {
+    await sl<SharedPreferences>()
+        .setString(AppConstants.userLoginTokenSharedPreferenceKey, token);
   }
 
   //#endregion
@@ -57,7 +65,11 @@ class LoginCubit extends Cubit<LoginState> {
       if (apiResponse.response?.statusCode != null &&
           apiResponse.response?.statusCode == 200) {
         User user = User.fromJson(apiResponse.response!.data);
-        await _addDataToLocalDb(user);
+        Future.microtask(() {
+          _addDataToLocalDb(user);
+          _saveUserToken(user.accessToken);
+        });
+
         emit(const LoginSuccessfulState());
       } else {
         if (context.mounted) {
@@ -67,7 +79,9 @@ class LoginCubit extends Cubit<LoginState> {
       }
     }
   }
+
   void navigateToHomeScreen(BuildContext context) {
+    print('its successful');
     //AppNavigator.navigateToHomeScreen(context);
   }
 
