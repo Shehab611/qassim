@@ -20,11 +20,11 @@ abstract final class ApiErrorHandler {
               break;
             case DioExceptionType.connectionError:
               errorDescription =
-              "Connection to API server failed due to internet connection";
+                  "Connection to API server failed due to internet connection";
               break;
             case DioExceptionType.receiveTimeout:
               errorDescription =
-              "Receive timeout in connection with API server";
+                  "Receive timeout in connection with API server";
               break;
             case DioExceptionType.badResponse:
               switch (error.response!.statusCode) {
@@ -41,17 +41,21 @@ abstract final class ApiErrorHandler {
                 case 500:
                 case 503:
                 case 429:
-                  errorDescription = error.response!.statusMessage;
+                  if (error.response!.data['errors'] != null) {
+                    errorDescription = error.response!.data['errors'][0];
+                  } else {
+                    errorDescription = error.response!.data['message'];
+                  }
                   break;
                 default:
                   ErrorResponse errorResponse =
-                  ErrorResponse.fromJson(error.response!.data);
+                      ErrorResponse.fromJson(error.response!.data);
                   if (errorResponse.errors != null &&
                       errorResponse.errors!.isNotEmpty) {
                     errorDescription = errorResponse;
                   } else {
                     errorDescription =
-                    "Failed to load data - status code: ${error.response!.statusCode}";
+                        "Failed to load data - status code: ${error.response!.statusCode}";
                   }
               }
               break;
@@ -60,13 +64,12 @@ abstract final class ApiErrorHandler {
               break;
             case DioExceptionType.badCertificate:
               errorDescription =
-              "Connection to API server failed due to Bad Certificate";
+                  "Connection to API server failed due to Bad Certificate";
             case DioExceptionType.unknown:
               errorDescription =
-              "Connection to API server failed due to Unknown Error";
+                  "Connection to API server failed due to Unknown Error";
           }
-        }
-        else {
+        } else {
           errorDescription = "Unexpected error occurred";
         }
       } on FormatException catch (e) {
@@ -79,19 +82,30 @@ abstract final class ApiErrorHandler {
   }
 }
 
-
-abstract final  class ApiChecker {
-
-  static void checkApi(ApiResponse apiResponse,BuildContext context) {
-    var errorResponse = apiResponse.error.errors as Map<String,dynamic>;
-    if(errorResponse['email'] != null) {
-      bool taken =
-          errorResponse['email'][0].toString().contains('already been taken');
-      if (taken) {
+abstract final class ApiChecker {
+  static void checkApi(ApiResponse apiResponse, BuildContext context) {
+    if (apiResponse.error is String) {
+      String errorResponse = apiResponse.error['message'];
+      if (errorResponse.contains('account not exist')) {
         showCustomSnackBar(
-            AppLocalizations.of(context).translate('email_taken'), context);
-      } else {
-        print(errorResponse['email'][0]);
+            AppLocalizations.of(context).translate('acc_not_exist'), context);
+      } else if (errorResponse.contains('credintials not correct')) {
+        showCustomSnackBar(
+            AppLocalizations.of(context).translate('credentials_wrong'),
+            context);
+      }
+    } else if (apiResponse.error is ErrorResponse) {
+      Map<String, dynamic> errorResponse =
+          apiResponse.error.errors as Map<String, dynamic>;
+      if (errorResponse['email'] != null) {
+        bool taken =
+            errorResponse['email'][0].toString().contains('already been taken');
+        if (taken) {
+          showCustomSnackBar(
+              AppLocalizations.of(context).translate('email_taken'), context);
+        } else {
+          print(errorResponse['email'][0]);
+        }
       }
     }
   }
