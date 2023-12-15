@@ -25,7 +25,7 @@ Future<void> initServicesLocator() async {
     version: 1,
     onCreate: (db, version) async {
       await db.execute(
-          'CREATE TABLE users (userID INTEGER Primary Key,userName text, userEmail text ,  userPhone text, access_token text);');
+          'CREATE TABLE users (id INTEGER Primary Key,name text, email text ,  phone text, access_token text);');
     },
   );
   sl.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
