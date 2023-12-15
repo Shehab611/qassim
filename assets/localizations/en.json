@@ -10,6 +10,7 @@
   "no_connection": "No Internet connection",
   "connected": "Connected to the Internet",
   "email_taken": "Email is Already Found!",
+  "acc_not_exist": "This Account is not exist",
   "login": "Login",
   "register": "Register",
   "email": "Email",
