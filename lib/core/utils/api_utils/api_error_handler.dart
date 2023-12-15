@@ -94,6 +94,5 @@ abstract final  class ApiChecker {
         print(errorResponse['email'][0]);
       }
     }
-    print(errorResponse);
   }
 }
