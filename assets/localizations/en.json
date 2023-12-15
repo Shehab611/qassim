@@ -11,6 +11,7 @@
   "connected": "Connected to the Internet",
   "email_taken": "Email is Already Found!",
   "acc_not_exist": "This Account is not exist",
+  "credentials_wrong": "Credentials are wrong",
   "login": "Login",
   "register": "Register",
   "email": "Email",
