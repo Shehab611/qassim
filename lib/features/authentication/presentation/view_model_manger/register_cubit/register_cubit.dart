@@ -68,10 +68,6 @@ class RegisterCubit extends Cubit<RegisterState> {
     }
   }
 
-  void onRegisterSuccess(BuildContext context) {
-    navigateToLoginScreen(context);
-  }
-
   void navigateToLoginScreen(BuildContext context) {
     AppNavigator.navigateToLoginScreen(context);
   }
