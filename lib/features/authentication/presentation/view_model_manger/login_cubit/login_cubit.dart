@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qassim/core/usable_functions/validate_check.dart';
 import 'package:qassim/core/utils/api_utils/api_error_handler.dart';
 import 'package:qassim/core/utils/api_utils/api_response.dart';
+import 'package:qassim/core/utils/app_routes_utils/app_navigator.dart';
 import 'package:qassim/features/authentication/data/models/login_model.dart';
 import 'package:qassim/features/authentication/data/repositories/login/login_repo.dart';
 
@@ -68,6 +69,10 @@ class LoginCubit extends Cubit<LoginState> {
   }
   void navigateToHomeScreen(BuildContext context) {
     //AppNavigator.navigateToHomeScreen(context);
+  }
+
+  void navigateToRegisterScreen(BuildContext context) {
+    AppNavigator.navigateToRegisterScreen(context);
   }
 //#endregion
 }
