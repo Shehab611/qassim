@@ -16,6 +16,15 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   static RegisterCubit get(BuildContext context) => BlocProvider.of(context);
 
+  @override
+  Future<void> close() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _passwordConfirmationController.dispose();
+    _nameController.dispose();
+    _phoneController.dispose();
+    return super.close();
+  }
   //#region private variables
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
