@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qassim/core/components/custom_loader.dart';
 import 'package:qassim/core/components/custom_text_field.dart';
 import 'package:qassim/core/usable_functions/validate_check.dart';
 import 'package:qassim/core/utils/app_localization.dart';
@@ -87,11 +88,7 @@ class RegisterScreen extends StatelessWidget {
                                   context, cubit.passwordController.text),
                         ),
                         (state is RegisterLoadingState)
-                            ? const Center(
-                                child: CircularProgressIndicator(
-                                  color: AppColors.complementaryColor1,
-                                ),
-                              )
+                            ? const CustomLoader()
                             : ElevatedButton(
                                 onPressed: () {
                                   cubit.register(context);
