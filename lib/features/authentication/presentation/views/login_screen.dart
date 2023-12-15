@@ -69,7 +69,9 @@ class LoginScreen extends StatelessWidget {
                                       : Alignment.centerLeft,
                                   .9)!,
                               child: TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    cubit.navigateToForgetPasswordScreen(context);
+                                  },
                                   child: Text(
                                     AppLocalizations.of(context)
                                         .translate('forget_password'),

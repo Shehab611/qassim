@@ -88,5 +88,9 @@ class LoginCubit extends Cubit<LoginState> {
   void navigateToRegisterScreen(BuildContext context) {
     AppNavigator.navigateToRegisterScreen(context);
   }
+
+  void navigateToForgetPasswordScreen(BuildContext context) {
+    AppNavigator.navigateToForgetPasswordScreen(context);
+  }
 //#endregion
 }
