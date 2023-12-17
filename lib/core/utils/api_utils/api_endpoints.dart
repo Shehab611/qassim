@@ -19,6 +19,8 @@ abstract final class ApiEndPoints {
 
   static const String _resetPassword = '/restPassword';
 
+  static const String _newPassword = '/newPassword';
+
   //#endregion
   //#endregion
 
@@ -55,17 +57,26 @@ abstract final class ApiEndPoints {
 
   ///post method
   ///
-  ///require 1 [body] parameters
+  ///require 2 [body] parameters
   ///
-  ///[restPassword]
+  ///[otp] - [email]
   ///
-  ///code sent to the email as String
+  ///both is String
   static String get resetPassword => _resetPassword;
 
   ///post method
   ///
   /// takes [access_token] as header
   static String get logout => _logout;
+
+  ///post method
+  ///
+  ///require 3 [body] parameters
+  ///
+  ///[email] - [password] - [password_confirmation]
+  ///
+  ///all of them are String
+  static String get newPassword => _newPassword;
 //#endregion
 
 //#endregion
