@@ -2,13 +2,25 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:qassim/core/components/custom_loader.dart';
+import 'package:qassim/core/usable_functions/api_service_helper.dart';
+import 'package:qassim/core/utils/api_utils/api_error_handler.dart';
+import 'package:qassim/core/utils/api_utils/api_response.dart';
 import 'package:qassim/core/utils/app_localization.dart';
+import 'package:qassim/core/utils/app_routes_utils/app_navigator.dart';
 import 'package:qassim/core/utils/design_utils/app_colors.dart';
 import 'package:qassim/core/utils/design_utils/app_sizes.dart';
 import 'package:qassim/core/utils/design_utils/app_text_styles.dart';
+import 'package:qassim/features/authentication/data/repositories/confirm_otp/confirm_otp_repo.dart';
+import 'package:qassim/features/authentication/data/repositories/confirm_otp/confirm_otp_repo_impl.dart';
+import 'package:qassim/features/authentication/data/repositories/forget_password/forget_password_repo.dart';
+import 'package:qassim/features/authentication/data/repositories/forget_password/forget_password_repo_impl.dart';
+import 'package:qassim/service_locator.dart';
 
 class OtpVerificationWidget extends StatefulWidget {
-  const OtpVerificationWidget({super.key});
+  const OtpVerificationWidget({super.key, required this.emailAddress});
+
+  final String emailAddress;
 
   @override
   State<OtpVerificationWidget> createState() => _OtpVerificationWidgetState();
@@ -32,8 +44,44 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
   final TextEditingController _textEditingController = TextEditingController();
   late StreamController<ErrorAnimationType> _errorController;
   bool _reSendFlag = false;
-
+  bool _isLoadingFlag = false;
   int _timerValue = 240;
+  final ConfirmOtpRepo confirmOtpRepo = ConfirmOtpRepoImpl(sl<DioClient>());
+  final ForgetPasswordRepo forgetPasswordRepo =
+      ForgetPasswordRepoImpl(sl<DioClient>());
+
+  Future<void> _confirmOtp() async {
+    ApiResponse apiResponse = await confirmOtpRepo.confirmOtp(
+        email: widget.emailAddress, otp: _textEditingController.text);
+    if (apiResponse.response?.statusCode != null &&
+        apiResponse.response?.statusCode == 200) {
+      if (context.mounted) {
+        AppNavigator.navigateToChangePasswordScreen(context);
+      }
+    } else {
+      if (context.mounted) {
+        ApiChecker.checkApi(apiResponse, context);
+        _isLoadingFlag = false;
+        setState(() {});
+      }
+    }
+  }
+
+  Future<void> _resendOtp() async {
+    ApiResponse apiResponse = await forgetPasswordRepo.forgetPassword(
+      email: widget.emailAddress,
+    );
+    if (apiResponse.response?.statusCode != null &&
+        apiResponse.response?.statusCode == 200) {
+
+    } else {
+      if (context.mounted) {
+        ApiChecker.checkApi(apiResponse, context);
+        _isLoadingFlag = false;
+        setState(() {});
+      }
+    }
+  }
 
   void startTimer() {
     _timer = Timer.periodic(
@@ -142,7 +190,9 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
                   ),
                 ),
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    await _resendOtp();
+                  },
                   child: Text(
                     AppLocalizations.of(context).translate('resend'),
                     style: AppTextStyles.textButtonTextStyle.copyWith(
@@ -152,12 +202,21 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
               )
             ],
           ),
-          ElevatedButton(
-              onPressed: () {},
-              child: Text(
-                AppLocalizations.of(context).translate('confirm'),
-                style: AppTextStyles.elevatedButtonTextStyle,
-              ))
+          _isLoadingFlag
+              ? const CustomLoader()
+              : ElevatedButton(
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()) {
+                      setState(() {
+                        _isLoadingFlag = true;
+                      });
+                      await _confirmOtp();
+                    }
+                  },
+                  child: Text(
+                    AppLocalizations.of(context).translate('confirm'),
+                    style: AppTextStyles.elevatedButtonTextStyle,
+                  ))
         ],
       ),
     );

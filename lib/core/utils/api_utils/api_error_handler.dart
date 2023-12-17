@@ -100,6 +100,8 @@ abstract final class ApiErrorHandler {
 abstract final class ApiChecker {
   static void checkApi(ApiResponse apiResponse, BuildContext context) {
     if (apiResponse.error is String) {
+      print('error is String');
+      print(apiResponse.error );
       String errorResponse = apiResponse.error;
       if (errorResponse.contains('account not exist')) {
         showCustomSnackBar(
