@@ -22,10 +22,10 @@ abstract final class AppNavigator {
         AppPathName.kRegisterScreen,
       );
 
-  static navigateToOtpScreen(BuildContext context) =>
+  static navigateToOtpScreen(BuildContext context,String emailAddress) =>
       Navigator.popAndPushNamed(
         context,
-        AppPathName.kOtpScreen,
+        AppPathName.kOtpScreen,arguments: emailAddress
       );
 
   static navigateToForgetPasswordScreen(BuildContext context) =>

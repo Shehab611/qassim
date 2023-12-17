@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
+import 'package:qassim/core/components/custom_loader.dart';
 import 'package:qassim/core/components/custom_text_field.dart';
 import 'package:qassim/core/usable_functions/validate_check.dart';
 import 'package:qassim/core/utils/app_localization.dart';
@@ -36,20 +37,24 @@ class ForgetPasswordScreen extends StatelessWidget {
                           CustomTextField(
                             controller: cubit.emailController,
                             prefixIcon: Icons.alternate_email,
+                            inputType: TextInputType.emailAddress,
                             labelText:
                                 AppLocalizations.of(context).translate('email'),
                             validator: (value) =>
                                 ValidateCheck.validateEmail(value, context),
                           ),
-                          ElevatedButton(
-                              onPressed: () {
-                                cubit.forgetPassword(context);
-                              },
-                              child: Text(
-                                AppLocalizations.of(context)
-                                    .translate('continue'),
-                                style: AppTextStyles.elevatedButtonTextStyle,
-                              )),
+                          (state is ForgetPasswordLoadingState)
+                              ? const CustomLoader()
+                              : ElevatedButton(
+                                  onPressed: () {
+                                    cubit.forgetPassword(context);
+                                  },
+                                  child: Text(
+                                    AppLocalizations.of(context)
+                                        .translate('continue'),
+                                    style:
+                                        AppTextStyles.elevatedButtonTextStyle,
+                                  )),
                         ],
                       ),
                     ),

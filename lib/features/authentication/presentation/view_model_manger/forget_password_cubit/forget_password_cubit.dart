@@ -38,7 +38,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
 
   //#region private methods
   void _navigateToOtpScreen(BuildContext context) {
-    AppNavigator.navigateToOtpScreen(context);
+    AppNavigator.navigateToOtpScreen(context, _emailController.text);
   }
 
   //#endregion
