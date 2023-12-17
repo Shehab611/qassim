@@ -34,10 +34,10 @@ abstract final class AppNavigator {
         AppPathName.kForgetPasswordScreen,
       );
 
-  static navigateToChangePasswordScreen(BuildContext context) =>
+  static navigateToChangePasswordScreen(BuildContext context,String emailAddress) =>
       Navigator.popAndPushNamed(
         context,
-        AppPathName.kChangePasswordScreen,
+        AppPathName.kChangePasswordScreen,arguments: emailAddress
       );
 
   static navigateToHomeScreen(BuildContext context) =>

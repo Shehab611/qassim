@@ -4,9 +4,11 @@ import 'package:qassim/core/usable_functions/api_service_helper.dart';
 import 'package:qassim/features/authentication/data/repositories/forget_password/forget_password_repo_impl.dart';
 import 'package:qassim/features/authentication/data/repositories/login/login_repo_impl.dart';
 import 'package:qassim/features/authentication/data/repositories/register/register_repo_impl.dart';
+import 'package:qassim/features/authentication/data/repositories/reset_password/reset_password_repo_impl.dart';
 import 'package:qassim/features/authentication/presentation/view_model_manger/forget_password_cubit/forget_password_cubit.dart';
 import 'package:qassim/features/authentication/presentation/view_model_manger/login_cubit/login_cubit.dart';
 import 'package:qassim/features/authentication/presentation/view_model_manger/register_cubit/register_cubit.dart';
+import 'package:qassim/features/authentication/presentation/view_model_manger/reset_password/reset_password_cubit.dart';
 import 'package:qassim/features/authentication/presentation/views/change_password_screen.dart';
 import 'package:qassim/features/authentication/presentation/views/forget_password_screen.dart';
 import 'package:qassim/features/authentication/presentation/views/login_screen.dart';
@@ -20,6 +22,7 @@ import 'app_paths.dart';
 abstract final class AppRouter {
   static final Map<String, WidgetBuilder> routes = {
     AppPathName.kOpenScreen: (BuildContext context) => const OpenScreen(),
+    AppPathName.kOtpScreen: (BuildContext context) => const OtpScreen(),
     AppPathName.kLoginScreen: (BuildContext context) => BlocProvider(
           create: (context) => LoginCubit(LoginRepoImpl(sl<DioClient>())),
           child: const LoginScreen(),
@@ -28,13 +31,15 @@ abstract final class AppRouter {
           create: (context) => RegisterCubit(RegisterRepoImpl(sl<DioClient>())),
           child: const RegisterScreen(),
         ),
-    AppPathName.kOtpScreen: (BuildContext context) => const OtpScreen(),
     AppPathName.kForgetPasswordScreen: (BuildContext context) => BlocProvider(
           create: (context) =>
               ForgetPasswordCubit(ForgetPasswordRepoImpl(sl<DioClient>())),
           child: const ForgetPasswordScreen(),
         ),
-    AppPathName.kChangePasswordScreen: (BuildContext context) =>
-        const ChangePasswordScreen(),
+    AppPathName.kChangePasswordScreen: (BuildContext context) => BlocProvider(
+          create: (context) =>
+              ResetPasswordCubit(ResetPasswordRepoImpl(sl<DioClient>())),
+          child: const ChangePasswordScreen(),
+        ),
   };
 }
