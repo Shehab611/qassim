@@ -56,7 +56,7 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
     if (apiResponse.response?.statusCode != null &&
         apiResponse.response?.statusCode == 200) {
       if (context.mounted) {
-        AppNavigator.navigateToChangePasswordScreen(context);
+        AppNavigator.navigateToChangePasswordScreen(context,widget.emailAddress);
       }
     } else {
       if (context.mounted) {

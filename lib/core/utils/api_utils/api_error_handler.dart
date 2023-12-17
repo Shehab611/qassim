@@ -101,7 +101,7 @@ abstract final class ApiChecker {
   static void checkApi(ApiResponse apiResponse, BuildContext context) {
     if (apiResponse.error is String) {
       print('error is String');
-      print(apiResponse.error );
+      print(apiResponse.error);
       String errorResponse = apiResponse.error;
       if (errorResponse.contains('account not exist')) {
         showCustomSnackBar(
@@ -111,7 +111,8 @@ abstract final class ApiChecker {
             AppLocalizations.of(context).translate('credentials_wrong'),
             context);
       } else if (errorResponse.contains('email not correct') ||
-          errorResponse.contains('Email not found')) {
+          errorResponse.contains('Email not found') ||
+          errorResponse.contains('not found')) {
         showCustomSnackBar(
             AppLocalizations.of(context).translate('acc_not_exist'), context);
       } else if (errorResponse.contains('your number not correct')) {
