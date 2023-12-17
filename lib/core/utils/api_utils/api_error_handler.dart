@@ -37,7 +37,7 @@ abstract final class ApiErrorHandler {
                     errorDescription = error.response!.data['message'];
                   }
                   break;
-                case 301:
+                //case 301:
                 case 404:
                 case 500:
                 case 503:
@@ -90,12 +90,14 @@ abstract final class ApiChecker {
       if (errorResponse.contains('account not exist')) {
         showCustomSnackBar(
             AppLocalizations.of(context).translate('acc_not_exist'), context);
-      } else if (errorResponse.contains('credintials not correct')) {
+      }
+      else if (errorResponse.contains('credintials not correct')) {
         showCustomSnackBar(
             AppLocalizations.of(context).translate('credentials_wrong'),
             context);
       }
-    } else if (apiResponse.error is ErrorResponse) {
+    }
+    else if (apiResponse.error is ErrorResponse) {
       Map<String, dynamic> errorResponse =
           apiResponse.error.errors as Map<String, dynamic>;
       if (errorResponse['email'] != null) {
@@ -106,6 +108,12 @@ abstract final class ApiChecker {
               AppLocalizations.of(context).translate('email_taken'), context);
         } else {
           print(errorResponse['email'][0]);
+        }
+      }
+      else if(errorResponse['message'] != null){
+        if(errorResponse['message'].toString().contains('email not correct')){
+          showCustomSnackBar(
+              AppLocalizations.of(context).translate('acc_not_exist'), context);
         }
       }
     }
