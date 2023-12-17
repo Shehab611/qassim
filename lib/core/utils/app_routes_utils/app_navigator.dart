@@ -29,7 +29,7 @@ abstract final class AppNavigator {
       );
 
   static navigateToForgetPasswordScreen(BuildContext context) =>
-      Navigator.popAndPushNamed(
+      Navigator.pushNamed(
         context,
         AppPathName.kForgetPasswordScreen,
       );
