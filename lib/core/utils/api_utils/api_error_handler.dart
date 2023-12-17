@@ -108,10 +108,13 @@ abstract final class ApiChecker {
         showCustomSnackBar(
             AppLocalizations.of(context).translate('credentials_wrong'),
             context);
-      }
-      if (errorResponse.contains('email not correct')) {
+      } else if (errorResponse.contains('email not correct') ||
+          errorResponse.contains('Email not found')) {
         showCustomSnackBar(
             AppLocalizations.of(context).translate('acc_not_exist'), context);
+      } else if (errorResponse.contains('your number not correct')) {
+        showCustomSnackBar(
+            AppLocalizations.of(context).translate('otp_invalid'), context);
       }
     } else if (apiResponse.error is ErrorResponse) {
       Map<String, dynamic> errorResponse =
