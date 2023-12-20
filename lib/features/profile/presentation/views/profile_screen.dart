@@ -5,6 +5,7 @@ import 'package:qassim/core/utils/design_utils/app_colors.dart';
 import 'package:qassim/core/utils/design_utils/app_sizes.dart';
 import 'package:qassim/core/utils/design_utils/app_text_styles.dart';
 import 'package:qassim/features/profile/presentation/components/edit_row.dart';
+import 'package:qassim/features/profile/presentation/widgets/change_password_sheet.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -37,7 +38,8 @@ class ProfileScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               TextFieldWithIconButton(
-                controller: TextEditingController()..text='shehabehab1029@gmail.com',
+                controller: TextEditingController()
+                  ..text = 'shehabehab1029@gmail.com',
                 enabled: false,
                 icon: Icons.alternate_email,
                 labelText:
@@ -58,7 +60,25 @@ class ProfileScreen extends StatelessWidget {
                     .translate(AppStrings.phoneNumber),
               ),
               ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      builder: (context) {
+                        return StatefulBuilder(
+                          builder: (context, setState) {
+                            return GestureDetector(
+                              onTap: () {
+                                FocusScope.of(context)
+                                    .requestFocus(FocusNode());
+                              },
+                              child: const ChangePasswordSheet(),
+                            );
+                          },
+                        );
+                      },
+                    );
+                  },
                   child: Text(
                     AppLocalizations.of(context)
                         .translate(AppStrings.changePassword),

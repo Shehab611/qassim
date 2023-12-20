@@ -31,5 +31,8 @@
   "didn't_rcv_code": "Didn't Receive the Code?",
   "resend": "Resend OTP",
   "confirm": "Confirm",
-  "profile": "Profile"
+  "profile": "Profile",
+  "recent_password":"Recent Password",
+  "new_password": "New Password",
+  "confirm_new_password": "Confirm New Password"
 }

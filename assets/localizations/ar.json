@@ -31,5 +31,8 @@
   "didn't_rcv_code": "لم يصلك رمز التأكيد؟",
   "resend": "إعادة إرسال الرمز",
   "confirm": "تأكيد",
-  "profile": "الملف الشخصي"
+  "profile": "الملف الشخصي",
+  "recent_password":" كلمة المرور الحالية",
+  "new_password": "كلمة المرور الجديدة",
+  "confirm_new_password": "تأكيد كلمة المرور الجديدة"
 }
