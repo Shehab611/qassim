@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qassim/core/components/custom_text_field.dart';
+import 'package:qassim/core/utils/design_utils/app_colors.dart';
 
 class TextFieldWithIconButton extends StatelessWidget {
   const TextFieldWithIconButton(
@@ -33,10 +34,10 @@ class TextFieldWithIconButton extends StatelessWidget {
             validator: validator,
           ),
         ),
-        const SizedBox(width: 10),
+
         // Add some space between text field and icon button
         IconButton(
-          icon: const Icon(Icons.edit), // Replace this with your desired icon
+          icon: const Icon(Icons.edit,color: AppColors.complementaryColor2,), // Replace this with your desired icon
           onPressed: onPressed,
         ),
       ],
