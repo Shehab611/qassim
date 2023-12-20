@@ -5,6 +5,7 @@ import 'package:qassim/core/components/custom_loader.dart';
 import 'package:qassim/core/components/custom_text_field.dart';
 import 'package:qassim/core/usable_functions/validate_check.dart';
 import 'package:qassim/core/utils/app_constants/app_localization.dart';
+import 'package:qassim/core/utils/app_constants/app_strings.dart';
 import 'package:qassim/core/utils/design_utils/app_images.dart';
 import 'package:qassim/core/utils/design_utils/app_sizes.dart';
 import 'package:qassim/core/utils/design_utils/app_text_styles.dart';
@@ -39,7 +40,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                             prefixIcon: Icons.alternate_email,
                             inputType: TextInputType.emailAddress,
                             labelText:
-                                AppLocalizations.of(context).translate('email'),
+                                AppLocalizations.of(context).translate(AppStrings.email),
                             validator: (value) =>
                                 ValidateCheck.validateEmail(value, context),
                           ),
@@ -51,7 +52,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                                   },
                                   child: Text(
                                     AppLocalizations.of(context)
-                                        .translate('continue'),
+                                        .translate(AppStrings.continuee),
                                     style:
                                         AppTextStyles.elevatedButtonTextStyle,
                                   )),
@@ -64,7 +65,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                         cubit.navigateToLoginScreen(context);
                       },
                       child: Text(
-                        AppLocalizations.of(context).translate('cancel'),
+                        AppLocalizations.of(context).translate(AppStrings.cancel),
                         style: AppTextStyles.textButtonTextStyle,
                       ))
                 ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qassim/core/utils/app_constants/app_localization.dart';
+import 'package:qassim/core/utils/app_constants/app_strings.dart';
 import 'package:qassim/core/utils/app_routes_utils/app_navigator.dart';
 import 'package:qassim/core/utils/design_utils/app_images.dart';
 import 'package:qassim/core/utils/design_utils/app_text_styles.dart';
@@ -22,7 +23,7 @@ class OpenScreen extends StatelessWidget {
                     AppNavigator.navigateToLoginScreen(context);
                   },
                   child: Text(
-                    AppLocalizations.of(context).translate('login'),
+                    AppLocalizations.of(context).translate(AppStrings.login),
                     style: AppTextStyles.elevatedButtonTextStyle,
                   )),
               ElevatedButton(
@@ -30,7 +31,7 @@ class OpenScreen extends StatelessWidget {
                     AppNavigator.navigateToRegisterScreen(context);
                   },
                   child: Text(
-                    AppLocalizations.of(context).translate('register'),
+                    AppLocalizations.of(context).translate(AppStrings.register),
                     style: AppTextStyles.elevatedButtonTextStyle,
                   )),
             ],

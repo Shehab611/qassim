@@ -5,6 +5,7 @@ import 'package:qassim/core/components/custom_loader.dart';
 import 'package:qassim/core/components/custom_text_field.dart';
 import 'package:qassim/core/usable_functions/validate_check.dart';
 import 'package:qassim/core/utils/app_constants/app_localization.dart';
+import 'package:qassim/core/utils/app_constants/app_strings.dart';
 import 'package:qassim/core/utils/design_utils/app_images.dart';
 import 'package:qassim/core/utils/design_utils/app_sizes.dart';
 import 'package:qassim/core/utils/design_utils/app_text_styles.dart';
@@ -39,7 +40,7 @@ class ChangePasswordScreen extends StatelessWidget {
                             prefixIcon: Icons.lock,
                             controller: cubit.passwordController,
                             labelText: AppLocalizations.of(context)
-                                .translate('password'),
+                                .translate(AppStrings.password),
                             isPassword: true,
                             validator: (value) =>
                                 ValidateCheck.validatePassword(value, context),
@@ -47,7 +48,7 @@ class ChangePasswordScreen extends StatelessWidget {
                           CustomTextField(
                             prefixIcon: Icons.lock,
                             labelText: AppLocalizations.of(context)
-                                .translate('confirm_password'),
+                                .translate(AppStrings.confirmPassword),
                             isPassword: true,
                             controller: cubit.passwordConfirmationController,
                             validator: (value) =>
@@ -62,7 +63,7 @@ class ChangePasswordScreen extends StatelessWidget {
                                   },
                                   child: Text(
                                     AppLocalizations.of(context)
-                                        .translate('change_password'),
+                                        .translate(AppStrings.changePassword),
                                     style:
                                         AppTextStyles.elevatedButtonTextStyle,
                                   )),
@@ -72,7 +73,7 @@ class ChangePasswordScreen extends StatelessWidget {
                               },
                               child: Text(
                                 AppLocalizations.of(context)
-                                    .translate('cancel'),
+                                    .translate(AppStrings.cancel),
                                 style: AppTextStyles.textButtonTextStyle,
                               ))
                         ],

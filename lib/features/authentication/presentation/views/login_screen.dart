@@ -5,6 +5,7 @@ import 'package:qassim/core/components/custom_loader.dart';
 import 'package:qassim/core/components/custom_text_field.dart';
 import 'package:qassim/core/usable_functions/validate_check.dart';
 import 'package:qassim/core/utils/app_constants/app_localization.dart';
+import 'package:qassim/core/utils/app_constants/app_strings.dart';
 import 'package:qassim/core/utils/design_utils/app_colors.dart';
 import 'package:qassim/core/utils/design_utils/app_images.dart';
 import 'package:qassim/core/utils/design_utils/app_sizes.dart';
@@ -47,7 +48,7 @@ class LoginScreen extends StatelessWidget {
                               controller: cubit.emailController,
                               inputType: TextInputType.emailAddress,
                               labelText: AppLocalizations.of(context)
-                                  .translate('email'),
+                                  .translate(AppStrings.email),
                               validator: (value) =>
                                   ValidateCheck.validateEmail(value, context),
                             ),
@@ -55,7 +56,7 @@ class LoginScreen extends StatelessWidget {
                               controller: cubit.passwordController,
                               prefixIcon: Icons.lock,
                               labelText: AppLocalizations.of(context)
-                                  .translate('password'),
+                                  .translate(AppStrings.password),
                               isPassword: true,
                               validator: (value) =>
                                   ValidateCheck.validatePassword(
@@ -74,7 +75,7 @@ class LoginScreen extends StatelessWidget {
                                   },
                                   child: Text(
                                     AppLocalizations.of(context)
-                                        .translate('forget_password'),
+                                        .translate(AppStrings.forgetPassword),
                                     style: AppTextStyles.textButtonTextStyle,
                                   )),
                             ),
@@ -86,7 +87,7 @@ class LoginScreen extends StatelessWidget {
                                     },
                                     child: Text(
                                       AppLocalizations.of(context)
-                                          .translate('login'),
+                                          .translate(AppStrings.login),
                                       style:
                                           AppTextStyles.elevatedButtonTextStyle,
                                     )),
@@ -97,12 +98,12 @@ class LoginScreen extends StatelessWidget {
                     RichText(
                       text: TextSpan(
                           text: AppLocalizations.of(context)
-                              .translate('don\'t_have_account'),
+                              .translate(AppStrings.noAccount),
                           style: AppTextStyles.textButtonTextStyle,
                           children: [
                             TextSpan(
                                 text: AppLocalizations.of(context)
-                                    .translate('register'),
+                                    .translate(AppStrings.register),
                                 style: AppTextStyles.textButtonTextStyle
                                     .copyWith(
                                         color: AppColors.complementaryColor2),

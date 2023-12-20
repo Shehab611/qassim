@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:qassim/core/utils/app_constants/app_localization.dart';
+import 'package:qassim/core/utils/app_constants/app_strings.dart';
 import 'package:qassim/core/utils/design_utils/app_colors.dart';
 import 'package:qassim/core/utils/design_utils/app_images.dart';
 import 'package:qassim/core/utils/design_utils/app_text_styles.dart';
@@ -23,7 +24,7 @@ class AnimatedOtpTextWidget extends StatelessWidget {
           Lottie.asset(AppImages.otpAnimation,
               height: MediaQuery.of(context).size.height * .3),
           Text(
-            AppLocalizations.of(context).translate('email_verification'),
+            AppLocalizations.of(context).translate(AppStrings.emailVerification),
             style: AppTextStyles.textButtonTextStyle.copyWith(fontSize: 20),
             textAlign: TextAlign.center,
           ),
@@ -31,7 +32,7 @@ class AnimatedOtpTextWidget extends StatelessWidget {
               maxLines: 1,
               text: TextSpan(
                   text:
-                      AppLocalizations.of(context).translate('code_send_to'),
+                      AppLocalizations.of(context).translate(AppStrings.codeSentTo),
                   style: AppTextStyles.textButtonTextStyle,
                   children: [
                     TextSpan(
