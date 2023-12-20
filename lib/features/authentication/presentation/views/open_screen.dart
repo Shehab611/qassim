@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qassim/core/utils/app_localization.dart';
+import 'package:qassim/core/utils/app_constants/app_localization.dart';
 import 'package:qassim/core/utils/app_routes_utils/app_navigator.dart';
 import 'package:qassim/core/utils/design_utils/app_images.dart';
 import 'package:qassim/core/utils/design_utils/app_text_styles.dart';

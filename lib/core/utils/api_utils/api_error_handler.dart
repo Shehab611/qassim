@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:qassim/core/components/custom_snack_bar.dart';
 import 'package:qassim/core/utils/api_utils/api_error_response.dart';
 import 'package:qassim/core/utils/api_utils/api_response.dart';
-import 'package:qassim/core/utils/app_localization.dart';
+import 'package:qassim/core/utils/app_constants/app_localization.dart';
 
 abstract final class ApiErrorHandler {
   static dynamic getMessage(error) {

@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:qassim/core/utils/api_utils/logging_interceptor.dart';
-import 'package:qassim/core/utils/app_constants.dart';
+import 'package:qassim/core/utils/app_constants/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DioClient {
