@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 abstract final class AppConstants {
-
   //#region private variables
   static const List<String> _locale = [
     'en',
@@ -13,6 +12,7 @@ abstract final class AppConstants {
     Locale('ar', ''),
   ];
   static const Duration _connectionTimeOut = Duration(seconds: 30000);
+
   //#endregion
 
   //#region getters
@@ -23,16 +23,19 @@ abstract final class AppConstants {
   static List<Locale> get supportedLocales => _supportedLocales;
 
   static Duration get connectionTimeOut => _connectionTimeOut;
-  //#endregion
 
+  //#endregion
 
   //#region private shared preferences keys
   static const String _userLoginTokenSharedPreferenceKey = 'userLoginToken';
+  static const String _currentUserId = 'currentUserID';
 
   //#endregion
 
-
   //#region shared preferences keys getters
-  static String get userLoginTokenSharedPreferenceKey=>_userLoginTokenSharedPreferenceKey;
+  static String get userLoginTokenSharedPreferenceKey =>
+      _userLoginTokenSharedPreferenceKey;
+
+  static String get currentUserId => _currentUserId;
 //#endregion
 }
