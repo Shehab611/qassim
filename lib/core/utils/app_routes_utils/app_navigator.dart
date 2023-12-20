@@ -45,4 +45,10 @@ abstract final class AppNavigator {
         context,
         AppPathName.kHomeScreen,
       );
+
+  static navigateToProfileScreen(BuildContext context) =>
+      Navigator.popAndPushNamed(
+        context,
+        AppPathName.kProfileScreen,
+      );
 }
