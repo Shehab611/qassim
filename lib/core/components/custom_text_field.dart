@@ -43,7 +43,7 @@ class CustomTextField extends StatefulWidget {
     this.titleText,
     this.nextFocus,
     this.isEnabled = true,
-    this.borderColor=AppColors.complementaryColor4,
+    this.borderColor = AppColors.complementaryColor4,
     this.inputType = TextInputType.text,
     this.inputAction = TextInputAction.next,
     this.maxLines = 1,
@@ -108,7 +108,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
           readOnly: widget.readOnly,
           onTap: widget.onTap,
           //autovalidateMode: AutovalidateMode.onUserInteraction,
-          style: const TextStyle(fontSize: AppSizes.fontSizeLarge,color:AppColors.complementaryColor3),
+          style: const TextStyle(
+              fontSize: AppSizes.fontSizeLarge,
+              color: AppColors.complementaryColor3),
           textInputAction: widget.inputAction,
           keyboardType: widget.inputType,
           cursorColor: AppColors.complementaryColor3,
@@ -166,18 +168,20 @@ class _CustomTextFieldState extends State<CustomTextField> {
               labelStyle: widget.showLabelText
                   ? const TextStyle().copyWith(
                       fontSize: AppSizes.fontSizeDefault,
-                      color: Theme.of(context).hintColor)
+                      color: Theme.of(context).hintColor,
+                      fontWeight: FontWeight.w600)
                   : null,
               label: Text.rich(TextSpan(children: [
                 TextSpan(
                     text: widget.labelText ?? '',
                     style: const TextStyle().copyWith(
+                        fontWeight: FontWeight.w600,
                         color: Theme.of(context).hintColor.withOpacity(.75))),
                 if (widget.required && widget.labelText != null)
                   TextSpan(
                       text: ' *',
-                      style: const TextStyle().copyWith(
-                          color: Theme.of(context).colorScheme.error))
+                      style: const TextStyle()
+                          .copyWith(color: Theme.of(context).colorScheme.error))
               ])),
               hintText: widget.hintText,
               hintStyle: widget.showLabelText
@@ -198,8 +202,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                                   Radius.circular(widget.borderRadius))),
                       child: Center(
                           child: Icon(widget.prefixIcon!,
-                              size: 20,
-                              color:AppColors.complementaryColor1)))
+                              size: 20, color: AppColors.complementaryColor1)))
                   : null,
               suffixIcon: widget.isPassword
                   ? IconButton(
