@@ -15,6 +15,7 @@ import 'package:qassim/features/authentication/presentation/views/login_screen.d
 import 'package:qassim/features/authentication/presentation/views/open_screen.dart';
 import 'package:qassim/features/authentication/presentation/views/otp_screen.dart';
 import 'package:qassim/features/authentication/presentation/views/register_screen.dart';
+import 'package:qassim/features/profile/presentation/views/profile_screen.dart';
 import 'package:qassim/service_locator.dart';
 
 import 'app_paths.dart';
@@ -41,5 +42,6 @@ abstract final class AppRouter {
               ResetPasswordCubit(ResetPasswordRepoImpl(sl<DioClient>())),
           child: const ChangePasswordScreen(),
         ),
+    AppPathName.kProfileScreen : (BuildContext context) => const ProfileScreen(),
   };
 }

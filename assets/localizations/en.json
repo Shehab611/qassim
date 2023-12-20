@@ -30,5 +30,6 @@
   "otp_invalid": "You have Entered Invalid OTP",
   "didn't_rcv_code": "Didn't Receive the Code?",
   "resend": "Resend OTP",
-  "confirm": "Confirm"
+  "confirm": "Confirm",
+  "profile": "Profile"
 }

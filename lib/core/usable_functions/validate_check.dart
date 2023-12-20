@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:qassim/core/utils/app_localization.dart';
+import 'package:qassim/core/utils/app_constants/app_localization.dart';
+import 'package:qassim/core/utils/app_constants/app_strings.dart';
 
 abstract final class ValidateCheck {
   static bool validate(GlobalKey<FormState> formKey){
@@ -20,10 +21,10 @@ abstract final class ValidateCheck {
     final kEmailValid = RegExp(pattern);
     bool isValid = kEmailValid.hasMatch(value.toString());
     if (value!.isEmpty) {
-      return '\u26A0 ${AppLocalizations.of(context).translate('email_is_required')}';
+      return '\u26A0 ${AppLocalizations.of(context).translate(AppStrings.requiredEmail)}';
     } else if (isValid == false) {
       return '\u26A0 ${AppLocalizations.of(context).translate(
-        "invalid_email_address",
+       AppStrings.invalidEmail,
       )}';
     }
     return null;
@@ -41,11 +42,11 @@ abstract final class ValidateCheck {
       String? value, BuildContext context,) {
     if (value == null || value.isEmpty) {
       return AppLocalizations.of(context).translate(
-        'password_is_required',
+        AppStrings.requiredPassword,
       );
-    } else if (value.length < 6) {
-        AppLocalizations.of(context).translate(
-          'password_chars_is_not_valid',
+    } else if (value.length < 8) {
+        return AppLocalizations.of(context).translate(
+          AppStrings.invalidPassword,
       );
     }
     return null;
@@ -55,11 +56,11 @@ abstract final class ValidateCheck {
       String? value, BuildContext context, String? password) {
     if (value == null || value.isEmpty) {
       return AppLocalizations.of(context).translate(
-        'confirm_password_required',
+       AppStrings.requiredConfirmPassword,
       );
     } else if (value != password) {
       return AppLocalizations.of(context).translate(
-        'confirm_password_not_matched',
+        AppStrings.invalidConfirmPassword,
       );
     }
     return null;

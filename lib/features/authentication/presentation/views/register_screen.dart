@@ -4,7 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qassim/core/components/custom_loader.dart';
 import 'package:qassim/core/components/custom_text_field.dart';
 import 'package:qassim/core/usable_functions/validate_check.dart';
-import 'package:qassim/core/utils/app_localization.dart';
+import 'package:qassim/core/utils/app_constants/app_localization.dart';
+import 'package:qassim/core/utils/app_constants/app_strings.dart';
 import 'package:qassim/core/utils/design_utils/app_colors.dart';
 import 'package:qassim/core/utils/design_utils/app_images.dart';
 import 'package:qassim/core/utils/design_utils/app_sizes.dart';
@@ -46,7 +47,7 @@ class RegisterScreen extends StatelessWidget {
                           controller: cubit.nameController,
                           prefixIcon: Icons.person,
                           labelText: AppLocalizations.of(context)
-                              .translate('full_name'),
+                              .translate(AppStrings.fullName),
                           validator: (value) => ValidateCheck.validateEmptyText(
                               value, context, 'full_name_required'),
                         ),
@@ -55,7 +56,7 @@ class RegisterScreen extends StatelessWidget {
                           prefixIcon: Icons.alternate_email,
                           inputType: TextInputType.emailAddress,
                           labelText:
-                              AppLocalizations.of(context).translate('email'),
+                              AppLocalizations.of(context).translate(AppStrings.email),
                           validator: (value) =>
                               ValidateCheck.validateEmail(value, context),
                         ),
@@ -64,15 +65,15 @@ class RegisterScreen extends StatelessWidget {
                           prefixIcon: Icons.call,
                           inputType: TextInputType.number,
                           labelText: AppLocalizations.of(context)
-                              .translate('phone_number'),
+                              .translate(AppStrings.phoneNumber),
                           validator: (value) => ValidateCheck.validateEmptyText(
-                              value, context, 'phone_number_required'),
+                              value, context, AppStrings.requiredPhoneNumber),
                         ),
                         CustomTextField(
                           controller: cubit.passwordController,
                           prefixIcon: Icons.lock,
                           labelText: AppLocalizations.of(context)
-                              .translate('password'),
+                              .translate(AppStrings.password),
                           isPassword: true,
                           validator: (value) =>
                               ValidateCheck.validatePassword(value, context),
@@ -81,7 +82,7 @@ class RegisterScreen extends StatelessWidget {
                           controller: cubit.passwordConfirmationController,
                           prefixIcon: Icons.lock,
                           labelText: AppLocalizations.of(context)
-                              .translate('confirm_password'),
+                              .translate(AppStrings.confirmPassword),
                           isPassword: true,
                           validator: (value) =>
                               ValidateCheck.validateConfirmPassword(value,
@@ -95,7 +96,7 @@ class RegisterScreen extends StatelessWidget {
                                 },
                                 child: Text(
                                   AppLocalizations.of(context)
-                                      .translate('register'),
+                                      .translate(AppStrings.register),
                                   style: AppTextStyles.elevatedButtonTextStyle,
                                 )),
                       ],
@@ -106,11 +107,11 @@ class RegisterScreen extends StatelessWidget {
               RichText(
                 text: TextSpan(
                     text:
-                        AppLocalizations.of(context).translate('have_account'),
+                        AppLocalizations.of(context).translate(AppStrings.haveAccount),
                     style: AppTextStyles.textButtonTextStyle,
                     children: [
                       TextSpan(
-                          text: AppLocalizations.of(context).translate('login'),
+                          text: AppLocalizations.of(context).translate(AppStrings.login),
                           style: AppTextStyles.textButtonTextStyle
                               .copyWith(color: AppColors.complementaryColor2),
                           recognizer: TapGestureRecognizer()

@@ -6,7 +6,8 @@ import 'package:qassim/core/components/custom_loader.dart';
 import 'package:qassim/core/usable_functions/api_service_helper.dart';
 import 'package:qassim/core/utils/api_utils/api_error_handler.dart';
 import 'package:qassim/core/utils/api_utils/api_response.dart';
-import 'package:qassim/core/utils/app_localization.dart';
+import 'package:qassim/core/utils/app_constants/app_localization.dart';
+import 'package:qassim/core/utils/app_constants/app_strings.dart';
 import 'package:qassim/core/utils/app_routes_utils/app_navigator.dart';
 import 'package:qassim/core/utils/design_utils/app_colors.dart';
 import 'package:qassim/core/utils/design_utils/app_sizes.dart';
@@ -146,7 +147,7 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
                   if (v!.length < 6) {
                     ///do this in validation on code
                     return AppLocalizations.of(context)
-                        .translate('otp_invalid');
+                        .translate(AppStrings.invalidOtp);
                   } else {
                     return null;
                   }
@@ -175,7 +176,7 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                AppLocalizations.of(context).translate('didn\'t_rcv_code'),
+                AppLocalizations.of(context).translate(AppStrings.noCodeReceived),
                 style: AppTextStyles.textButtonTextStyle,
               ),
               Visibility(
@@ -194,7 +195,7 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
                     await _resendOtp();
                   },
                   child: Text(
-                    AppLocalizations.of(context).translate('resend'),
+                    AppLocalizations.of(context).translate(AppStrings.resend),
                     style: AppTextStyles.textButtonTextStyle.copyWith(
                         color: AppColors.complementaryColor2, fontSize: 16),
                   ),
@@ -214,7 +215,7 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
                     }
                   },
                   child: Text(
-                    AppLocalizations.of(context).translate('confirm'),
+                    AppLocalizations.of(context).translate(AppStrings.confirm),
                     style: AppTextStyles.elevatedButtonTextStyle,
                   ))
         ],

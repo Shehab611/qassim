@@ -2,7 +2,8 @@ import 'dart:async';
 import 'dart:io';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
-import 'package:qassim/core/utils/app_localization.dart';
+import 'package:qassim/core/utils/app_constants/app_localization.dart';
+import 'package:qassim/core/utils/app_constants/app_strings.dart';
 
 
 class NetworkInfo {
@@ -34,8 +35,8 @@ class NetworkInfo {
             duration: Duration(seconds: isNotConnected ? 6000 : 3),
             content: Text(
               isNotConnected
-                  ? AppLocalizations.of(context).translate('no_connection')
-                  : AppLocalizations.of(context).translate('connected'),
+                  ? AppLocalizations.of(context).translate(AppStrings.noConnection)
+                  : AppLocalizations.of(context).translate(AppStrings.connected),
               textAlign: TextAlign.center,
             ),
           ));
