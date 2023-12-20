@@ -43,8 +43,8 @@ abstract final class ValidateCheck {
       return AppLocalizations.of(context).translate(
         'password_is_required',
       );
-    } else if (value.length < 6) {
-        AppLocalizations.of(context).translate(
+    } else if (value.length < 8) {
+        return AppLocalizations.of(context).translate(
           'password_chars_is_not_valid',
       );
     }
