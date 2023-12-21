@@ -10,9 +10,9 @@ import 'package:sqflite/sqflite.dart';
 import 'login_repo.dart';
 
 final class LoginRepoImpl implements LoginRepo {
-  final DioClient dioClient;
+  final DioClient _dioClient;
 
-  LoginRepoImpl(this.dioClient);
+  LoginRepoImpl(this._dioClient);
 
   @override
   Future<({String? errorString, bool successful})> addUserDataToDB(
@@ -32,8 +32,9 @@ final class LoginRepoImpl implements LoginRepo {
   @override
   Future<ApiResponse> login(
       {required String email, required String password}) async {
+    StackTrace stackTrace = StackTrace.current;
     try {
-      Response response = await dioClient.post(ApiEndPoints.login,
+      Response response = await _dioClient.post(ApiEndPoints.login,stackTrace,
           data: {'email': email, 'password': password});
       return ApiResponse.withSuccess(response);
     } catch (e) {

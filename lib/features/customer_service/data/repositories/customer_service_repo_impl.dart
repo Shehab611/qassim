@@ -13,15 +13,16 @@ import 'package:sqflite/sqflite.dart';
 import 'customer_service_repo.dart';
 
 final class CustomerServiceRepoImpl implements CustomerServiceRepo {
-  final DioClient dioClient;
+  final DioClient _dioClient;
 
-  CustomerServiceRepoImpl(this.dioClient);
+  CustomerServiceRepoImpl(this._dioClient);
 
   @override
   Future<ApiResponse> sendFeedBack(
       {required CustomerServiceRequestModel requestModel}) async {
+    StackTrace stackTrace = StackTrace.current;
     try {
-      Response response = await dioClient.post(ApiEndPoints.customerService,
+      Response response = await _dioClient.post(ApiEndPoints.customerService,stackTrace,
           data: requestModel.toJson());
       return ApiResponse.withSuccess(response);
     } catch (e) {

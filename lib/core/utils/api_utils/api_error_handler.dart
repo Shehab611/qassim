@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qassim/core/components/custom_snack_bar.dart';
 import 'package:qassim/core/utils/api_utils/api_error_response.dart';
@@ -104,7 +105,8 @@ abstract final class ApiChecker {
       String errorResponse = apiResponse.error;
       if (errorResponse.contains('account not exist')) {
         showCustomSnackBar(
-            AppLocalizations.of(context).translate(AppStrings.accountNotExit), context);
+            AppLocalizations.of(context).translate(AppStrings.accountNotExit),
+            context);
       } else if (errorResponse.contains('credintials not correct')) {
         showCustomSnackBar(
             AppLocalizations.of(context).translate(AppStrings.wrongCredentials),
@@ -113,10 +115,17 @@ abstract final class ApiChecker {
           errorResponse.contains('Email not found') ||
           errorResponse.contains('not found')) {
         showCustomSnackBar(
-            AppLocalizations.of(context).translate(AppStrings.accountNotExit), context);
+            AppLocalizations.of(context).translate(AppStrings.accountNotExit),
+            context);
       } else if (errorResponse.contains('your number not correct')) {
         showCustomSnackBar(
-            AppLocalizations.of(context).translate(AppStrings.invalidOtp), context);
+            AppLocalizations.of(context).translate(AppStrings.invalidOtp),
+            context);
+      } else if (errorResponse.contains('password not correct')) {
+        showCustomSnackBar(
+            AppLocalizations.of(context)
+                .translate(AppStrings.recentPasswordNotCorrect),
+            context);
       }
     } else if (apiResponse.error is ErrorResponse) {
       Map<String, dynamic> errorResponse =
@@ -126,9 +135,12 @@ abstract final class ApiChecker {
             errorResponse['email'][0].toString().contains('already been taken');
         if (taken) {
           showCustomSnackBar(
-              AppLocalizations.of(context).translate(AppStrings.emailIsTaken), context);
+              AppLocalizations.of(context).translate(AppStrings.emailIsTaken),
+              context);
         } else {
-          print(errorResponse['email'][0]);
+          if (kDebugMode) {
+            print(errorResponse['email'][0]);
+          }
         }
       }
     }

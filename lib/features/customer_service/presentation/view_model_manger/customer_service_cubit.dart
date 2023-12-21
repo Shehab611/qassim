@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:qassim/core/usable_functions/validate_check.dart';
 import 'package:qassim/core/utils/api_utils/api_error_handler.dart';
 import 'package:qassim/core/utils/api_utils/api_response.dart';
 import 'package:qassim/features/customer_service/data/models/customer_service_model.dart';
@@ -26,7 +25,6 @@ class CustomerServiceCubit extends Cubit<CustomerServiceState> {
   }
 
   //#region private variables
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _subjectController = TextEditingController();
   final TextEditingController _messageController = TextEditingController();
@@ -41,36 +39,33 @@ class CustomerServiceCubit extends Cubit<CustomerServiceState> {
 
   TextEditingController get messageController => _messageController;
 
-  GlobalKey<FormState> get formKey => _formKey;
-
 //#endregion
   //#region private methods
-  void _clearControllers(){
+  void _clearControllers() {
     _messageController.clear();
     _subjectController.clear();
     _nameController.clear();
   }
+
   //#endregion
   //#region Public Methods
   Future<void> sendFeedBack(BuildContext context) async {
-    if (ValidateCheck.validate(_formKey)) {
-      emit(const CustomerServiceLoadingState());
-      CustomerServiceRequestModel requestModel = CustomerServiceRequestModel(
-          email: _userEmail,
-          name: _nameController.text,
-          subject: _subjectController.text,
-          message: _messageController.text);
-      ApiResponse apiResponse =
-          await _customerServiceRepo.sendFeedBack(requestModel: requestModel);
-      if (apiResponse.response?.statusCode != null &&
-          apiResponse.response?.statusCode == 201) {
-        _clearControllers();
-        emit(const CustomerServiceSuccessState());
-      } else {
-        if (context.mounted) {
-          ApiChecker.checkApi(apiResponse, context);
-          emit(const CustomerServiceFailedState());
-        }
+    emit(const CustomerServiceLoadingState());
+    CustomerServiceRequestModel requestModel = CustomerServiceRequestModel(
+        email: _userEmail,
+        name: _nameController.text,
+        subject: _subjectController.text,
+        message: _messageController.text);
+    ApiResponse apiResponse =
+        await _customerServiceRepo.sendFeedBack(requestModel: requestModel);
+    if (apiResponse.response?.statusCode != null &&
+        apiResponse.response?.statusCode == 201) {
+      _clearControllers();
+      emit(const CustomerServiceSuccessState());
+    } else {
+      if (context.mounted) {
+        ApiChecker.checkApi(apiResponse, context);
+        emit(const CustomerServiceFailedState());
       }
     }
   }
@@ -86,7 +81,10 @@ class CustomerServiceCubit extends Cubit<CustomerServiceState> {
     }
   }
 
-  bool buttonEnabled() => _nameController.text.isNotEmpty && _subjectController.text.isNotEmpty && _messageController.text.isNotEmpty;
+  bool buttonEnabled() =>
+      _nameController.text.isNotEmpty &&
+      _subjectController.text.isNotEmpty &&
+      _messageController.text.isNotEmpty;
 
 //#endregion
 }

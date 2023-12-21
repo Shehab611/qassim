@@ -5,12 +5,14 @@ class LoggingInterceptor extends InterceptorsWrapper {
   int maxCharactersPerLine = 200;
 
   @override
-  Future onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+  Future onRequest(
+      RequestOptions options, RequestInterceptorHandler handler) async {
     return super.onRequest(options, handler);
   }
 
   @override
-  Future onResponse(Response response, ResponseInterceptorHandler handler) async {
+  Future onResponse(
+      Response response, ResponseInterceptorHandler handler) async {
     if (kDebugMode) {
       print(
           "<-- ${response.statusCode} ${response.requestOptions.method} ${response.requestOptions.path}");
@@ -26,8 +28,8 @@ class LoggingInterceptor extends InterceptorsWrapper {
           endingIndex = responseAsString.length;
         }
         if (kDebugMode) {
-          print(
-              responseAsString.substring(i * maxCharactersPerLine, endingIndex));
+          print(responseAsString.substring(
+              i * maxCharactersPerLine, endingIndex));
         }
       }
     } else {
@@ -46,7 +48,8 @@ class LoggingInterceptor extends InterceptorsWrapper {
   @override
   Future onError(DioException err, ErrorInterceptorHandler handler) async {
     if (kDebugMode) {
-      print("ERROR[${err.response?.statusCode}] => PATH: ${err.requestOptions.path}");
+      print(
+          "ERROR[${err.response?.statusCode}] => PATH: ${err.requestOptions.path}");
     }
     return super.onError(err, handler);
   }

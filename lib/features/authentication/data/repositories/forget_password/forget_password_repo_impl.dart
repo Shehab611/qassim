@@ -7,15 +7,16 @@ import 'package:qassim/core/utils/api_utils/api_response.dart';
 import 'forget_password_repo.dart';
 
 final class ForgetPasswordRepoImpl implements ForgetPasswordRepo {
-  final DioClient dioClient;
+  final DioClient _dioClient;
 
-  ForgetPasswordRepoImpl(this.dioClient);
+  ForgetPasswordRepoImpl(this._dioClient);
 
   @override
   Future<ApiResponse> forgetPassword({required String email}) async {
+    StackTrace stackTrace = StackTrace.current;
     try {
-      Response response = await dioClient
-          .post(ApiEndPoints.forgotPassword, data: {'email': email});
+      Response response = await _dioClient
+          .post(ApiEndPoints.forgotPassword,stackTrace, data: {'email': email});
       return ApiResponse.withSuccess(response);
     } catch (e) {
       return ApiResponse.withError(ApiErrorHandler.getMessage(e));
