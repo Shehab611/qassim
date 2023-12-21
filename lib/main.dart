@@ -7,6 +7,7 @@ import 'package:qassim/core/utils/app_constants/app_localization.dart';
 import 'package:qassim/core/utils/app_routes_utils/app_paths.dart';
 import 'package:qassim/core/utils/app_routes_utils/app_router.dart';
 import 'package:qassim/core/utils/design_utils/app_colors.dart';
+import 'package:qassim/core/utils/design_utils/app_text_styles.dart';
 import 'package:qassim/service_locator.dart';
 
 void main() async {
@@ -36,10 +37,12 @@ class MyApp extends StatelessWidget {
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
             backgroundColor: AppColors.elevatedButtonBackground,
-          ))),
+          )),
+      listTileTheme: const ListTileThemeData(iconColor: AppColors.complementaryColor3,
+          titleTextStyle:AppTextStyles.drawerTileTextStyle)),
       debugShowCheckedModeBanner: false,
       routes: AppRouter.routes,
-      initialRoute: AppPathName.kOpenScreen,
+      initialRoute: AppPathName.kHomeScreen,
       locale: appLanguage.appLocal,
       supportedLocales: AppConstants.supportedLocales,
       localizationsDelegates: const [

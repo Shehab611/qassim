@@ -40,5 +40,10 @@
   "customer_service": "خدمة العملاء",
   "send_success": "تم إرسال رسالتك بنجاح",
   "password_not_correct": "كلمة المرور الحالية التي أُدخلت غير صحيحة",
-  "password_changed_success": "تم تغير كلمة المرور بنجاح"
+  "password_changed_success": "تم تغير كلمة المرور بنجاح",
+  "home_page": "الصفحة الرئيسية",
+  "previous_booking": " الحجوزات السابقة",
+  "favourite_places": " الأماكن المفضلة",
+  "categories": "الأقسام",
+  "language": "اللغة"
 }

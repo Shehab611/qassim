@@ -40,5 +40,10 @@
   "customer_service": "Customer Service",
   "send_success": "Your Message Sent Successfully",
   "password_not_correct": "The Recent Password You Entered is Not Correct",
-  "password_changed_success": "Password Changed Successfully"
+  "password_changed_success": "Password Changed Successfully",
+  "home_page": "Home Page",
+  "previous_booking": "Previous Booking",
+  "favourite_places": "Favourite Places",
+  "categories": "Categories",
+  "language": "Language"
 }
