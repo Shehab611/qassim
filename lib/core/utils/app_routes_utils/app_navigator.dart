@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'app_paths.dart';
 
 abstract final class AppNavigator {
-
   static navigateToOpenScreen(BuildContext context) =>
       Navigator.popAndPushNamed(
         context,
@@ -22,11 +21,9 @@ abstract final class AppNavigator {
         AppPathName.kRegisterScreen,
       );
 
-  static navigateToOtpScreen(BuildContext context,String emailAddress) =>
-      Navigator.popAndPushNamed(
-        context,
-        AppPathName.kOtpScreen,arguments: emailAddress
-      );
+  static navigateToOtpScreen(BuildContext context, String emailAddress) =>
+      Navigator.popAndPushNamed(context, AppPathName.kOtpScreen,
+          arguments: emailAddress);
 
   static navigateToForgetPasswordScreen(BuildContext context) =>
       Navigator.pushNamed(
@@ -34,11 +31,10 @@ abstract final class AppNavigator {
         AppPathName.kForgetPasswordScreen,
       );
 
-  static navigateToChangePasswordScreen(BuildContext context,String emailAddress) =>
-      Navigator.popAndPushNamed(
-        context,
-        AppPathName.kChangePasswordScreen,arguments: emailAddress
-      );
+  static navigateToChangePasswordScreen(
+          BuildContext context, String emailAddress) =>
+      Navigator.popAndPushNamed(context, AppPathName.kChangePasswordScreen,
+          arguments: emailAddress);
 
   static navigateToHomeScreen(BuildContext context) =>
       Navigator.popAndPushNamed(
@@ -58,4 +54,9 @@ abstract final class AppNavigator {
         AppPathName.kCustomerServiceScreen,
       );
 
+  static navigateToScreen(BuildContext context, String routePath) =>
+      Navigator.popAndPushNamed(
+        context,
+        routePath,
+      );
 }

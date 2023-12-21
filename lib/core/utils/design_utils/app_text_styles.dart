@@ -15,4 +15,10 @@ abstract final class AppTextStyles{
     color: AppColors.complementaryColor3
   );
 
+  static const drawerTileTextStyle = TextStyle(
+    fontSize: AppSizes.fontSizeLarge,
+      fontWeight: FontWeight.w600,
+    color: AppColors.complementaryColor3
+  );
+
 }
