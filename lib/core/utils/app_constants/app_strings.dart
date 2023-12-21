@@ -25,11 +25,15 @@ abstract final class AppStrings{
   static const String emailVerification='email_verification';
   static const String codeSentTo='code_send_to';
   static const String cancel='cancel';
-  static const String continuee='continue';
+  static const String continueText='continue';
   static const String resend='resend';
   static const String confirm='confirm';
   static const String profile='profile';
   static const String noCodeReceived='didn\'t_rcv_code';
+  static const String subject='subject';
+  static const String message='message';
+  static const String customerService='customer_service';
+  static const String sendSuccessfully='send_success';
 
 
 

@@ -51,4 +51,11 @@ abstract final class AppNavigator {
         context,
         AppPathName.kProfileScreen,
       );
+
+  static navigateToCustomerServiceScreen(BuildContext context) =>
+      Navigator.popAndPushNamed(
+        context,
+        AppPathName.kCustomerServiceScreen,
+      );
+
 }

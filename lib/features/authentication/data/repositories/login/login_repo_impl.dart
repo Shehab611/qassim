@@ -3,7 +3,7 @@ import 'package:qassim/core/usable_functions/api_service_helper.dart';
 import 'package:qassim/core/utils/api_utils/api_endpoints.dart';
 import 'package:qassim/core/utils/api_utils/api_error_handler.dart';
 import 'package:qassim/core/utils/api_utils/api_response.dart';
-import 'package:qassim/features/authentication/data/models/login_model.dart';
+import 'package:qassim/core/utils/models.dart';
 import 'package:qassim/service_locator.dart';
 import 'package:sqflite/sqflite.dart';
 

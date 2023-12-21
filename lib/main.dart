@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
           ))),
       debugShowCheckedModeBanner: false,
       routes: AppRouter.routes,
-      initialRoute: AppPathName.kProfileScreen,
+      initialRoute: AppPathName.kOpenScreen,
       locale: appLanguage.appLocal,
       supportedLocales: AppConstants.supportedLocales,
       localizationsDelegates: const [

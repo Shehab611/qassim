@@ -52,7 +52,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                                   },
                                   child: Text(
                                     AppLocalizations.of(context)
-                                        .translate(AppStrings.continuee),
+                                        .translate(AppStrings.continueText),
                                     style:
                                         AppTextStyles.elevatedButtonTextStyle,
                                   )),

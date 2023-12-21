@@ -1,5 +1,5 @@
 import 'package:qassim/core/utils/api_utils/api_response.dart';
-import 'package:qassim/features/authentication/data/models/login_model.dart';
+import 'package:qassim/core/utils/models.dart';
 
 abstract interface class LoginRepo {
   Future<ApiResponse> login({required String email, required String password});

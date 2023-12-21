@@ -32,7 +32,11 @@
   "resend": "إعادة إرسال الرمز",
   "confirm": "تأكيد",
   "profile": "الملف الشخصي",
-  "recent_password":" كلمة المرور الحالية",
+  "recent_password": " كلمة المرور الحالية",
   "new_password": "كلمة المرور الجديدة",
-  "confirm_new_password": "تأكيد كلمة المرور الجديدة"
+  "confirm_new_password": "تأكيد كلمة المرور الجديدة",
+  "subject": "الموضوع",
+  "message": "الرسالة",
+  "customer_service": "خدمة العملاء",
+  "send_success": "تم إرسال رسالتك بنجاح"
 }
