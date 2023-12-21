@@ -34,6 +34,7 @@ abstract final class AppStrings{
   static const String message='message';
   static const String customerService='customer_service';
   static const String sendSuccessfully='send_success';
+  static const String passwordChangedSuccessful='password_changed_success';
 
 
 
@@ -43,6 +44,7 @@ abstract final class AppStrings{
   static const String invalidEmail = 'invalid_email_address';
   static const String invalidPassword = 'password_chars_is_not_valid';
   static const String invalidConfirmPassword = 'confirm_password_not_matched';
+  static const String recentPasswordNotCorrect = 'password_not_correct';
   //#endregion
 
   //#region network keys

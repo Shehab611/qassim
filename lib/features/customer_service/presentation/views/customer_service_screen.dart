@@ -42,61 +42,58 @@ class CustomerServiceScreen extends StatelessWidget {
             },
             builder: (context, state) {
               CustomerServiceCubit cubit = CustomerServiceCubit.get(context);
-              return Form(
-                key: cubit.formKey,
-                child: Column(
-                  children: [
-                    CustomTextField(
-                      controller: cubit.nameController,
-                      prefixIcon: Icons.person,
-                      required: true,
-                      labelText: AppLocalizations.of(context)
-                          .translate(AppStrings.fullName),
-                    ),
-                    const SizedBox(
-                      height: AppSizes.paddingSizeDefault,
-                    ),
-                    CustomTextField(
-                      controller: cubit.subjectController,
-                      required: true,
-                      labelText: AppLocalizations.of(context)
-                          .translate(AppStrings.subject),
-                    ),
-                    const SizedBox(
-                      height: AppSizes.paddingSizeDefault,
-                    ),
-                    CustomTextField(
-                      controller: cubit.messageController,
-                      maxLines: 8,
-                      required: true,
-                      labelText: AppLocalizations.of(context)
-                          .translate(AppStrings.message),
-                    ),
-                    const SizedBox(
-                      height: AppSizes.paddingSizeDefault,
-                    ),
-                    (state is CustomerServiceLoadingState)
-                        ? const CustomLoader()
-                        : ElevatedButton(
-                            style: cubit.buttonEnabled()
-                                ? null
-                                : ButtonStyle(
-                                    backgroundColor:
-                                        MaterialStatePropertyAll<Color>(
-                                            AppColors.complementaryColor2
-                                                .withOpacity(0.4))),
-                            onPressed: () {
-                              cubit.buttonEnabled()
-                                  ? cubit.sendFeedBack(context)
-                                  : null;
-                            },
-                            child: Text(
-                              AppLocalizations.of(context)
-                                  .translate(AppStrings.confirm),
-                              style: AppTextStyles.elevatedButtonTextStyle,
-                            ))
-                  ],
-                ),
+              return Column(
+                children: [
+                  CustomTextField(
+                    controller: cubit.nameController,
+                    prefixIcon: Icons.person,
+                    required: true,
+                    labelText: AppLocalizations.of(context)
+                        .translate(AppStrings.fullName),
+                  ),
+                  const SizedBox(
+                    height: AppSizes.paddingSizeDefault,
+                  ),
+                  CustomTextField(
+                    controller: cubit.subjectController,
+                    required: true,
+                    labelText: AppLocalizations.of(context)
+                        .translate(AppStrings.subject),
+                  ),
+                  const SizedBox(
+                    height: AppSizes.paddingSizeDefault,
+                  ),
+                  CustomTextField(
+                    controller: cubit.messageController,
+                    maxLines: 8,
+                    required: true,
+                    labelText: AppLocalizations.of(context)
+                        .translate(AppStrings.message),
+                  ),
+                  const SizedBox(
+                    height: AppSizes.paddingSizeDefault,
+                  ),
+                  (state is CustomerServiceLoadingState)
+                      ? const CustomLoader()
+                      : ElevatedButton(
+                          style: cubit.buttonEnabled()
+                              ? null
+                              : ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStatePropertyAll<Color>(
+                                          AppColors.complementaryColor2
+                                              .withOpacity(0.4))),
+                          onPressed: () {
+                            cubit.buttonEnabled()
+                                ? cubit.sendFeedBack(context)
+                                : null;
+                          },
+                          child: Text(
+                            AppLocalizations.of(context)
+                                .translate(AppStrings.confirm),
+                            style: AppTextStyles.elevatedButtonTextStyle,
+                          ))
+                ],
               );
             },
           ),

@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:qassim/core/utils/api_utils/logging_interceptor.dart';
@@ -13,12 +14,15 @@ class DioClient {
   final Dio? _dio;
   String? _token;
 
-  DioClient(this._baseUrl,
-      this._dio,{
-        required LoggingInterceptor loggingInterceptor,
-        required SharedPreferences sharedPreferences,
-      }) : _sharedPreferences = sharedPreferences, _loggingInterceptor = loggingInterceptor {
-    _token = _sharedPreferences.getString(AppConstants.userLoginTokenSharedPreferenceKey);
+  DioClient(
+    this._baseUrl,
+    this._dio, {
+    required LoggingInterceptor loggingInterceptor,
+    required SharedPreferences sharedPreferences,
+  })  : _sharedPreferences = sharedPreferences,
+        _loggingInterceptor = loggingInterceptor {
+    _token = _sharedPreferences
+        .getString(AppConstants.userLoginTokenSharedPreferenceKey);
     if (kDebugMode) {
       print("NNNN $_token");
     }
@@ -35,7 +39,9 @@ class DioClient {
     _dio.interceptors.add(_loggingInterceptor);
   }
 
-  void updateHeader(String? token,) {
+  void updateHeader(
+    String? token,
+  ) {
     token = token ?? _token;
     _token = token;
     _dio!.options.headers = {
@@ -44,12 +50,16 @@ class DioClient {
     };
   }
 
-  Future<Response> get(String uri, {
+  Future<Response> get(
+    String uri,
+    StackTrace stackTrace, {
     Map<String, dynamic>? queryParameters,
     Options? options,
     CancelToken? cancelToken,
     ProgressCallback? onReceiveProgress,
   }) async {
+    _getFilePath(stackTrace);
+
     try {
       var response = await _dio!.get(
         uri,
@@ -68,7 +78,9 @@ class DioClient {
     }
   }
 
-  Future<Response> post(String uri, {
+  Future<Response> post(
+    String uri,
+    StackTrace stackTrace, {
     data,
     Map<String, dynamic>? queryParameters,
     Options? options,
@@ -76,6 +88,7 @@ class DioClient {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
+    _getFilePath(stackTrace);
     try {
       var response = await _dio!.post(
         uri,
@@ -94,7 +107,9 @@ class DioClient {
     }
   }
 
-  Future<Response> put(String uri, {
+  Future<Response> put(
+    String uri,
+    StackTrace stackTrace, {
     data,
     Map<String, dynamic>? queryParameters,
     Options? options,
@@ -102,6 +117,7 @@ class DioClient {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
+    _getFilePath(stackTrace);
     try {
       var response = await _dio!.put(
         uri,
@@ -120,12 +136,16 @@ class DioClient {
     }
   }
 
-  Future<Response> delete(String uri, {
+  Future<Response> delete(
+    String uri,
+    StackTrace stackTrace, {
     data,
     Map<String, dynamic>? queryParameters,
     Options? options,
     CancelToken? cancelToken,
   }) async {
+    _getFilePath(stackTrace);
+
     try {
       var response = await _dio!.delete(
         uri,
@@ -142,7 +162,20 @@ class DioClient {
     }
   }
 
+  void _getFilePath(StackTrace stackTrace) {
+    String filePath = 'Unknown file';
+    List<String> traceLines = stackTrace.toString().split('\n');
 
+    // Find the first line that doesn't contain Dio package
+    for (String line in traceLines) {
+      if (!line.contains('package:dio')) {
+        filePath = line.trim();
+        break;
+      }
+    }
+
+    if (kDebugMode) {
+      print("Request initiated from =>: $filePath");
+    }
+  }
 }
-
-

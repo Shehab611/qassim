@@ -38,5 +38,7 @@
   "subject": "Subject",
   "message": "Message",
   "customer_service": "Customer Service",
-  "send_success": "Your Message Sent Successfully"
+  "send_success": "Your Message Sent Successfully",
+  "password_not_correct": "The Recent Password You Entered is Not Correct",
+  "password_changed_success": "Password Changed Successfully"
 }

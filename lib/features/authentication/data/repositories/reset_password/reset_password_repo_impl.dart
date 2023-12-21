@@ -7,17 +7,18 @@ import 'package:qassim/core/utils/api_utils/api_response.dart';
 import 'reset_password_repo.dart';
 
 final class ResetPasswordRepoImpl implements ResetPasswordRepo {
-  final DioClient dioClient;
+  final DioClient _dioClient;
 
-  ResetPasswordRepoImpl(this.dioClient);
+  ResetPasswordRepoImpl(this._dioClient);
 
   @override
   Future<ApiResponse> resetPassword(
       {required String email,
       required String password,
       required String confirmPassword}) async {
+    StackTrace stackTrace = StackTrace.current;
     try {
-      Response response = await dioClient.post(ApiEndPoints.resetPassword,
+      Response response = await _dioClient.post(ApiEndPoints.resetPassword,stackTrace,
           data: {
             'email': email,
             'password_confirmation': confirmPassword,

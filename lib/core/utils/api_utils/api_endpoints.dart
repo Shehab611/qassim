@@ -27,6 +27,11 @@ abstract final class ApiEndPoints {
   static const String _customerService = '/CustomerService';
 
   //#endregion
+
+  //#region update password
+  static const String _changePassword = '/updatePassword';
+
+  //#endregion
   //#endregion
 
   //#region Getters to use them in the app
@@ -94,6 +99,19 @@ abstract final class ApiEndPoints {
   ///
   ///all of them is String
   static String get customerService => _customerService;
+
+//#endregion
+
+  //#region Change Password
+  ///post method
+  ///
+  ///require 4 [body] parameters
+  ///
+  ///[id] - [oldPassword] - [newPassword_] - [newPassword_confirmation]
+  ///
+  ///all of them is String
+  static String get changePassword => _changePassword;
+
 //#endregion
 
 //#endregion
