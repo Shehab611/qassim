@@ -6,7 +6,7 @@ import 'package:qassim/core/utils/api_utils/api_error_handler.dart';
 import 'package:qassim/core/utils/api_utils/api_response.dart';
 import 'package:qassim/core/utils/app_constants/app_constants.dart';
 import 'package:qassim/core/utils/app_routes_utils/app_navigator.dart';
-import 'package:qassim/features/authentication/data/models/login_model.dart';
+import 'package:qassim/core/utils/models.dart';
 import 'package:qassim/features/authentication/data/repositories/login/login_repo.dart';
 import 'package:qassim/service_locator.dart';
 import 'package:shared_preferences/shared_preferences.dart';

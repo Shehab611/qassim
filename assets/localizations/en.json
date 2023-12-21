@@ -34,5 +34,9 @@
   "profile": "Profile",
   "recent_password":"Recent Password",
   "new_password": "New Password",
-  "confirm_new_password": "Confirm New Password"
+  "confirm_new_password": "Confirm New Password",
+  "subject": "Subject",
+  "message": "Message",
+  "customer_service": "Customer Service",
+  "send_success": "Your Message Sent Successfully"
 }

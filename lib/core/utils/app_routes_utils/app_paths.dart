@@ -7,4 +7,5 @@ abstract final class AppPathName {
  static const String kChangePasswordScreen = '/ChangePasswordScreen';
  static const String kHomeScreen = '/HomeScreen';
  static const String kProfileScreen = '/ProfileScreen';
+ static const String kCustomerServiceScreen = '/CustomerServiceScreen';
 }
