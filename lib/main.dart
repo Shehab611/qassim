@@ -31,7 +31,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-
     appLanguage.addListener(() {
       setState(() {});
     });
@@ -50,7 +49,11 @@ class _MyAppState extends State<MyApp> {
           )),
           listTileTheme: const ListTileThemeData(
               iconColor: AppColors.complementaryColor3,
-              titleTextStyle: AppTextStyles.drawerTileTextStyle)),
+              titleTextStyle: AppTextStyles.drawerTileTextStyle),
+          appBarTheme: const AppBarTheme(
+            iconTheme: IconThemeData(color: AppColors.primaryColor),
+            backgroundColor: AppColors.complementaryColor2,
+          )),
       debugShowCheckedModeBanner: false,
       routes: AppRouter.routes,
       initialRoute: AppPathName.kOpenScreen,

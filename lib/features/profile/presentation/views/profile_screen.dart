@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qassim/core/utils/app_constants/app_localization.dart';
 import 'package:qassim/core/utils/app_constants/app_strings.dart';
-import 'package:qassim/core/utils/design_utils/app_colors.dart';
 import 'package:qassim/core/utils/design_utils/app_sizes.dart';
 import 'package:qassim/core/utils/design_utils/app_text_styles.dart';
+import 'package:qassim/features/drawer/presentation/view/app_drawer.dart';
 import 'package:qassim/features/profile/data/repositories/change_password_repo/change_password_repo_impl.dart';
 import 'package:qassim/features/profile/presentation/components/edit_row.dart';
 import 'package:qassim/features/profile/presentation/view_model_manger/change_password_cubit/change_password_cubit.dart';
@@ -20,10 +20,9 @@ class ProfileScreen extends StatelessWidget {
         .of(context)
         .size;
     return Scaffold(
+      drawer: const AppDrawer(),
       appBar: AppBar(
         centerTitle: true,
-        iconTheme: const IconThemeData(color: AppColors.primaryColor),
-        backgroundColor: AppColors.complementaryColor2,
         title: Text(
           AppLocalizations.of(context).translate(AppStrings.profile),
           style: AppTextStyles.elevatedButtonTextStyle,

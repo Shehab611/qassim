@@ -9,6 +9,7 @@ import 'package:qassim/core/utils/design_utils/app_colors.dart';
 import 'package:qassim/core/utils/design_utils/app_sizes.dart';
 import 'package:qassim/core/utils/design_utils/app_text_styles.dart';
 import 'package:qassim/features/customer_service/presentation/view_model_manger/customer_service_cubit.dart';
+import 'package:qassim/features/drawer/presentation/view/app_drawer.dart';
 
 class CustomerServiceScreen extends StatelessWidget {
   const CustomerServiceScreen({super.key});
@@ -16,9 +17,9 @@ class CustomerServiceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const AppDrawer(),
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: AppColors.complementaryColor2,
         title: Text(
           AppLocalizations.of(context).translate(AppStrings.customerService),
           style: AppTextStyles.elevatedButtonTextStyle,
