@@ -8,7 +8,7 @@ abstract final class AppConstants {
   ];
   static const String _defaultLanguage = 'ar';
   static const List<Locale> _supportedLocales = [
-    Locale('en', 'US'),
+    Locale('en', ''),
     Locale('ar', ''),
   ];
   static const Duration _connectionTimeOut = Duration(seconds: 30000);
