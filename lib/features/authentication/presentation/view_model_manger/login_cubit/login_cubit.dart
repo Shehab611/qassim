@@ -50,7 +50,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> _saveUserToken(String token) async {
     await sl<SharedPreferences>()
-        .setString(AppConstants.userLoginTokenSharedPreferenceKey, token);
+        .setString(AppConstants.currentUserToken, token);
   }
 
   Future<void> _saveUserCurrentId(int id) async {

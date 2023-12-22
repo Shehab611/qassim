@@ -11,7 +11,7 @@ class DioClient {
   final LoggingInterceptor _loggingInterceptor;
   final SharedPreferences _sharedPreferences;
 
-  final Dio? _dio;
+  final Dio _dio;
   String? _token;
 
   DioClient(
@@ -21,34 +21,33 @@ class DioClient {
     required SharedPreferences sharedPreferences,
   })  : _sharedPreferences = sharedPreferences,
         _loggingInterceptor = loggingInterceptor {
-    _token = _sharedPreferences
-        .getString(AppConstants.userLoginTokenSharedPreferenceKey);
+    _token = _sharedPreferences.getString(AppConstants.currentUserToken);
     if (kDebugMode) {
       print("NNNN $_token");
     }
-    _dio!
+    _dio
       ..options.baseUrl = _baseUrl
       ..options.connectTimeout = AppConstants.connectionTimeOut
       ..options.receiveTimeout = AppConstants.connectionTimeOut
       ..httpClientAdapter
       ..options.headers = {
         'Content-Type': 'application/json; charset=UTF-8',
-        'Authorization': 'Bearer $_token',
+        //'Authorization': 'Bearer $_token',
         'Accept': 'application/json',
       };
     _dio.interceptors.add(_loggingInterceptor);
   }
 
-  void updateHeader(
+/*  void updateHeader(
     String? token,
   ) {
     token = token ?? _token;
     _token = token;
     _dio!.options.headers = {
       'Content-Type': 'application/json; charset=UTF-8',
-      'Authorization': 'Bearer $token',
+      //'Authorization': 'Bearer $token',
     };
-  }
+  }*/
 
   Future<Response> get(
     String uri,
@@ -61,7 +60,7 @@ class DioClient {
     _getFilePath(stackTrace);
 
     try {
-      var response = await _dio!.get(
+      var response = await _dio.get(
         uri,
         queryParameters: queryParameters,
         options: options,
@@ -90,7 +89,7 @@ class DioClient {
   }) async {
     _getFilePath(stackTrace);
     try {
-      var response = await _dio!.post(
+      var response = await _dio.post(
         uri,
         data: data,
         queryParameters: queryParameters,
@@ -119,7 +118,7 @@ class DioClient {
   }) async {
     _getFilePath(stackTrace);
     try {
-      var response = await _dio!.put(
+      var response = await _dio.put(
         uri,
         data: data,
         queryParameters: queryParameters,
@@ -147,7 +146,7 @@ class DioClient {
     _getFilePath(stackTrace);
 
     try {
-      var response = await _dio!.delete(
+      var response = await _dio.delete(
         uri,
         data: data,
         queryParameters: queryParameters,
