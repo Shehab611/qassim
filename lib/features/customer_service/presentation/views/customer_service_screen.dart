@@ -58,6 +58,7 @@ class CustomerServiceScreen extends StatelessWidget {
                   CustomTextField(
                     controller: cubit.subjectController,
                     required: true,
+                    prefixIcon: Icons.subject,
                     labelText: AppLocalizations.of(context)
                         .translate(AppStrings.subject),
                   ),

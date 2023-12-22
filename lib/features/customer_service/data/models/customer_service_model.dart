@@ -9,17 +9,18 @@ final class CustomerServiceRequestModel extends Equatable {
   @override
   List<Object> get props => [email, name, subject, message];
 
-  const CustomerServiceRequestModel({required this.email,
-    required this.name,
-    required this.subject,
-    required this.message});
+  const CustomerServiceRequestModel(
+      {required this.email,
+      required this.name,
+      required this.subject,
+      required this.message});
 
   Map<String, dynamic> toJson() {
     return {
       'fullName': name,
       'email': email,
       'topic': subject,
-
+      'subject': message
     };
   }
 }
