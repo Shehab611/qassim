@@ -23,7 +23,9 @@ class AppDrawer extends StatelessWidget {
             backgroundColor: AppColors.complementaryColor1,
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 5),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: AppSizes.paddingSizeEight,
+                    vertical: AppSizes.paddingSizeExtraSmall),
                 child: Column(
                   children: [
                     Image.asset(AppImages.blackDarkLogo),
@@ -33,7 +35,7 @@ class AppDrawer extends StatelessWidget {
                       child: Center(
                         child: Text(
                           cubit.userName,
-                          style: AppTextStyles.elevatedButtonTextStyle,
+                          style: AppTextStyles.defaultTextStyle,
                         ),
                       ),
                     ),
@@ -49,22 +51,24 @@ class AppDrawer extends StatelessWidget {
                         leading: const Icon(Icons.language),
                         title: Text(AppLocalizations.of(context)
                             .translate(AppStrings.language)),
-                        trailing: Transform.scale(
-                          scale: .9,
+                        trailing: SizedBox(
+                          width: 113,
                           child: Row(
-                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text("AR", style: TextStyle(fontSize: 16)),
-                              Switch(
-                                  value: cubit.switchValue,
-                                  activeColor: AppColors.complementaryColor2,
-                                  onChanged: (bool value) {
-                                    cubit.changeLocale(value);
-                                  }),
-                              const Text(
-                                "EN",
-                                style: TextStyle(fontSize: 16),
+                              const Text("AR",
+                                  style: AppTextStyles.switchTextStyle),
+                              Transform.scale(
+                                scale: 0.88,
+                                child: Switch(
+                                    value: cubit.switchValue,
+                                    activeColor: AppColors.complementaryColor2,
+                                    onChanged: (bool value) {
+                                      cubit.changeLocale(value);
+                                    }),
                               ),
+                              const Text("EN",
+                                  style: AppTextStyles.switchTextStyle),
                             ],
                           ),
                         ),

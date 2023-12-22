@@ -22,7 +22,6 @@ class CustomerServiceScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           AppLocalizations.of(context).translate(AppStrings.customerService),
-          style: AppTextStyles.elevatedButtonTextStyle,
         ),
       ),
       body: Padding(

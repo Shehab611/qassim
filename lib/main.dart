@@ -6,13 +6,13 @@ import 'package:qassim/core/utils/app_constants/app_constants.dart';
 import 'package:qassim/core/utils/app_constants/app_localization.dart';
 import 'package:qassim/core/utils/app_routes_utils/app_paths.dart';
 import 'package:qassim/core/utils/app_routes_utils/app_router.dart';
-import 'package:qassim/core/utils/design_utils/app_colors.dart';
-import 'package:qassim/core/utils/design_utils/app_text_styles.dart';
+import 'package:qassim/core/utils/design_utils/app_theme.dart';
 import 'package:qassim/service_locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initServicesLocator();
+  await sl<AppLanguage>().fetchLocale();
   runApp(DevicePreview(
     enabled: !kReleaseMode,
     builder: (context) => const MyApp(),
@@ -41,19 +41,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Qassim',
-      theme: ThemeData(
-          scaffoldBackgroundColor: AppColors.primaryColor,
-          elevatedButtonTheme: ElevatedButtonThemeData(
-              style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.elevatedButtonBackground,
-          )),
-          listTileTheme: const ListTileThemeData(
-              iconColor: AppColors.complementaryColor3,
-              titleTextStyle: AppTextStyles.drawerTileTextStyle),
-          appBarTheme: const AppBarTheme(
-            iconTheme: IconThemeData(color: AppColors.primaryColor),
-            backgroundColor: AppColors.complementaryColor2,
-          )),
+      theme: AppTheme.defaultTheme,
       debugShowCheckedModeBanner: false,
       routes: AppRouter.routes,
       initialRoute: AppPathName.kOpenScreen,

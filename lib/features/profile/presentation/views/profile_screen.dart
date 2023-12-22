@@ -6,10 +6,8 @@ import 'package:qassim/core/utils/app_constants/app_strings.dart';
 import 'package:qassim/core/utils/design_utils/app_sizes.dart';
 import 'package:qassim/core/utils/design_utils/app_text_styles.dart';
 import 'package:qassim/features/drawer/presentation/view/app_drawer.dart';
-import 'package:qassim/features/profile/data/repositories/change_password_repo/change_password_repo_impl.dart';
 import 'package:qassim/features/profile/data/repositories/logout_repo/logout_repo_impl.dart';
 import 'package:qassim/features/profile/presentation/components/edit_row.dart';
-import 'package:qassim/features/profile/presentation/view_model_manger/change_password_cubit/change_password_cubit.dart';
 import 'package:qassim/features/profile/presentation/view_model_manger/logout_cubit/logout_cubit.dart';
 import 'package:qassim/features/profile/presentation/widgets/change_password_sheet.dart';
 import 'package:qassim/service_locator.dart';
@@ -26,7 +24,6 @@ class ProfileScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           AppLocalizations.of(context).translate(AppStrings.profile),
-          style: AppTextStyles.elevatedButtonTextStyle,
         ),
         actions: [
           BlocProvider(
@@ -80,21 +77,7 @@ class ProfileScreen extends StatelessWidget {
                       context: context,
                       isScrollControlled: true,
                       builder: (context) {
-                        return StatefulBuilder(
-                          builder: (context, setState) {
-                            return GestureDetector(
-                              onTap: () {
-                                FocusScope.of(context)
-                                    .requestFocus(FocusNode());
-                              },
-                              child: BlocProvider(
-                                create: (context) => ChangePasswordCubit(
-                                    sl<ChangePasswordRepoImpl>()),
-                                child: const ChangePasswordSheet(),
-                              ),
-                            );
-                          },
-                        );
+                        return const ChangePasswordSheet();
                       },
                     );
                   },
