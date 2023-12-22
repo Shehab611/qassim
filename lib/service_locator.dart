@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:qassim/core/usable_functions/api_service_helper.dart';
 import 'package:qassim/core/utils/api_utils/api_endpoints.dart';
 import 'package:qassim/core/utils/api_utils/logging_interceptor.dart';
+import 'package:qassim/core/utils/app_constants/app_localization.dart';
 import 'package:qassim/core/utils/network_info.dart';
 import 'package:qassim/features/customer_service/data/repositories/customer_service_repo_impl.dart';
 import 'package:qassim/features/profile/data/repositories/change_password_repo/change_password_repo_impl.dart';
@@ -19,6 +20,7 @@ Future<void> initServicesLocator() async {
       ApiEndPoints.baseUrl, sl<Dio>(),
       loggingInterceptor: sl<LoggingInterceptor>(),
       sharedPreferences: sl<SharedPreferences>()));
+  sl.registerLazySingleton<AppLanguage>(() =>AppLanguage());
   //#endregion
 
   //#region Repos
@@ -26,6 +28,7 @@ Future<void> initServicesLocator() async {
       () => CustomerServiceRepoImpl(sl<DioClient>()));
   sl.registerLazySingleton<ChangePasswordRepoImpl>(
       () => ChangePasswordRepoImpl(sl<DioClient>()));
+
   //#endregion
 
   //#region External

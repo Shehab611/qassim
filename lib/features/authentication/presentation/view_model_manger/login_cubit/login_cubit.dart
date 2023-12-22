@@ -58,6 +58,11 @@ class LoginCubit extends Cubit<LoginState> {
         .setInt(AppConstants.currentUserId, id);
   }
 
+  Future<void> _saveUserCurrentName(String name) async {
+    await sl<SharedPreferences>()
+        .setString(AppConstants.currentUserName, name);
+  }
+
   //#endregion
 
   //#region public methods
@@ -74,6 +79,7 @@ class LoginCubit extends Cubit<LoginState> {
           _addDataToLocalDb(user);
           _saveUserToken(user.accessToken);
           _saveUserCurrentId(user.id);
+          _saveUserCurrentName(user.name);
         });
 
         emit(const LoginSuccessfulState());

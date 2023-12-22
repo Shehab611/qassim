@@ -12,21 +12,31 @@ import 'package:qassim/service_locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  AppLanguage appLanguage = AppLanguage();
   await initServicesLocator();
-  await appLanguage.fetchLocale();
   runApp(DevicePreview(
     enabled: !kReleaseMode,
-    builder: (context) => MyApp(
-      appLanguage: appLanguage,
-    ),
+    builder: (context) => const MyApp(),
   ));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key, required this.appLanguage});
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
 
-  final AppLanguage appLanguage;
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  static final AppLanguage appLanguage = sl<AppLanguage>();
+
+  @override
+  void initState() {
+
+    appLanguage.addListener(() {
+      setState(() {});
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +48,12 @@ class MyApp extends StatelessWidget {
               style: ElevatedButton.styleFrom(
             backgroundColor: AppColors.elevatedButtonBackground,
           )),
-      listTileTheme: const ListTileThemeData(iconColor: AppColors.complementaryColor3,
-          titleTextStyle:AppTextStyles.drawerTileTextStyle)),
+          listTileTheme: const ListTileThemeData(
+              iconColor: AppColors.complementaryColor3,
+              titleTextStyle: AppTextStyles.drawerTileTextStyle)),
       debugShowCheckedModeBanner: false,
       routes: AppRouter.routes,
-      initialRoute: AppPathName.kHomeScreen,
+      initialRoute: AppPathName.kOpenScreen,
       locale: appLanguage.appLocal,
       supportedLocales: AppConstants.supportedLocales,
       localizationsDelegates: const [
