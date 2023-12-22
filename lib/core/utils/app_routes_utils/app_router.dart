@@ -19,6 +19,10 @@ import 'package:qassim/features/customer_service/data/repositories/customer_serv
 import 'package:qassim/features/customer_service/presentation/view_model_manger/customer_service_cubit.dart';
 import 'package:qassim/features/customer_service/presentation/views/customer_service_screen.dart';
 import 'package:qassim/features/home/presentation/views/home_screen.dart';
+import 'package:qassim/features/profile/data/repositories/logout_repo/logout_repo_impl.dart';
+import 'package:qassim/features/profile/data/repositories/profile_data_repo/profile_data_repo_impl.dart';
+import 'package:qassim/features/profile/presentation/view_model_manger/logout_cubit/logout_cubit.dart';
+import 'package:qassim/features/profile/presentation/view_model_manger/profile_cubit/profile_cubit.dart';
 import 'package:qassim/features/profile/presentation/views/profile_screen.dart';
 import 'package:qassim/service_locator.dart';
 
@@ -29,36 +33,39 @@ abstract final class AppRouter {
     //#region Authentication Routes
     AppPathName.kOpenScreen: (BuildContext context) => const OpenScreen(),
     AppPathName.kOtpScreen: (BuildContext context) => const OtpScreen(),
-    AppPathName.kLoginScreen: (BuildContext context) =>
-        BlocProvider(
+    AppPathName.kLoginScreen: (BuildContext context) => BlocProvider(
           create: (context) => LoginCubit(LoginRepoImpl(sl<DioClient>())),
           child: const LoginScreen(),
         ),
-    AppPathName.kRegisterScreen: (BuildContext context) =>
-        BlocProvider(
+    AppPathName.kRegisterScreen: (BuildContext context) => BlocProvider(
           create: (context) => RegisterCubit(RegisterRepoImpl(sl<DioClient>())),
           child: const RegisterScreen(),
         ),
-    AppPathName.kForgetPasswordScreen: (BuildContext context) =>
-        BlocProvider(
+    AppPathName.kForgetPasswordScreen: (BuildContext context) => BlocProvider(
           create: (context) =>
               ForgetPasswordCubit(ForgetPasswordRepoImpl(sl<DioClient>())),
           child: const ForgetPasswordScreen(),
         ),
-    AppPathName.kChangePasswordScreen: (BuildContext context) =>
-        BlocProvider(
+    AppPathName.kChangePasswordScreen: (BuildContext context) => BlocProvider(
           create: (context) =>
               ResetPasswordCubit(ResetPasswordRepoImpl(sl<DioClient>())),
           child: const ChangePasswordScreen(),
         ),
     //#endregion
-    AppPathName.kProfileScreen: (BuildContext context) => const ProfileScreen(),
+    AppPathName.kProfileScreen: (BuildContext context) =>
+        MultiBlocProvider(providers: [
+          BlocProvider(
+            create: (context) => ProfileCubit(sl<ProfileRepoImpl>())..getUserData(context),
+          ),
+          BlocProvider(
+            create: (context) => LogoutCubit(LogoutRepoImpl(sl<DioClient>())),
+          ),
+        ], child: const ProfileScreen()),
     AppPathName.kHomeScreen: (BuildContext context) => const HomeScreen(),
-    AppPathName.kCustomerServiceScreen: (BuildContext context) =>
-        BlocProvider(
+    AppPathName.kCustomerServiceScreen: (BuildContext context) => BlocProvider(
           create: (context) =>
-          CustomerServiceCubit(sl<CustomerServiceRepoImpl>())
-            ..getUserData(context),
+              CustomerServiceCubit(sl<CustomerServiceRepoImpl>())
+                ..getUserData(context),
           child: const CustomerServiceScreen(),
         ),
   };

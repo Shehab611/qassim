@@ -8,6 +8,7 @@ import 'package:qassim/core/utils/app_constants/app_localization.dart';
 import 'package:qassim/core/utils/network_info.dart';
 import 'package:qassim/features/customer_service/data/repositories/customer_service_repo_impl.dart';
 import 'package:qassim/features/profile/data/repositories/change_password_repo/change_password_repo_impl.dart';
+import 'package:qassim/features/profile/data/repositories/profile_data_repo/profile_data_repo_impl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -28,7 +29,8 @@ Future<void> initServicesLocator() async {
       () => CustomerServiceRepoImpl(sl<DioClient>()));
   sl.registerLazySingleton<ChangePasswordRepoImpl>(
       () => ChangePasswordRepoImpl(sl<DioClient>()));
-
+  sl.registerLazySingleton<ProfileRepoImpl>(
+          () => ProfileRepoImpl(sl<DioClient>()));
   //#endregion
 
   //#region External

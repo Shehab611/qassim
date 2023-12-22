@@ -50,5 +50,5 @@ class CustomerServiceUserDataFailedState extends CustomerServiceState {
   const CustomerServiceUserDataFailedState(this.errorMessage);
   final String errorMessage;
   @override
-  List<Object> get props => [];
+  List<Object> get props => [errorMessage];
 }
