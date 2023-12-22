@@ -82,13 +82,13 @@ class AppLanguage extends ChangeNotifier {
   }
 
 //call this to change language
-  void changeLanguage(Locale type, value) async {
+  void changeLanguage(Locale type) async {
     var prefs = await SharedPreferences.getInstance();
     if (_appLocale == type) {
       return;
     } else {
       _appLocale = type;
-      await prefs.setString('language_code', '$value');
+      await prefs.setString('language_code', type.languageCode);
       await prefs.setString('countryCode', '');
     }
     notifyListeners();
