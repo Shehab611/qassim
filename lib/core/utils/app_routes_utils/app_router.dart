@@ -21,6 +21,7 @@ import 'package:qassim/features/categories/presentation/views/categories_screen.
 import 'package:qassim/features/customer_service/data/repositories/customer_service_repo_impl.dart';
 import 'package:qassim/features/customer_service/presentation/view_model_manger/customer_service_cubit.dart';
 import 'package:qassim/features/customer_service/presentation/views/customer_service_screen.dart';
+import 'package:qassim/features/favourites/presentation/view/favourite_screen.dart';
 import 'package:qassim/features/home/presentation/views/home_screen.dart';
 import 'package:qassim/features/profile/data/repositories/logout_repo/logout_repo_impl.dart';
 import 'package:qassim/features/profile/data/repositories/profile_data_repo/profile_data_repo_impl.dart';
@@ -73,8 +74,11 @@ abstract final class AppRouter {
           child: const CustomerServiceScreen(),
         ),
     AppPathName.kCategoriesScreen: (BuildContext context) => BlocProvider(
-          create: (context) => CategoriesCubit(sl<CategoriesRepoImpl>())..getCategories(context),
+          create: (context) =>
+              CategoriesCubit(sl<CategoriesRepoImpl>())..getCategories(context),
           child: const CategoriesScreen(),
         ),
+    AppPathName.kFavouritesScreen: (BuildContext context) =>
+        const FavouriteScreen(),
   };
 }
