@@ -33,6 +33,10 @@ abstract final class ApiEndPoints {
 
   //#endregion
 
+  //#region Update Profile
+  static const String _updateProfile = '/updateProflie';
+
+  //#endregion
   //#region Categories
   static const String _categories = '/divide';
 
@@ -127,7 +131,20 @@ abstract final class ApiEndPoints {
   ///no [body] parameters
   ///
   static String get categories => _categories;
+
 //#endregion
 
+  //#region Update Profile
+  ///put method
+  ///
+  ///takes 4  [body] parameters
+  ///
+  ///Required [id]
+  ///
+  ///[name] - [email] - [phone]
+  ///
+  ///all of them are string
+  static String get updateProfile => _updateProfile;
+//#endregion
 //#endregion
 }

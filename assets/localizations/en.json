@@ -47,5 +47,6 @@
   "categories": "Categories",
   "language": "Language",
   "logout_successful": "You have successfully logged out",
-  "no_data": "No Data is Found"
+  "no_data": "No Data is Found",
+  "data_updated_success": "The data has been updated successfully"
 }

@@ -103,7 +103,10 @@ abstract final class ApiChecker {
   static void checkApi(ApiResponse apiResponse, BuildContext context) {
     if (apiResponse.error is String) {
       String errorResponse = apiResponse.error;
-      if (errorResponse.contains('account not exist')) {
+      if (errorResponse.contains('account not exist') ||
+          errorResponse.contains('email not correct') ||
+          errorResponse.contains('Email not found') ||
+          errorResponse.contains('not found')) {
         showCustomSnackBar(
             AppLocalizations.of(context).translate(AppStrings.accountNotExit),
             context);
@@ -111,11 +114,9 @@ abstract final class ApiChecker {
         showCustomSnackBar(
             AppLocalizations.of(context).translate(AppStrings.wrongCredentials),
             context);
-      } else if (errorResponse.contains('email not correct') ||
-          errorResponse.contains('Email not found') ||
-          errorResponse.contains('not found')) {
+      } else if (errorResponse.contains('email already exists')) {
         showCustomSnackBar(
-            AppLocalizations.of(context).translate(AppStrings.accountNotExit),
+            AppLocalizations.of(context).translate(AppStrings.emailIsTaken),
             context);
       } else if (errorResponse.contains('your number not correct')) {
         showCustomSnackBar(
