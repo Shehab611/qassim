@@ -46,5 +46,6 @@
   "favourite_places": " الأماكن المفضلة",
   "categories": "الأقسام",
   "language": "اللغة",
-  "logout_successful": "تم تسجيل الخروج بنجاح"
+  "logout_successful": "تم تسجيل الخروج بنجاح",
+  "no_data": "لم يتم العثور على بيانات"
 }

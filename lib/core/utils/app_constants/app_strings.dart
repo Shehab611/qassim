@@ -41,6 +41,7 @@ abstract final class AppStrings{
   static const String categories='categories';
   static const String language='language';
   static const String logoutSuccessful='logout_successful';
+  static const String noData='no_data';
 
 
 

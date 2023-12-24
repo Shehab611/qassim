@@ -42,18 +42,6 @@ abstract final class AppNavigator {
         AppPathName.kHomeScreen,
       );
 
-  static navigateToProfileScreen(BuildContext context) =>
-      Navigator.popAndPushNamed(
-        context,
-        AppPathName.kProfileScreen,
-      );
-
-  static navigateToCustomerServiceScreen(BuildContext context) =>
-      Navigator.popAndPushNamed(
-        context,
-        AppPathName.kCustomerServiceScreen,
-      );
-
   static navigateToScreen(BuildContext context, String routePath) =>
       Navigator.popAndPushNamed(
         context,

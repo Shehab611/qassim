@@ -15,6 +15,9 @@ import 'package:qassim/features/authentication/presentation/views/login_screen.d
 import 'package:qassim/features/authentication/presentation/views/open_screen.dart';
 import 'package:qassim/features/authentication/presentation/views/otp_screen.dart';
 import 'package:qassim/features/authentication/presentation/views/register_screen.dart';
+import 'package:qassim/features/categories/data/repositories/categories_repo_impl.dart';
+import 'package:qassim/features/categories/presentation/view_model_manger/categories_cubit.dart';
+import 'package:qassim/features/categories/presentation/views/categories_screen.dart';
 import 'package:qassim/features/customer_service/data/repositories/customer_service_repo_impl.dart';
 import 'package:qassim/features/customer_service/presentation/view_model_manger/customer_service_cubit.dart';
 import 'package:qassim/features/customer_service/presentation/views/customer_service_screen.dart';
@@ -55,7 +58,8 @@ abstract final class AppRouter {
     AppPathName.kProfileScreen: (BuildContext context) =>
         MultiBlocProvider(providers: [
           BlocProvider(
-            create: (context) => ProfileCubit(sl<ProfileRepoImpl>())..getUserData(context),
+            create: (context) =>
+                ProfileCubit(sl<ProfileRepoImpl>())..getUserData(context),
           ),
           BlocProvider(
             create: (context) => LogoutCubit(LogoutRepoImpl(sl<DioClient>())),
@@ -67,6 +71,10 @@ abstract final class AppRouter {
               CustomerServiceCubit(sl<CustomerServiceRepoImpl>())
                 ..getUserData(context),
           child: const CustomerServiceScreen(),
+        ),
+    AppPathName.kCategoriesScreen: (BuildContext context) => BlocProvider(
+          create: (context) => CategoriesCubit(sl<CategoriesRepoImpl>())..getCategories(context),
+          child: const CategoriesScreen(),
         ),
   };
 }

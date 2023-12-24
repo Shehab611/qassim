@@ -1,6 +1,6 @@
 abstract final class ApiEndPoints {
   //#region Private variables can not be accessed
-  //#region basic Configurations
+  //#region Basic Configurations
   ///this url used for [LOCALHOST]
 
   static const String _host = 'http://192.168.1.8:8000';
@@ -28,16 +28,23 @@ abstract final class ApiEndPoints {
 
   //#endregion
 
-  //#region update password
+  //#region Update password
   static const String _changePassword = '/updatePassword';
+
+  //#endregion
+
+  //#region Categories
+  static const String _categories = '/divide';
 
   //#endregion
   //#endregion
 
   //#region Getters to use them in the app
-
+  //#region Basic Configurations
   ///Api base url
   static String get baseUrl => _api;
+
+  //#endregion
 
   //#region Authentication
   ///post method
@@ -112,6 +119,14 @@ abstract final class ApiEndPoints {
   ///all of them is String
   static String get changePassword => _changePassword;
 
+//#endregion
+
+  //#region Categories
+  ///get method
+  ///
+  ///no [body] parameters
+  ///
+  static String get categories => _categories;
 //#endregion
 
 //#endregion
