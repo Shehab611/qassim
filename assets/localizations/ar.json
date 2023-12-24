@@ -45,5 +45,6 @@
   "previous_booking": " الحجوزات السابقة",
   "favourite_places": " الأماكن المفضلة",
   "categories": "الأقسام",
-  "language": "اللغة"
+  "language": "اللغة",
+  "logout_successful": "تم تسجيل الخروج بنجاح"
 }

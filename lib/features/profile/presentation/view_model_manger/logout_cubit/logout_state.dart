@@ -9,3 +9,15 @@ class LogoutInitial extends LogoutState {
   @override
   List<Object> get props => [];
 }
+
+class LogoutSuccessful extends LogoutState {
+  const LogoutSuccessful();
+  @override
+  List<Object> get props => [];
+}
+
+class LogoutFailed extends LogoutState {
+  const LogoutFailed();
+  @override
+  List<Object> get props => [];
+}
