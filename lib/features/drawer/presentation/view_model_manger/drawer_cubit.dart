@@ -29,7 +29,7 @@ class DrawerCubit extends Cubit<DrawerState> {
     (
       icon: Icons.bookmark_added_sharp,
       title: AppStrings.previousBooking,
-      routePath: AppPathName.kHomeScreen
+      routePath: AppPathName.kPreviousBookingScreen
     ),
     (
       icon: Icons.miscellaneous_services,
