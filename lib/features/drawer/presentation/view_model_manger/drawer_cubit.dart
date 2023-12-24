@@ -19,7 +19,8 @@ class DrawerCubit extends Cubit<DrawerState> {
   final String _userName =
       sl<SharedPreferences>().get(AppConstants.currentUserName) as String;
 
-  final List<({IconData icon, String title, String routePath})> _tileData = [
+  static const List<({IconData icon, String title, String routePath})>
+      _tileData = [
     (
       icon: Icons.home,
       title: AppStrings.homePage,
@@ -43,7 +44,7 @@ class DrawerCubit extends Cubit<DrawerState> {
     (
       icon: Icons.favorite,
       title: AppStrings.favouritePlaces,
-      routePath: AppPathName.kHomeScreen
+      routePath: AppPathName.kFavouritesScreen
     ),
     (
       icon: Icons.category_outlined,
