@@ -1,9 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qassim/core/components/custom_snack_bar.dart';
 import 'package:qassim/core/utils/api_utils/api_error_handler.dart';
 import 'package:qassim/core/utils/api_utils/api_response.dart';
 import 'package:qassim/core/utils/app_constants/app_constants.dart';
+import 'package:qassim/core/utils/app_constants/app_localization.dart';
+import 'package:qassim/core/utils/app_constants/app_strings.dart';
 import 'package:qassim/core/utils/app_routes_utils/app_navigator.dart';
 import 'package:qassim/features/profile/data/repositories/logout_repo/logout_repo.dart';
 import 'package:qassim/service_locator.dart';
@@ -36,6 +39,14 @@ class LogoutCubit extends Cubit<LogoutState> {
     AppNavigator.navigateToOpenScreen(context);
   }
 
+  void _showSnackBar(BuildContext context) {
+    showCustomSnackBar(
+        AppLocalizations.of(context).translate(AppStrings.logoutSuccessful),
+        context,
+        isError: false,
+        inTop: true);
+  }
+
 //#endregion
 
   //#region Public Methods
@@ -45,14 +56,15 @@ class LogoutCubit extends Cubit<LogoutState> {
         apiResponse.response?.statusCode == 200) {
       _clearUserData();
       if (context.mounted) {
+        _showSnackBar(context);
         _navigateToOpenScreen(context);
       }
 
-      // emit(const ChangePasswordSuccessState());
+      emit(const LogoutSuccessful());
     } else {
       if (context.mounted) {
         ApiChecker.checkApi(apiResponse, context);
-        // emit(const ChangePasswordFailedState());
+        emit(const LogoutFailed());
       }
     }
   }

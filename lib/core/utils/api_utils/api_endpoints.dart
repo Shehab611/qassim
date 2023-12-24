@@ -3,7 +3,7 @@ abstract final class ApiEndPoints {
   //#region basic Configurations
   ///this url used for [LOCALHOST]
 
-  static const String _host = 'http://192.168.1.18:8000';
+  static const String _host = 'http://192.168.1.8:8000';
   static const String _api = '$_host/api';
 
   //#endregion

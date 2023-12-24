@@ -40,6 +40,7 @@ abstract final class AppStrings{
   static const String favouritePlaces='favourite_places';
   static const String categories='categories';
   static const String language='language';
+  static const String logoutSuccessful='logout_successful';
 
 
 

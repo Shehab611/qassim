@@ -45,5 +45,6 @@
   "previous_booking": "Previous Booking",
   "favourite_places": "Favourite Places",
   "categories": "Categories",
-  "language": "Language"
+  "language": "Language",
+  "logout_successful": "You have successfully logged out"
 }
