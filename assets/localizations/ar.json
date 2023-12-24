@@ -47,5 +47,6 @@
   "categories": "الأقسام",
   "language": "اللغة",
   "logout_successful": "تم تسجيل الخروج بنجاح",
-  "no_data": "لم يتم العثور على بيانات"
+  "no_data": "لم يتم العثور على بيانات",
+  "data_updated_success": "تم تحديث البيانات بنجاح"
 }

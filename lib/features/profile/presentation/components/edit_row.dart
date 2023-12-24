@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qassim/core/components/custom_loader.dart';
 import 'package:qassim/core/components/custom_text_field.dart';
 import 'package:qassim/core/utils/design_utils/app_colors.dart';
 
@@ -10,7 +11,9 @@ class TextFieldWithIconButton extends StatelessWidget {
       required this.labelText,
       this.validator,
       this.onPressed,
-      required this.enabled});
+      required this.enabled,
+      this.buttonIcon = Icons.edit,
+      this.isButtonVisible = true});
 
   final TextEditingController controller;
 
@@ -19,6 +22,8 @@ class TextFieldWithIconButton extends StatelessWidget {
   final String? Function(String?)? validator;
   final void Function()? onPressed;
   final bool enabled;
+  final bool isButtonVisible;
+  final IconData buttonIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +39,16 @@ class TextFieldWithIconButton extends StatelessWidget {
             validator: validator,
           ),
         ),
-
-        // Add some space between text field and icon button
-        IconButton(
-          icon: const Icon(Icons.edit,color: AppColors.complementaryColor2,), // Replace this with your desired icon
-          onPressed: onPressed,
+        Visibility(
+          visible: isButtonVisible,
+          replacement: const CustomLoader(),
+          child: IconButton(
+            icon: Icon(
+              buttonIcon,
+              color: AppColors.complementaryColor2,
+            ),
+            onPressed: onPressed,
+          ),
         ),
       ],
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qassim/core/components/custom_snack_bar.dart';
+import 'package:qassim/core/usable_functions/validate_check.dart';
 import 'package:qassim/core/utils/app_constants/app_localization.dart';
 import 'package:qassim/core/utils/app_constants/app_strings.dart';
 import 'package:qassim/core/utils/design_utils/app_sizes.dart';
@@ -47,33 +48,55 @@ class ProfileScreen extends StatelessWidget {
               if (state is ProfileGetUserDataFailedState) {
                 showCustomSnackBar(state.errorMessage, context);
               }
+              if (state is ProfileUpdateUserDataSuccessfulState) {
+                showCustomSnackBar(AppLocalizations.of(context).translate(AppStrings.dataUpdatedSuccess), context,
+                    inTop: true, isError: false);
+              }
             },
             builder: (context, state) {
-              ProfileCubit cubit =ProfileCubit.get(context);
+              ProfileCubit cubit = ProfileCubit.get(context);
               return Form(
+                key: cubit.formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     TextFieldWithIconButton(
-                      controller:cubit.emailController,
-                      enabled: false,
+                      controller: cubit.emailController,
                       icon: Icons.alternate_email,
                       labelText: AppLocalizations.of(context)
                           .translate(AppStrings.email),
+                      buttonIcon: cubit.emailIcon,
+                      validator: (value) =>
+                          ValidateCheck.validateEmail(value, context),
+                      enabled: cubit.emailFieldEnabled,
+                      isButtonVisible: cubit.emailButtonEditButtonVisible,
+                      onPressed: () {
+                        cubit.emailButtonPressed(context);
+                      },
                     ),
                     TextFieldWithIconButton(
                       controller: cubit.nameController,
-                      enabled: false,
                       icon: Icons.person,
                       labelText: AppLocalizations.of(context)
                           .translate(AppStrings.fullName),
+                      enabled: cubit.nameFieldEnabled,
+                      buttonIcon:cubit.nameIcon ,
+                      isButtonVisible: cubit.nameButtonEditButtonVisible,
+                      onPressed: () {
+                        cubit.nameButtonPressed(context);
+                      },
                     ),
                     TextFieldWithIconButton(
                       controller: cubit.phoneNumberController,
-                      enabled: false,
                       icon: Icons.call,
                       labelText: AppLocalizations.of(context)
                           .translate(AppStrings.phoneNumber),
+                      enabled: cubit.phoneFieldEnabled,
+                      isButtonVisible: cubit.phoneButtonEditButtonVisible,
+                      buttonIcon:cubit.phoneIcon,
+                      onPressed: () {
+                        cubit.phoneButtonPressed(context);
+                      },
                     ),
                     ElevatedButton(
                         onPressed: () {
