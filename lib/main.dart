@@ -8,19 +8,24 @@ import 'package:qassim/core/utils/app_routes_utils/app_paths.dart';
 import 'package:qassim/core/utils/app_routes_utils/app_router.dart';
 import 'package:qassim/core/utils/design_utils/app_theme.dart';
 import 'package:qassim/service_locator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initServicesLocator();
   await sl<AppLanguage>().fetchLocale();
+  final bool goHome =
+      sl<SharedPreferences>().getString(AppConstants.currentUserToken) != null;
   runApp(DevicePreview(
     enabled: !kReleaseMode,
-    builder: (context) => const MyApp(),
+    builder: (context) => MyApp(goHome: goHome),
   ));
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  const MyApp({super.key, required this.goHome});
+
+  final bool goHome;
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -44,7 +49,8 @@ class _MyAppState extends State<MyApp> {
       theme: AppTheme.defaultTheme,
       debugShowCheckedModeBanner: false,
       routes: AppRouter.routes,
-      initialRoute: AppPathName.kOpenScreen,
+      initialRoute:
+          widget.goHome ? AppPathName.kHomeScreen : AppPathName.kOpenScreen,
       locale: appLanguage.appLocal,
       supportedLocales: AppConstants.supportedLocales,
       localizationsDelegates: const [
