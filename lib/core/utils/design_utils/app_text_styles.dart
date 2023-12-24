@@ -13,10 +13,15 @@ abstract final class AppTextStyles {
       fontWeight: FontWeight.w600,
       color: AppColors.complementaryColor3);
 
-  static const drawerTileTextStyle = TextStyle(
+  static const tileTextStyle = TextStyle(
       fontSize: AppSizes.fontSizeLarge,
       fontWeight: FontWeight.w600,
       color: AppColors.complementaryColor3);
+
+  static final tileSubTitleTextStyle = TextStyle(
+      fontSize: AppSizes.fontSizeDefault,
+      fontWeight: FontWeight.w600,
+      color: AppColors.complementaryColor3.withOpacity(.6));
 
   static const appBarTitleTextStyle = TextStyle(
       color: AppColors.lighterShadeColor1,

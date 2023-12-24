@@ -21,9 +21,8 @@ class ListTileComponent extends StatelessWidget {
         trailing: const Icon(Icons.navigate_next),
         title: Text(AppLocalizations.of(context).translate(titleKey)),
         onTap: () {
-          if (ModalRoute.of(context)!.settings.name! == routeName) {
-            Navigator.pop(context);
-          } else {
+          Navigator.pop(context);
+          if (ModalRoute.of(context)!.settings.name! != routeName) {
             AppNavigator.navigateToScreen(context, routeName);
           }
         },

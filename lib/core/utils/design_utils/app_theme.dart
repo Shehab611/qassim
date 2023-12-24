@@ -7,19 +7,17 @@ abstract final class AppTheme{
       scaffoldBackgroundColor: AppColors.primaryColor,
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.elevatedButtonBackground,
-          )),
-      listTileTheme: const ListTileThemeData(
+        backgroundColor: AppColors.elevatedButtonBackground,
+      )),
+      listTileTheme: ListTileThemeData(
+          subtitleTextStyle: AppTextStyles.tileSubTitleTextStyle,
           iconColor: AppColors.complementaryColor3,
-          titleTextStyle: AppTextStyles.drawerTileTextStyle),
+          titleTextStyle: AppTextStyles.tileTextStyle),
       appBarTheme: const AppBarTheme(
-        iconTheme: IconThemeData(color: AppColors.primaryColor),
-        backgroundColor: AppColors.complementaryColor2,
-        titleTextStyle: AppTextStyles.appBarTitleTextStyle
-      ),
-    drawerTheme: const DrawerThemeData(
-      backgroundColor: AppColors.complementaryColor1,
-
-    )
-  );
+          iconTheme: IconThemeData(color: AppColors.primaryColor),
+          backgroundColor: AppColors.complementaryColor2,
+          titleTextStyle: AppTextStyles.appBarTitleTextStyle),
+      drawerTheme: const DrawerThemeData(
+        backgroundColor: AppColors.complementaryColor1,
+      ));
 }
