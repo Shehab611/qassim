@@ -20,12 +20,12 @@ class CategoryItem extends StatelessWidget {
     return Container(
       decoration:BoxDecoration(
           color: AppColors.complementaryColor1,
-          borderRadius: BorderRadius.circular(24)
+          borderRadius: BorderRadius.circular(25)
       ),
       child: Column(
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(25),
             clipBehavior: Clip.antiAlias,
             child: CachedNetworkImage(
               imageUrl: imagePath,
