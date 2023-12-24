@@ -16,5 +16,10 @@ abstract final class AppTheme{
         iconTheme: IconThemeData(color: AppColors.primaryColor),
         backgroundColor: AppColors.complementaryColor2,
         titleTextStyle: AppTextStyles.appBarTitleTextStyle
-      ));
+      ),
+    drawerTheme: const DrawerThemeData(
+      backgroundColor: AppColors.complementaryColor1,
+
+    )
+  );
 }

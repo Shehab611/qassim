@@ -19,12 +19,17 @@ abstract final class AppTextStyles {
       color: AppColors.complementaryColor3);
 
   static const appBarTitleTextStyle = TextStyle(
-      color: AppColors.elevatedButtonTextColor,
+      color: AppColors.lighterShadeColor1,
       fontSize: AppSizes.fontSizeExtraLarge,
       fontWeight: FontWeight.w600);
 
   static const defaultTextStyle = TextStyle(
-      color: AppColors.elevatedButtonTextColor,
+      color: AppColors.lighterShadeColor1,
+      fontSize: AppSizes.fontSizeExtraLarge,
+      fontWeight: FontWeight.w600);
+
+  static const secondaryTextStyle = TextStyle(
+      color: AppColors.complementaryColor2,
       fontSize: AppSizes.fontSizeExtraLarge,
       fontWeight: FontWeight.w600);
 

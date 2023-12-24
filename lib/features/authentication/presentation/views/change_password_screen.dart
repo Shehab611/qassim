@@ -29,7 +29,7 @@ class ChangePasswordScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Lottie.asset(
-                      AppImages.resetPasswordAnimation,
+                      AppAnimatedImages.resetPasswordAnimation,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * .38,

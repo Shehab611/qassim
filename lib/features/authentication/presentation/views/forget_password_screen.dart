@@ -26,7 +26,7 @@ class ForgetPasswordScreen extends StatelessWidget {
               return Column(
                 children: [
                   Lottie.asset(
-                    AppImages.resetPasswordAnimation,
+                    AppAnimatedImages.resetPasswordAnimation,
                   ),
                   Form(
                     key: cubit.formKey,

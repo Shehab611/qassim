@@ -21,7 +21,7 @@ class AnimatedOtpTextWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Lottie.asset(AppImages.otpAnimation,
+          Lottie.asset(AppAnimatedImages.otpAnimation,
               height: MediaQuery.of(context).size.height * .3),
           Text(
             AppLocalizations.of(context).translate(AppStrings.emailVerification),

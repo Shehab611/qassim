@@ -48,7 +48,7 @@ class DrawerCubit extends Cubit<DrawerState> {
     (
       icon: Icons.category_outlined,
       title: AppStrings.categories,
-      routePath: AppPathName.kHomeScreen
+      routePath: AppPathName.kCategoriesScreen
     ),
   ];
   bool _switchValue =

@@ -20,7 +20,6 @@ class AppDrawer extends StatelessWidget {
         builder: (context, state) {
           DrawerCubit cubit = DrawerCubit.get(context);
           return Drawer(
-            backgroundColor: AppColors.complementaryColor1,
             child: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.symmetric(
