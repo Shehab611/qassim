@@ -22,34 +22,34 @@ class FavouriteScreen extends StatelessWidget {
       ),
       body: BlocBuilder<FavouritesCubit, FavouritesState>(
         builder: (context, state) {
+          FavouritesCubit cubit = FavouritesCubit.get(context);
           if (state is FavouritesGetDataFailedState) {
             return const NoDataScreen();
-          } else if (state is FavouritesGetDataSuccessfulState) {
-            FavouritesCubit cubit = FavouritesCubit.get(context);
-            return ListView.builder(
-              itemCount: state.model.allPlace.length,
-              itemBuilder: (context, index) => Dismissible(
-                key: ValueKey(state.model.allPlace[index].id),
-                background: Container(
-                  color: Colors.red,
-                  child: const Padding(
-                    padding: EdgeInsets.all(15),
-                    child: Icon(Icons.delete, color: Colors.white),
-                  ),
-                ),
-                confirmDismiss: (direction) async {
-                  cubit.removeFromFavouritesPlaces(context, index);
-                  return true;
-                },
-                direction: DismissDirection.endToStart,
-                child: FavouriteItem(
-                  imagePath: state.model.allPlace[index].images,
-                  title: state.model.allPlace[index].name,
+          } else if (state is FavouritesLoadingState) {
+            return const CustomLoader();
+          }
+          return ListView.builder(
+            itemCount: cubit.favouritePlaces.allPlace.length,
+            itemBuilder: (context, index) => Dismissible(
+              key: ValueKey(cubit.favouritePlaces.allPlace[index].id),
+              background: Container(
+                color: Colors.red,
+                child: const Padding(
+                  padding: EdgeInsets.all(15),
+                  child: Icon(Icons.delete, color: Colors.white),
                 ),
               ),
-            );
-          }
-          return const CustomLoader();
+              confirmDismiss: (direction) async {
+                cubit.removeFromFavouritesPlaces(context, index);
+                return true;
+              },
+              direction: DismissDirection.endToStart,
+              child: FavouriteItem(
+                imagePath: cubit.favouritePlaces.allPlace[index].images,
+                title: cubit.favouritePlaces.allPlace[index].name,
+              ),
+            ),
+          );
         },
       ),
     );

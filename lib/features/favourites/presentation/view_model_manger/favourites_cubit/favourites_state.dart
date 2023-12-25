@@ -19,12 +19,10 @@ class FavouritesLoadingState extends FavouritesState {
 }
 
 class FavouritesGetDataSuccessfulState extends FavouritesState {
-  const FavouritesGetDataSuccessfulState(this.model);
-
-  final FavouritesModel model;
+  const FavouritesGetDataSuccessfulState();
 
   @override
-  List<Object> get props => [model];
+  List<Object> get props => [];
 }
 
 class FavouritesGetDataFailedState extends FavouritesState {

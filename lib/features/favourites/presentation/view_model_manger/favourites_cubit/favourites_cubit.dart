@@ -24,6 +24,10 @@ class FavouritesCubit extends Cubit<FavouritesState> {
 
   //#endregion
 
+  //#region Getters
+  FavouritesModel get favouritePlaces => _favouritesModel;
+
+  //#endregion
   //#region Public Methods
   Future<void> getFavouritesPlaces(BuildContext context) async {
     emit(const FavouritesLoadingState());
@@ -32,7 +36,7 @@ class FavouritesCubit extends Cubit<FavouritesState> {
     if (apiResponse.response?.statusCode != null &&
         apiResponse.response?.statusCode == 200) {
       _favouritesModel = FavouritesModel.fromJson(apiResponse.response!.data);
-      emit(FavouritesGetDataSuccessfulState(_favouritesModel));
+      emit(const FavouritesGetDataSuccessfulState());
     } else {
       if (context.mounted) {
         ApiChecker.checkApi(apiResponse, context);
@@ -43,7 +47,7 @@ class FavouritesCubit extends Cubit<FavouritesState> {
 
   Future<void> removeFromFavouritesPlaces(
       BuildContext context, int index) async {
-    emit(const FavouritesLoadingState());
+    // emit(const FavouritesLoadingState());
     ApiResponse apiResponse = await _favouritesRepo.removeFromFavourites(
         _favouritesModel.allPlace[index].id.toString(), _userId.toString());
     if (apiResponse.response?.statusCode != null &&
