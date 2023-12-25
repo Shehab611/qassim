@@ -59,7 +59,11 @@ abstract final class ApiErrorHandler {
                 case 503:
                 case 429:
                   if (error.response!.data['errors'] != null) {
-                    errorDescription = error.response!.data['errors'][0];
+                    if (error.response!.data['errors'] is List) {
+                      errorDescription = error.response!.data['errors'][0];
+                    } else {
+                      errorDescription = error.response!.data['errors'];
+                    }
                   } else {
                     errorDescription = error.response!.data['message'];
                   }
@@ -105,7 +109,6 @@ abstract final class ApiChecker {
       String errorResponse = apiResponse.error;
       if (errorResponse.contains('account not exist') ||
           errorResponse.contains('email not correct') ||
-          errorResponse.contains('Email not found') ||
           errorResponse.contains('not found')) {
         showCustomSnackBar(
             AppLocalizations.of(context).translate(AppStrings.accountNotExit),
