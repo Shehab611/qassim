@@ -27,7 +27,9 @@ import 'package:qassim/features/favourites/presentation/view_model_manger/favour
 import 'package:qassim/features/home/data/repositories/all_places/all_places_repo_impl.dart';
 import 'package:qassim/features/home/presentation/view_model_manger/all_places_cubit/all_places_cubit.dart';
 import 'package:qassim/features/home/presentation/views/home_screen.dart';
+import 'package:qassim/features/previous_booking/data/repositories/previous_booking_repo_impl.dart';
 import 'package:qassim/features/previous_booking/presentation/view/previous_booking_screen.dart';
+import 'package:qassim/features/previous_booking/presentation/view_model_manger/previous_booking/previous_booking_cubit.dart';
 import 'package:qassim/features/profile/data/repositories/logout_repo/logout_repo_impl.dart';
 import 'package:qassim/features/profile/data/repositories/profile_data_repo/profile_data_repo_impl.dart';
 import 'package:qassim/features/profile/presentation/view_model_manger/logout_cubit/logout_cubit.dart';
@@ -97,6 +99,10 @@ abstract final class AppRouter {
             FavouritesCubit(sl<FavouritesRepoImpl>())
               ..getFavouritesPlaces(context),
             child: const FavouriteScreen()),
-    AppPathName.kPreviousBookingScreen: (BuildContext context) => const PreviousBookingScreen(),
+    AppPathName.kPreviousBookingScreen: (BuildContext context) =>
+        BlocProvider(
+          create: (context) => PreviousBookingCubit(sl<PreviousBookingRepoImpl>()),
+          child: const PreviousBookingScreen(),
+        ),
   };
 }
