@@ -43,7 +43,9 @@ class _MyAppState extends State<MyApp> {
       theme: AppTheme.defaultTheme,
       debugShowCheckedModeBanner: false,
       routes: AppRouter.routes,
-      initialRoute: widget.goHome ? AppPathName.kHomeScreen : AppPathName.kOpenScreen,
+      initialRoute: AppPathName.kPlaceDetailsScreen
+      //widget.goHome ? AppPathName.kHomeScreen : AppPathName.kOpenScreen
+      ,
       locale: appLanguage.appLocal,
       supportedLocales: AppConstants.supportedLocales,
       localizationsDelegates: const [
