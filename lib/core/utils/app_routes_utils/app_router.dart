@@ -82,7 +82,8 @@ abstract final class AppRouter {
           child: const CategoriesScreen(),
         ),
     AppPathName.kFavouritesScreen: (BuildContext context) => BlocProvider(
-        create: (context) => FavouritesCubit(sl<FavouritesRepoImpl>()),
+        create: (context) => FavouritesCubit(sl<FavouritesRepoImpl>())
+          ..getFavouritesPlaces(context),
         child: const FavouriteScreen()),
 
     AppPathName.kPreviousBookingScreen: (BuildContext context) =>
