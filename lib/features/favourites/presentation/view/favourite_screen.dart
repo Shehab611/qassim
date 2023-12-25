@@ -28,28 +28,32 @@ class FavouriteScreen extends StatelessWidget {
           } else if (state is FavouritesLoadingState) {
             return const CustomLoader();
           }
-          return ListView.builder(
-            itemCount: cubit.favouritePlaces.allPlace.length,
-            itemBuilder: (context, index) => Dismissible(
-              key: ValueKey(cubit.favouritePlaces.allPlace[index].id),
-              background: Container(
-                color: Colors.red,
-                child: const Padding(
-                  padding: EdgeInsets.all(15),
-                  child: Icon(Icons.delete, color: Colors.white),
+          if (cubit.favouritePlaces.allPlace.isNotEmpty) {
+            return ListView.builder(
+              itemCount: cubit.favouritePlaces.allPlace.length,
+              itemBuilder: (context, index) => Dismissible(
+                key: ValueKey(cubit.favouritePlaces.allPlace[index].id),
+                background: Container(
+                  color: Colors.red,
+                  child: const Padding(
+                    padding: EdgeInsets.all(15),
+                    child: Icon(Icons.delete, color: Colors.white),
+                  ),
+                ),
+                confirmDismiss: (direction) async {
+                  cubit.removeFromFavouritesPlaces(context, index);
+                  return true;
+                },
+                direction: DismissDirection.endToStart,
+                child: FavouriteItem(
+                  imagePath: cubit.favouritePlaces.allPlace[index].images,
+                  title: cubit.favouritePlaces.allPlace[index].name,
                 ),
               ),
-              confirmDismiss: (direction) async {
-                cubit.removeFromFavouritesPlaces(context, index);
-                return true;
-              },
-              direction: DismissDirection.endToStart,
-              child: FavouriteItem(
-                imagePath: cubit.favouritePlaces.allPlace[index].images,
-                title: cubit.favouritePlaces.allPlace[index].name,
-              ),
-            ),
-          );
+            );
+          } else {
+            return const NoDataScreen();
+          }
         },
       ),
     );

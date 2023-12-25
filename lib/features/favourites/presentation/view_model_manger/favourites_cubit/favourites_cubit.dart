@@ -47,12 +47,11 @@ class FavouritesCubit extends Cubit<FavouritesState> {
 
   Future<void> removeFromFavouritesPlaces(
       BuildContext context, int index) async {
-    // emit(const FavouritesLoadingState());
+    AllPlace removePlace = _favouritesModel.allPlace.removeAt(index);
     ApiResponse apiResponse = await _favouritesRepo.removeFromFavourites(
-        _favouritesModel.allPlace[index].id.toString(), _userId.toString());
+        removePlace.id.toString(), _userId.toString());
     if (apiResponse.response?.statusCode != null &&
         apiResponse.response?.statusCode == 200) {
-      _favouritesModel.allPlace.removeAt(index);
       emit(const FavouritesRemovePlaceSuccessful());
     } else {
       if (context.mounted) {
