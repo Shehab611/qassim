@@ -53,7 +53,7 @@ abstract final class AppRouter {
           child: const RegisterScreen(),
         ),
     AppPathName.kForgetPasswordScreen: (BuildContext context) => BlocProvider(
-      create: (context) => ForgetPasswordCubit(ForgetPasswordRepoImpl(sl<DioClient>())),
+          create: (context) => ForgetPasswordCubit(ForgetPasswordRepoImpl(sl<DioClient>())),
           child: const ForgetPasswordScreen(),
         ),
     AppPathName.kChangePasswordScreen: (BuildContext context) => BlocProvider(
@@ -101,7 +101,9 @@ abstract final class AppRouter {
             child: const FavouriteScreen()),
     AppPathName.kPreviousBookingScreen: (BuildContext context) =>
         BlocProvider(
-          create: (context) => PreviousBookingCubit(sl<PreviousBookingRepoImpl>()),
+          create: (context) =>
+          PreviousBookingCubit(sl<PreviousBookingRepoImpl>())
+            ..getPreviousBooking(context),
           child: const PreviousBookingScreen(),
         ),
   };
