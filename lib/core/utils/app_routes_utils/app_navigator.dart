@@ -31,19 +31,18 @@ abstract final class AppNavigator {
         AppPathName.kForgetPasswordScreen,
       );
 
-  static navigateToChangePasswordScreen(
-          BuildContext context, String emailAddress) =>
-      Navigator.popAndPushNamed(context, AppPathName.kChangePasswordScreen,
-          arguments: emailAddress);
+  static navigateToChangePasswordScreen(BuildContext context, String emailAddress) =>
+      Navigator.popAndPushNamed(context, AppPathName.kChangePasswordScreen, arguments: emailAddress);
 
-  static navigateToHomeScreen(BuildContext context) =>
-      Navigator.popAndPushNamed(
+  static navigateToHomeScreen(BuildContext context) => Navigator.popAndPushNamed(
         context,
         AppPathName.kHomeScreen,
       );
 
-  static navigateToScreen(BuildContext context, String routePath) =>
-      Navigator.popAndPushNamed(
+  static navigateToPlaceDetailsScreen(BuildContext context, String placeId) =>
+      Navigator.pushNamed(context, AppPathName.kPlaceDetailsScreen, arguments: placeId);
+
+  static navigateToScreen(BuildContext context, String routePath) => Navigator.popAndPushNamed(
         context,
         routePath,
       );
