@@ -26,18 +26,21 @@ class CategoriesScreen extends StatelessWidget {
         child: BlocBuilder<CategoriesCubit, CategoriesState>(
           builder: (context, state) {
             if (state is CategoriesGetDataSuccessfulState) {
-              return GridView.builder(
-                  itemCount: state.model.data.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 1,
-                      mainAxisSpacing: 15,
-                      crossAxisSpacing: 8),
-                  itemBuilder: (context, index) => CategoryItem(
-                        height: 112,
-                        imagePath: state.model.data[index].image,
-                        title: state.model.data[index].name,
-                      ));
+              if (state.model.data.isNotEmpty) {
+                return GridView.builder(
+                    itemCount: state.model.data.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 1,
+                            mainAxisSpacing: 15,
+                            crossAxisSpacing: 8),
+                    itemBuilder: (context, index) => CategoryItem(
+                          height: 112,
+                          imagePath: state.model.data[index].image,
+                          title: state.model.data[index].name,
+                        ));
+              }
             }
             if (state is CategoriesGetDataLoadingState) {
               return const CustomLoader();

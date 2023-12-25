@@ -21,7 +21,9 @@ import 'package:qassim/features/categories/presentation/views/categories_screen.
 import 'package:qassim/features/customer_service/data/repositories/customer_service_repo_impl.dart';
 import 'package:qassim/features/customer_service/presentation/view_model_manger/customer_service_cubit.dart';
 import 'package:qassim/features/customer_service/presentation/views/customer_service_screen.dart';
+import 'package:qassim/features/favourites/data/repositories/favourites_repo_impl.dart';
 import 'package:qassim/features/favourites/presentation/view/favourite_screen.dart';
+import 'package:qassim/features/favourites/presentation/view_model_manger/favourites_cubit/favourites_cubit.dart';
 import 'package:qassim/features/home/presentation/views/home_screen.dart';
 import 'package:qassim/features/previous_booking/presentation/view/previous_booking_screen.dart';
 import 'package:qassim/features/profile/data/repositories/logout_repo/logout_repo_impl.dart';
@@ -79,8 +81,11 @@ abstract final class AppRouter {
               CategoriesCubit(sl<CategoriesRepoImpl>())..getCategories(context),
           child: const CategoriesScreen(),
         ),
-    AppPathName.kFavouritesScreen: (BuildContext context) =>
-        const FavouriteScreen(),
+    AppPathName.kFavouritesScreen: (BuildContext context) => BlocProvider(
+        create: (context) => FavouritesCubit(sl<FavouritesRepoImpl>())
+          ..getFavouritesPlaces(context),
+        child: const FavouriteScreen()),
+
     AppPathName.kPreviousBookingScreen: (BuildContext context) =>
         const PreviousBookingScreen(),
   };

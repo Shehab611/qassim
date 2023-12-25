@@ -37,8 +37,16 @@ abstract final class ApiEndPoints {
   static const String _updateProfile = '/updateProflie';
 
   //#endregion
+
   //#region Categories
   static const String _categories = '/divide';
+
+  //#endregion
+
+  //#region Favourites
+  static const String _getFavourites = '/favorite';
+  static const String _addToFavourites = '/Addfavorite';
+  static const String _removeFromFavourites = '/removeFavorite';
 
   //#endregion
   //#endregion
@@ -145,6 +153,38 @@ abstract final class ApiEndPoints {
   ///
   ///all of them are string
   static String get updateProfile => _updateProfile;
+
 //#endregion
+
+  //#region Favourites
+  ///post method
+  ///
+  ///takes 1  [body] parameters
+  ///
+  ///Required [id]
+  ///
+  ///is string
+  static String get getFavourites => _getFavourites;
+
+  ///post method
+  ///
+  ///takes 2  [body] parameters
+  ///
+  ///Required [id] - [place_id]
+  ///
+  ///both of them is string
+  static String get addToFavourites => _addToFavourites;
+
+  ///post method
+  ///
+  ///takes 2  [body] parameters
+  ///
+  ///Required [id] - [place_id]
+  ///
+  ///both of them is string
+  static String get removeFromFavourites => _removeFromFavourites;
+
+//#endregion
+
 //#endregion
 }
