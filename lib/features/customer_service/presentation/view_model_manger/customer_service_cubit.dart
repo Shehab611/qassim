@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qassim/core/utils/api_utils/api_error_handler.dart';
 import 'package:qassim/core/utils/api_utils/api_response.dart';
+import 'package:qassim/core/utils/app_constants/app_constants.dart';
 import 'package:qassim/features/customer_service/data/models/customer_service_model.dart';
 import 'package:qassim/features/customer_service/data/repositories/customer_service_repo.dart';
+import 'package:qassim/service_locator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'customer_service_state.dart';
 
@@ -72,7 +75,8 @@ class CustomerServiceCubit extends Cubit<CustomerServiceState> {
 
   Future<void> getUserData(BuildContext context) async {
     emit(const CustomerServiceUserDataLoadingState());
-    var data = await _customerServiceRepo.getUserData();
+    int userId = sl<SharedPreferences>().getInt(AppConstants.currentUserId)!;
+    var data = await _customerServiceRepo.getUserData(userId);
     if (data.success) {
       _userEmail = data.user!.email;
       emit(const CustomerServiceUserDataSuccessState());

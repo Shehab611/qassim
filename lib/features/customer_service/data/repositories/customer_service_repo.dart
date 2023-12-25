@@ -6,5 +6,6 @@ abstract interface class CustomerServiceRepo {
   Future<ApiResponse> sendFeedBack(
       {required CustomerServiceRequestModel requestModel});
 
-  Future<({User? user, bool success, String? errorMessage})> getUserData();
+  Future<({User? user, bool success, String? errorMessage})> getUserData(
+      int userId);
 }

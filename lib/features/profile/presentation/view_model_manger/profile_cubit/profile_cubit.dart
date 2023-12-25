@@ -131,7 +131,8 @@ class ProfileCubit extends Cubit<ProfileState> {
   //#region Public Methods
   Future<void> getUserData(BuildContext context) async {
     emit(const ProfileGetUserDataLoadingState());
-    var data = await _profileRepo.getUserData();
+    int userId = sl<SharedPreferences>().getInt(AppConstants.currentUserId)!;
+    var data = await _profileRepo.getUserData(userId);
     if (data.success) {
       _nameController.text = data.user!.name;
       _emailController.text = data.user!.email;
