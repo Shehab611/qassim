@@ -1,31 +1,16 @@
 class FavouritesModel {
-  late List<List<AllPlace>> allPlace;
+  final List<AllPlace> allPlace;
 
   FavouritesModel({required this.allPlace});
 
   factory FavouritesModel.fromJson(Map<String, dynamic> json) {
-    List<List<AllPlace>> allPlaceList = [];
-
-    if (json['allPlace'] != null) {
-      json['allPlace'].forEach((v) {
-        List<AllPlace> tempList = [];
-        v.forEach((item) {
-          tempList.add(AllPlace.fromJson(item));
-        });
-        allPlaceList.add(tempList);
-      });
-    }
-
+    List<AllPlace> allPlaceList = [];
+    allPlaceList = json['allPlace']
+            ?.map<AllPlace>(
+                (item) => AllPlace.fromJson(item[0] as Map<String, dynamic>))
+            ?.toList() ??
+        [];
     return FavouritesModel(allPlace: allPlaceList);
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (allPlace.isNotEmpty) {
-      data['allPlace'] =
-          allPlace.map((v) => v.map((item) => item.toJson()).toList()).toList();
-    }
-    return data;
   }
 }
 
