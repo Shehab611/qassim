@@ -49,6 +49,20 @@ abstract final class ApiEndPoints {
   static const String _removeFromFavourites = '/removeFavorite';
 
   //#endregion
+
+  //#region Places
+  static const String _allPlaces = '/allPlace';
+
+  static const String _placeDetail = '/detailsPlace';
+
+  //#endregion
+
+  //#region Booking
+  static const String _getAllBooking = '/reservationsShow';
+
+  static const String _bookPlace = '/addReservations';
+
+  //#endregion
   //#endregion
 
   //#region Getters to use them in the app
@@ -183,6 +197,44 @@ abstract final class ApiEndPoints {
   ///
   ///both of them is string
   static String get removeFromFavourites => _removeFromFavourites;
+
+//#endregion
+
+  //#region Places
+
+  ///get method
+  ///
+  static String get allPlaces => _allPlaces;
+
+  ///post method
+  ///
+  ///takes 1 [body] parameters
+  ///
+  ///Required [id_place]
+  ///
+  ///both of them is string
+  static String get placeDetail => _placeDetail;
+
+  //#endregion
+
+  //#region Booking
+  ///post method
+  ///
+  ///takes 1 [body] parameters
+  ///
+  ///Required [id_user]
+  ///
+  ///is string
+  static String get getAllBooking => _getAllBooking;
+
+  ///post method
+  ///
+  ///takes 3 [body] parameters
+  ///
+  ///required [user_id] - [id] - [timeVisit]
+  ///
+  ///all of them are string
+  static String get bookPlace => _bookPlace;
 
 //#endregion
 
