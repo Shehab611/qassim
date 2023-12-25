@@ -10,17 +10,21 @@ part 'categories_state.dart';
 
 class CategoriesCubit extends Cubit<CategoriesState> {
   CategoriesCubit(this._categoriesRepo) : super(const CategoriesInitial());
-  final CategoriesRepo _categoriesRepo;
 
   static CategoriesCubit get(BuildContext context) => BlocProvider.of(context);
+
+  //#region Private Variables
+  final CategoriesRepo _categoriesRepo;
+
+  //#endregion
+
+  //#region Public Methods
 
   Future<void> getCategories(BuildContext context) async {
     emit(const CategoriesGetDataLoadingState());
     ApiResponse apiResponse = await _categoriesRepo.getCategories();
-    if (apiResponse.response?.statusCode != null &&
-        apiResponse.response?.statusCode == 200) {
-      emit(CategoriesGetDataSuccessfulState(
-          CategoriesDataModel.fromJson(apiResponse.response!.data)));
+    if (apiResponse.response?.statusCode != null && apiResponse.response?.statusCode == 200) {
+      emit(CategoriesGetDataSuccessfulState(CategoriesDataModel.fromJson(apiResponse.response!.data)));
     } else {
       if (context.mounted) {
         ApiChecker.checkApi(apiResponse, context);
@@ -28,4 +32,5 @@ class CategoriesCubit extends Cubit<CategoriesState> {
       }
     }
   }
+//#endregion
 }

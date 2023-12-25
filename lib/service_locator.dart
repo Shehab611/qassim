@@ -9,6 +9,7 @@ import 'package:qassim/core/utils/network_info.dart';
 import 'package:qassim/features/categories/data/repositories/categories_repo_impl.dart';
 import 'package:qassim/features/customer_service/data/repositories/customer_service_repo_impl.dart';
 import 'package:qassim/features/favourites/data/repositories/favourites_repo_impl.dart';
+import 'package:qassim/features/home/data/repositories/all_places/all_places_repo_impl.dart';
 import 'package:qassim/features/profile/data/repositories/change_password_repo/change_password_repo_impl.dart';
 import 'package:qassim/features/profile/data/repositories/profile_data_repo/profile_data_repo_impl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,16 +28,12 @@ Future<void> initServicesLocator() async {
   //#endregion
 
   //#region Repos
-  sl.registerLazySingleton<CustomerServiceRepoImpl>(
-      () => CustomerServiceRepoImpl(sl<DioClient>()));
-  sl.registerLazySingleton<ChangePasswordRepoImpl>(
-      () => ChangePasswordRepoImpl(sl<DioClient>()));
-  sl.registerLazySingleton<ProfileRepoImpl>(
-      () => ProfileRepoImpl(sl<DioClient>()));
-  sl.registerLazySingleton<CategoriesRepoImpl>(
-      () => CategoriesRepoImpl(sl<DioClient>()));
-  sl.registerLazySingleton<FavouritesRepoImpl>(
-      () => FavouritesRepoImpl(sl<DioClient>()));
+  sl.registerLazySingleton<CustomerServiceRepoImpl>(() => CustomerServiceRepoImpl(sl<DioClient>()));
+  sl.registerLazySingleton<ChangePasswordRepoImpl>(() => ChangePasswordRepoImpl(sl<DioClient>()));
+  sl.registerLazySingleton<ProfileRepoImpl>(() => ProfileRepoImpl(sl<DioClient>()));
+  sl.registerLazySingleton<CategoriesRepoImpl>(() => CategoriesRepoImpl(sl<DioClient>()));
+  sl.registerLazySingleton<FavouritesRepoImpl>(() => FavouritesRepoImpl(sl<DioClient>()));
+  sl.registerLazySingleton<AllPlacesRepoImpl>(() => AllPlacesRepoImpl(sl<DioClient>()));
   //#endregion
 
   //#region External
