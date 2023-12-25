@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:qassim/core/utils/design_utils/app_sizes.dart';
 
 class PlaceItem extends StatelessWidget {
-  const PlaceItem({super.key, required this.imagePath, required this.title, required this.visitDate});
+  const PlaceItem({super.key, required this.imagePath, required this.title, required this.category});
 
-  final String imagePath, title, visitDate;
+  final String imagePath, title, category;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
         subtitle: Text(
-          visitDate,
+          category,
         ),
         contentPadding: const EdgeInsets.all(AppSizes.paddingSizeExtraSmall),
         leading: ClipRRect(
