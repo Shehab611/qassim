@@ -43,6 +43,7 @@ class PlaceDetailsScreen extends StatelessWidget {
                       onPressed: () {
                         showModalBottomSheet(
                           context: context,
+                          isScrollControlled: true,
                           builder: (context) {
                             return const CompleteBookingSheet();
                           },

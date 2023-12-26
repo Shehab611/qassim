@@ -10,7 +10,7 @@ class CompleteBookingSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).viewInsets.bottom,
+      height: MediaQuery.of(context).viewInsets.bottom + 280,
       decoration: const BoxDecoration(
           color: AppColors.darkerShadeColor1, borderRadius: BorderRadius.vertical(top: Radius.circular(28))),
       width: double.infinity,
