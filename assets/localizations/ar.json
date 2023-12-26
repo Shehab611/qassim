@@ -49,6 +49,7 @@
   "logout_successful": "تم تسجيل الخروج بنجاح",
   "no_data": "لم يتم العثور على بيانات",
   "data_updated_success": "تم تحديث البيانات بنجاح",
+  "added_to_favourites": "تم إضافة المكان الي المفضلة بنجاح",
   "add_to_favourites": "إضافة الي المفضلة",
   "booking": "الحجز",
   "type": "النوع"

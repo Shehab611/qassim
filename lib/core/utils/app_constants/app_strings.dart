@@ -44,6 +44,7 @@ abstract final class AppStrings{
   static const String noData = 'no_data';
   static const String dataUpdatedSuccess = 'data_updated_success';
   static const String addToFavourites = 'add_to_favourites';
+  static const String addedToFavourites = 'added_to_favourites';
   static const String booking = 'booking';
   static const String type = 'type';
 

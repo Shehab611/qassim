@@ -50,6 +50,7 @@
   "no_data": "No Data is Found",
   "data_updated_success": "The data has been updated successfully",
   "add_to_favourites": "Add to favorites",
+  "added_to_favourites": "Place Added To Favourite successfully",
   "booking": "Booking",
   "type": "Type"
 }
