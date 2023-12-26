@@ -63,7 +63,6 @@ class FavouritesCubit extends Cubit<FavouritesState> {
         emit(const FavouritesRemovePlaceFailed());
       }
     }
-    print('lenght ${_favouritesModel.allPlace.length}');
   }
 //#endregion
 }
