@@ -40,8 +40,6 @@ class PlaceDetailsScreen extends StatelessWidget {
                       )),
                   ElevatedButton(
                       onPressed: () {
-                        BlocProvider.of<PlaceDetailsCubit>(context)
-                            .navigateToCompleteBookingScreen(context, placeId);
                       },
                       child: Text(
                         AppLocalizations.of(context).translate(AppStrings.booking),
