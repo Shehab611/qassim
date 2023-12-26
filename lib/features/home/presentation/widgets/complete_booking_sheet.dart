@@ -8,12 +8,11 @@ import 'package:qassim/core/utils/design_utils/app_text_styles.dart';
 class CompleteBookingSheet extends StatelessWidget {
   const CompleteBookingSheet({super.key});
 
-  static String _selectedTime = 'Morning';
-
   @override
   Widget build(BuildContext context) {
+    String _selectedTime = AppLocalizations.of(context).translate(AppStrings.morningTime);
     return Container(
-      height: MediaQuery.of(context).viewInsets.bottom + 200,
+      height: MediaQuery.of(context).viewInsets.bottom + 220,
       decoration: const BoxDecoration(
           color: AppColors.darkerShadeColor1, borderRadius: BorderRadius.vertical(top: Radius.circular(28))),
       width: double.infinity,
@@ -26,7 +25,7 @@ class CompleteBookingSheet extends StatelessWidget {
               width: 40,
               height: 5,
               decoration:
-                  BoxDecoration(color: AppColors.darkerShadeColor6, borderRadius: BorderRadius.circular(20)),
+              BoxDecoration(color: AppColors.darkerShadeColor6, borderRadius: BorderRadius.circular(20)),
             ),
             const SizedBox(
               height: 8,
@@ -59,8 +58,7 @@ class CompleteBookingSheet extends StatelessWidget {
                   items: <String>[
                     AppLocalizations.of(context).translate(AppStrings.morningTime),
                     AppLocalizations.of(context).translate(AppStrings.eveningTime)
-                  ] // Your options
-                      .map<DropdownMenuItem<String>>((String value) {
+                  ].map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
                       child: Text(value),
