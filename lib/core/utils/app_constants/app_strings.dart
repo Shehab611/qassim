@@ -13,6 +13,7 @@ abstract final class AppStrings {
   static const String logoutSuccessful = 'logout_successful';
   static const String dataUpdatedSuccess = 'data_updated_success';
   static const String addedToFavourites = 'added_to_favourites';
+  static const String removedFromFavourites = 'removed_from_favourites';
   static const String bookedSuccess = 'booked_success';
   static const String passwordResetSuccess = 'password_reset_Success';
   static const String emailSentSuccess = 'email_sent_success';

@@ -41,7 +41,7 @@ class FavouriteScreen extends StatelessWidget {
                   ),
                 ),
                 confirmDismiss: (direction) async {
-                  cubit.removeFromFavouritesPlaces(context, index);
+                  cubit.removeFromFavouritesPlaces(context, cubit.favouritePlaces.allPlace[index]);
                   return true;
                 },
                 direction: DismissDirection.endToStart,

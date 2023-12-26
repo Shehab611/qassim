@@ -32,6 +32,13 @@ class FavouritesGetDataFailedState extends FavouritesState {
   List<Object> get props => [];
 }
 
+class FavouritesRemovePlaceLoading extends FavouritesState {
+  const FavouritesRemovePlaceLoading();
+
+  @override
+  List<Object> get props => [];
+}
+
 class FavouritesRemovePlaceSuccessful extends FavouritesState {
   const FavouritesRemovePlaceSuccessful();
 

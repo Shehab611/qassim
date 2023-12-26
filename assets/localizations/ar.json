@@ -60,5 +60,6 @@
   "evening_time": "فترة مسائية",
   "booked_success": "تم حجز المكان بنجاح",
   "password_reset_Success": "تم تغير كلمة المرور بنجاح",
-  "email_sent_success": "تم إرسال كلمة المرور علي البريد الإلكتروني"
+  "email_sent_success": "تم إرسال كلمة المرور علي البريد الإلكتروني",
+  "removed_from_favourites": "تم حذف المكان من المفضلة بنجاح"
 }

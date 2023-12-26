@@ -60,5 +60,6 @@
   "evening_time": "Evening period",
   "booked_success": "Place Booked Successfully",
   "password_reset_Success": "Password Rested Successfully",
-  "email_sent_success": "Email Sent Successfully"
+  "email_sent_success": "Email Sent Successfully",
+  "removed_from_favourites": "Removed From Favorites Successfully"
 }
