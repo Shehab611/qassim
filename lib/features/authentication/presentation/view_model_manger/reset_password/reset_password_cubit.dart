@@ -42,7 +42,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
 //#endregion
 
   //#region public methods
-  Future<void> register(BuildContext context, String email) async {
+  Future<void> resetPassword(BuildContext context, String email) async {
     if (ValidateCheck.validate(_formKey)) {
       emit(const ResetPasswordLoadingState());
 
@@ -50,13 +50,14 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
           email: email,
           password: _passwordController.text,
           confirmPassword: _passwordConfirmationController.text);
-      if (apiResponse.response?.statusCode != null && apiResponse.response?.statusCode == 201) {
+      if (apiResponse.response?.statusCode != null && apiResponse.response?.statusCode == 200) {
         if (context.mounted) {
           navigateToLoginScreen(context);
           showCustomSnackBar(AppLocalizations.of(context).translate(AppStrings.passwordResetSuccess), context,
               inTop: true, isError: false);
         }
       } else {
+        print(apiResponse.error);
         if (context.mounted) {
           ApiChecker.checkApi(apiResponse, context);
           emit(const ResetPasswordFailedState());

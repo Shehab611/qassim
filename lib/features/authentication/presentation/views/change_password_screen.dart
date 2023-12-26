@@ -59,7 +59,7 @@ class ChangePasswordScreen extends StatelessWidget {
                               ? const CustomLoader()
                               : ElevatedButton(
                                   onPressed: () async {
-                                    await cubit.register(context, emailAddress);
+                                    await cubit.resetPassword(context, emailAddress);
                                   },
                                   child: Text(
                                     AppLocalizations.of(context)
