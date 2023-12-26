@@ -53,5 +53,10 @@
   "added_to_favourites": "Place Added To Favourite successfully",
   "booking": "Booking",
   "type": "Type",
-  "place_exist": "The Place is already added"
+  "place_exist": "The Place is already added",
+  "complete_booking": "Complete Booking",
+  "pick_time": "Pick a time",
+  "morning_time": "Morning period",
+  "evening_time": "Evening period",
+  "booked_success": "Place Booked Successfully"
 }

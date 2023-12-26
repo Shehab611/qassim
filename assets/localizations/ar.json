@@ -53,5 +53,10 @@
   "add_to_favourites": "إضافة الي المفضلة",
   "booking": "الحجز",
   "type": "النوع",
-  "place_exist": "المكان مٌضاف بالفعل"
+  "place_exist": "المكان مٌضاف بالفعل",
+  "complete_booking": "اتمام الحجز",
+  "pick_time": "اختر وقتًا",
+  "morning_time": "فترة صباحية",
+  "evening_time": "فترة مسائية",
+  "booked_success": "تم حجز المكان بنجاح"
 }

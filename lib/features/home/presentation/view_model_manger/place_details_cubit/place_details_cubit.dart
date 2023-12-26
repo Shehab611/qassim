@@ -7,7 +7,6 @@ import 'package:qassim/core/utils/api_utils/api_response.dart';
 import 'package:qassim/core/utils/app_constants/app_constants.dart';
 import 'package:qassim/core/utils/app_constants/app_localization.dart';
 import 'package:qassim/core/utils/app_constants/app_strings.dart';
-import 'package:qassim/core/utils/app_routes_utils/app_navigator.dart';
 import 'package:qassim/features/favourites/data/repositories/favourites_repo.dart';
 import 'package:qassim/features/home/data/model/places_model.dart';
 import 'package:qassim/features/home/data/repositories/place_details/place_details_repo.dart';
@@ -52,10 +51,6 @@ class PlaceDetailsCubit extends Cubit<PlaceDetailsState> {
         emit(const PlaceDetailsGetDataFailedState());
       }
     }
-  }
-
-  void navigateToCompleteBookingScreen(BuildContext context, String placeId) {
-    AppNavigator.navigateToCompleteBookingScreen(context, placeId);
   }
 //#endregion
 }
