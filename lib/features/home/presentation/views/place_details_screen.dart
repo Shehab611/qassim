@@ -27,6 +27,7 @@ class PlaceDetailsScreen extends StatelessWidget {
             return Scaffold(
               appBar: AppBar(
                 title: Text(state.model.name),
+                centerTitle: true,
               ),
               bottomNavigationBar: ButtonBar(
                 alignment: MainAxisAlignment.spaceEvenly,
@@ -45,7 +46,9 @@ class PlaceDetailsScreen extends StatelessWidget {
                           context: context,
                           isScrollControlled: true,
                           builder: (context) {
-                            return const CompleteBookingSheet();
+                            return CompleteBookingSheet(
+                              placeId: placeId,
+                            );
                           },
                         );
                       },

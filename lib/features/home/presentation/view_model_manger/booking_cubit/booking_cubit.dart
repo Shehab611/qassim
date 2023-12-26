@@ -24,9 +24,31 @@ class BookingCubit extends Cubit<BookingState> {
 
   //#endregion
 
+  //#region Public Variables
+  String selectedValue = '0';
+
+  //#endregion
+
   //#region Public Methods
-  Future<void> bookPlace(String placeId, String timeVisit, BuildContext context) async {
+  List<DropdownMenuItem<String>> dropdownItems(BuildContext context) => [
+        DropdownMenuItem(
+            value: '0', child: Text(AppLocalizations.of(context).translate(AppStrings.morningTime))),
+        DropdownMenuItem(
+            value: '1', child: Text(AppLocalizations.of(context).translate(AppStrings.eveningTime))),
+      ];
+
+  void changeSelectedValue(String? newValue) {
+    selectedValue = newValue!;
+    if (newValue == '0') {
+      emit(const BookingDropDownValueChangedToMorningState());
+    } else {
+      emit(const BookingDropDownValueChangedToEveningState());
+    }
+  }
+
+  Future<void> bookPlace(String placeId, BuildContext context) async {
     emit(const BookingLoadingState());
+    String timeVisit = (selectedValue == '0') ? 'فترة صباحية' : 'فترة مسائية';
     ApiResponse apiResponse = await _bookingRepo.bookPlace(_userId.toString(), placeId, timeVisit);
     if (apiResponse.response?.statusCode != null && apiResponse.response?.statusCode == 201) {
       if (context.mounted) {
@@ -39,6 +61,9 @@ class BookingCubit extends Cubit<BookingState> {
         ApiChecker.checkApi(apiResponse, context);
       }
       emit(const BookingFailedState());
+    }
+    if (context.mounted) {
+      Navigator.pop(context);
     }
   }
 //#endregion

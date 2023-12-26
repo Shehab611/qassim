@@ -31,3 +31,17 @@ class BookingFailedState extends BookingState {
   @override
   List<Object> get props => [];
 }
+
+class BookingDropDownValueChangedToMorningState extends BookingState {
+  const BookingDropDownValueChangedToMorningState();
+
+  @override
+  List<Object> get props => [];
+}
+
+class BookingDropDownValueChangedToEveningState extends BookingState {
+  const BookingDropDownValueChangedToEveningState();
+
+  @override
+  List<Object> get props => [];
+}
