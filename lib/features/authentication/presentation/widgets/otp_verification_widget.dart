@@ -217,7 +217,17 @@ class _OtpVerificationWidgetState extends State<OtpVerificationWidget>
                   child: Text(
                     AppLocalizations.of(context).translate(AppStrings.confirm),
                     style: AppTextStyles.elevatedButtonTextStyle,
-                  ))
+                  )),
+          TextButton(
+            onPressed: () async {
+              AppNavigator.navigateToOpenScreen(context);
+            },
+            child: Text(
+              AppLocalizations.of(context).translate(AppStrings.cancel),
+              style: AppTextStyles.textButtonTextStyle
+                  .copyWith(color: AppColors.complementaryColor2, fontSize: 16),
+            ),
+          )
         ],
       ),
     );

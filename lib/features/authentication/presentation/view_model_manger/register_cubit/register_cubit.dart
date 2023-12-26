@@ -1,9 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qassim/core/components/custom_snack_bar.dart';
 import 'package:qassim/core/usable_functions/validate_check.dart';
 import 'package:qassim/core/utils/api_utils/api_error_handler.dart';
 import 'package:qassim/core/utils/api_utils/api_response.dart';
+import 'package:qassim/core/utils/app_constants/app_localization.dart';
+import 'package:qassim/core/utils/app_constants/app_strings.dart';
 import 'package:qassim/core/utils/app_routes_utils/app_navigator.dart';
 import 'package:qassim/features/authentication/data/models/register_model.dart';
 import 'package:qassim/features/authentication/data/repositories/register/register_repo.dart';
@@ -25,14 +28,14 @@ class RegisterCubit extends Cubit<RegisterState> {
     _phoneController.dispose();
     return super.close();
   }
+
   //#region private variables
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _passwordConfirmationController =
-      TextEditingController();
+  final TextEditingController _passwordConfirmationController = TextEditingController();
 
   //#endregion
 
@@ -45,8 +48,7 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   TextEditingController get passwordController => _passwordController;
 
-  TextEditingController get passwordConfirmationController =>
-      _passwordConfirmationController;
+  TextEditingController get passwordConfirmationController => _passwordConfirmationController;
 
   GlobalKey<FormState> get formKey => _formKey;
 
@@ -63,10 +65,13 @@ class RegisterCubit extends Cubit<RegisterState> {
           password: _passwordController.text.trim(),
           passwordConfirmation: _passwordConfirmationController.text.trim());
 
-      ApiResponse apiResponse =
-          await _registerRepo.register(registerDataModel: registerDataModel);
-      if (apiResponse.response?.statusCode != null &&
-          apiResponse.response?.statusCode == 201) {
+      ApiResponse apiResponse = await _registerRepo.register(registerDataModel: registerDataModel);
+      if (apiResponse.response?.statusCode != null && apiResponse.response?.statusCode == 201) {
+        if (context.mounted) {
+          showCustomSnackBar(
+              AppLocalizations.of(context).translate(AppStrings.accountCreatedSuccess), context,
+              inTop: true, isError: false);
+        }
         emit(const RegisterSuccessfulState());
       } else {
         if (context.mounted) {

@@ -18,6 +18,7 @@ abstract final class AppStrings {
   static const String passwordResetSuccess = 'password_reset_Success';
   static const String emailSentSuccess = 'email_sent_success';
   static const String sendSuccessfully = 'send_success';
+  static const String accountCreatedSuccess = 'account_created_success';
 
   //#endregion
 
