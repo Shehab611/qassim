@@ -31,13 +31,18 @@ class PlaceDetailsScreen extends StatelessWidget {
                 alignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        BlocProvider.of<PlaceDetailsCubit>(context).addToFavouritesPlaces(context, placeId);
+                      },
                       child: Text(
                         AppLocalizations.of(context).translate(AppStrings.addToFavourites),
                         style: AppTextStyles.elevatedButtonTextStyle,
                       )),
                   ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        BlocProvider.of<PlaceDetailsCubit>(context)
+                            .navigateToCompleteBookingScreen(context, placeId);
+                      },
                       child: Text(
                         AppLocalizations.of(context).translate(AppStrings.booking),
                         style: AppTextStyles.elevatedButtonTextStyle,
