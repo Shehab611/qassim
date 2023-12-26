@@ -1,57 +1,84 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qassim/core/components/custom_loader.dart';
+import 'package:qassim/core/components/no_data_screen.dart';
 import 'package:qassim/core/utils/app_constants/app_localization.dart';
 import 'package:qassim/core/utils/app_constants/app_strings.dart';
 import 'package:qassim/core/utils/design_utils/app_text_styles.dart';
+import 'package:qassim/features/drawer/presentation/view/app_drawer.dart';
+import 'package:qassim/features/home/data/repositories/place_details/place_details_repo_impl.dart';
+import 'package:qassim/features/home/presentation/view_model_manger/place_details_cubit/place_details_cubit.dart';
+import 'package:qassim/service_locator.dart';
 
 class PlaceDetailsScreen extends StatelessWidget {
   const PlaceDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      bottomNavigationBar: ButtonBar(
-        alignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          ElevatedButton(
-              onPressed: () {},
-              child: Text(
-                AppLocalizations.of(context).translate(AppStrings.addToFavourites),
-                style: AppTextStyles.elevatedButtonTextStyle,
-              )),
-          ElevatedButton(
-              onPressed: () {},
-              child: Text(
-                AppLocalizations.of(context).translate(AppStrings.booking),
-                style: AppTextStyles.elevatedButtonTextStyle,
-              )),
-        ],
-      ),
-      body: Column(
-        children: [
-          ClipRRect(
-            clipBehavior: Clip.hardEdge,
-            borderRadius: const BorderRadius.vertical(bottom: Radius.circular(35)),
-            child: CachedNetworkImage(
-              imageUrl: 'https://th.bing.com/th/id/OIP.V5XDYGmtMaObFxADf1VgUAHaE6?rs=1&pid=ImgDetMain',
-              height: 200,
-              width: double.infinity,
-              fit: BoxFit.fitWidth,
-            ),
-          ),
-          RichText(
-            text: TextSpan(
-                text: '${AppLocalizations.of(context).translate(AppStrings.type)} :',
-                style: AppTextStyles.secondaryTextStyle,
-                children: [TextSpan(text: 'مكان اثري')]),
-          ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-                'يتميز هذا المكان بكونه مش عارف ايه و بني في عصر مش عارف ايه و يفيد انه احا الشبشب داع يتميز هذا المكان بكونه مش عارف ايه و بني في عصر مش عارف ايه و يفيد انه احا الشبشب داع يتميز هذا المكان بكونه مش عارف ايه و بني في عصر مش عارف ايه و يفيد انه احا الشبشب داع يتميز هذا المكان بكونه مش عارف ايه و بني في عصر مش عارف ايه و يفيد انه احا الشبشب داع يتميز هذا المكان بكونه مش عارف ايه و بني في عصر مش عارف ايه و يفيد انه احا الشبشب داع'),
-          )
-        ],
+    String placeId = ModalRoute.of(context)?.settings.arguments as String;
+    return BlocProvider(
+      create: (context) => PlaceDetailsCubit(sl<PlaceDetailRepoImpl>())..getPlaceDetails(context, placeId),
+      child: Scaffold(
+        appBar: AppBar(),
+        drawer: const AppDrawer(),
+        bottomNavigationBar: BlocBuilder<PlaceDetailsCubit, PlaceDetailsState>(
+          builder: (context, state) {
+            if (state is PlaceDetailsGetDataSuccessState) {
+              return ButtonBar(
+                alignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                      onPressed: () {},
+                      child: Text(
+                        AppLocalizations.of(context).translate(AppStrings.addToFavourites),
+                        style: AppTextStyles.elevatedButtonTextStyle,
+                      )),
+                  ElevatedButton(
+                      onPressed: () {},
+                      child: Text(
+                        AppLocalizations.of(context).translate(AppStrings.booking),
+                        style: AppTextStyles.elevatedButtonTextStyle,
+                      )),
+                ],
+              );
+            }
+            return const SizedBox.shrink();
+          },
+        ),
+        body: BlocBuilder<PlaceDetailsCubit, PlaceDetailsState>(
+          builder: (context, state) {
+            if (state is PlaceDetailsGetDataLoadingState) {
+              return const CustomLoader();
+            } else if (state is PlaceDetailsGetDataSuccessState) {
+              return Column(
+                children: [
+                  ClipRRect(
+                    clipBehavior: Clip.hardEdge,
+                    borderRadius: const BorderRadius.vertical(bottom: Radius.circular(35)),
+                    child: CachedNetworkImage(
+                      imageUrl: state.model.images,
+                      height: 200,
+                      width: double.infinity,
+                      fit: BoxFit.fitWidth,
+                    ),
+                  ),
+                  RichText(
+                    text: TextSpan(
+                        text: '${AppLocalizations.of(context).translate(AppStrings.type)} :',
+                        style: AppTextStyles.secondaryTextStyle,
+                        children: [TextSpan(text: state.model.type)]),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(state.model.data),
+                  )
+                ],
+              );
+            }
+            return const NoDataScreen();
+          },
+        ),
       ),
     );
   }
