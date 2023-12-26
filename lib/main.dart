@@ -14,8 +14,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initServicesLocator();
   await sl<AppLanguage>().fetchLocale();
-  final bool goHome =
-      sl<SharedPreferences>().getString(AppConstants.currentUserToken) != null;
+  final bool goHome = sl<SharedPreferences>().getString(AppConstants.currentUserToken) != null;
   runApp(DevicePreview(
     enabled: !kReleaseMode,
     builder: (context) => MyApp(goHome: goHome),
@@ -35,22 +34,16 @@ class _MyAppState extends State<MyApp> {
   static final AppLanguage appLanguage = sl<AppLanguage>();
 
   @override
-  void initState() {
+  Widget build(BuildContext context) {
     appLanguage.addListener(() {
       setState(() {});
     });
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Qassim',
       theme: AppTheme.defaultTheme,
       debugShowCheckedModeBanner: false,
       routes: AppRouter.routes,
-      initialRoute:
-          widget.goHome ? AppPathName.kHomeScreen : AppPathName.kOpenScreen,
+      initialRoute: widget.goHome ? AppPathName.kHomeScreen : AppPathName.kOpenScreen,
       locale: appLanguage.appLocal,
       supportedLocales: AppConstants.supportedLocales,
       localizationsDelegates: const [

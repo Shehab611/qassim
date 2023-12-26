@@ -27,6 +27,7 @@ import 'package:qassim/features/favourites/presentation/view_model_manger/favour
 import 'package:qassim/features/home/data/repositories/all_places/all_places_repo_impl.dart';
 import 'package:qassim/features/home/presentation/view_model_manger/all_places_cubit/all_places_cubit.dart';
 import 'package:qassim/features/home/presentation/views/home_screen.dart';
+import 'package:qassim/features/home/presentation/views/place_details_screen.dart';
 import 'package:qassim/features/previous_booking/data/repositories/previous_booking_repo_impl.dart';
 import 'package:qassim/features/previous_booking/presentation/view/previous_booking_screen.dart';
 import 'package:qassim/features/previous_booking/presentation/view_model_manger/previous_booking/previous_booking_cubit.dart';
@@ -57,54 +58,44 @@ abstract final class AppRouter {
           child: const ForgetPasswordScreen(),
         ),
     AppPathName.kChangePasswordScreen: (BuildContext context) => BlocProvider(
-      create: (context) => ResetPasswordCubit(ResetPasswordRepoImpl(sl<DioClient>())),
+          create: (context) => ResetPasswordCubit(ResetPasswordRepoImpl(sl<DioClient>())),
           child: const ChangePasswordScreen(),
         ),
     //#endregion
-    AppPathName.kProfileScreen: (BuildContext context) =>
-        MultiBlocProvider(providers: [
+
+    //#region User Routes
+    AppPathName.kProfileScreen: (BuildContext context) => MultiBlocProvider(providers: [
           BlocProvider(
-            create: (context) =>
-            ProfileCubit(sl<ProfileRepoImpl>())
-              ..getUserData(context),
+            create: (context) => ProfileCubit(sl<ProfileRepoImpl>())..getUserData(context),
           ),
           BlocProvider(
             create: (context) => LogoutCubit(LogoutRepoImpl(sl<DioClient>())),
           ),
         ], child: const ProfileScreen()),
-    AppPathName.kHomeScreen: (BuildContext context) =>
-        BlocProvider(
+    AppPathName.kFavouritesScreen: (BuildContext context) => BlocProvider(
+        create: (context) => FavouritesCubit(sl<FavouritesRepoImpl>())..getFavouritesPlaces(context),
+        child: const FavouriteScreen()),
+    AppPathName.kPreviousBookingScreen: (BuildContext context) => BlocProvider(
           create: (context) =>
-          AllPlacesCubit(sl<AllPlacesRepoImpl>())
-            ..getAllPlaces(context),
-          child: const HomeScreen(),
-        ),
-    AppPathName.kCustomerServiceScreen: (BuildContext context) =>
-        BlocProvider(
-          create: (context) =>
-          CustomerServiceCubit(sl<CustomerServiceRepoImpl>())
-            ..getUserData(context),
-          child: const CustomerServiceScreen(),
-        ),
-    AppPathName.kCategoriesScreen: (BuildContext context) =>
-        BlocProvider(
-          create: (context) =>
-          CategoriesCubit(sl<CategoriesRepoImpl>())
-            ..getCategories(context),
-          child: const CategoriesScreen(),
-        ),
-    AppPathName.kFavouritesScreen: (BuildContext context) =>
-        BlocProvider(
-            create: (context) =>
-            FavouritesCubit(sl<FavouritesRepoImpl>())
-              ..getFavouritesPlaces(context),
-            child: const FavouriteScreen()),
-    AppPathName.kPreviousBookingScreen: (BuildContext context) =>
-        BlocProvider(
-          create: (context) =>
-          PreviousBookingCubit(sl<PreviousBookingRepoImpl>())
-            ..getPreviousBooking(context),
+              PreviousBookingCubit(sl<PreviousBookingRepoImpl>())..getPreviousBooking(context),
           child: const PreviousBookingScreen(),
         ),
+    AppPathName.kCustomerServiceScreen: (BuildContext context) => BlocProvider(
+          create: (context) => CustomerServiceCubit(sl<CustomerServiceRepoImpl>())..getUserData(context),
+          child: const CustomerServiceScreen(),
+        ),
+    //#endregion
+
+    //#region Home Routes
+    AppPathName.kHomeScreen: (BuildContext context) => BlocProvider(
+          create: (context) => AllPlacesCubit(sl<AllPlacesRepoImpl>())..getAllPlaces(context),
+          child: const HomeScreen(),
+        ),
+    AppPathName.kPlaceDetailsScreen: (BuildContext context) => const PlaceDetailsScreen(),
+    AppPathName.kCategoriesScreen: (BuildContext context) => BlocProvider(
+          create: (context) => CategoriesCubit(sl<CategoriesRepoImpl>())..getCategories(context),
+          child: const CategoriesScreen(),
+        ),
+    //#endregion
   };
 }

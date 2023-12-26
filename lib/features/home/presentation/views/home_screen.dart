@@ -29,6 +29,10 @@ class HomeScreen extends StatelessWidget {
                 itemCount: state.model.data.length,
                 itemBuilder: (context, index) {
                   return PlaceItem(
+                      onTap: () {
+                        AllPlacesCubit.get(context)
+                            .navigateToPlaceDetails(context, state.model.data[index].id.toString());
+                      },
                       imagePath: state.model.data[index].images,
                       title: state.model.data[index].name,
                       category: state.model.data[index].type);

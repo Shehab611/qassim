@@ -33,18 +33,20 @@ abstract final class AppStrings{
   static const String subject='subject';
   static const String message='message';
   static const String customerService='customer_service';
-  static const String sendSuccessfully='send_success';
-  static const String passwordChangedSuccessful='password_changed_success';
-  static const String homePage='home_page';
-  static const String previousBooking='previous_booking';
-  static const String favouritePlaces='favourite_places';
-  static const String categories='categories';
-  static const String language='language';
-  static const String logoutSuccessful='logout_successful';
-  static const String noData='no_data';
-  static const String dataUpdatedSuccess='data_updated_success';
-
-
+  static const String sendSuccessfully = 'send_success';
+  static const String passwordChangedSuccessful = 'password_changed_success';
+  static const String homePage = 'home_page';
+  static const String previousBooking = 'previous_booking';
+  static const String favouritePlaces = 'favourite_places';
+  static const String categories = 'categories';
+  static const String language = 'language';
+  static const String logoutSuccessful = 'logout_successful';
+  static const String noData = 'no_data';
+  static const String dataUpdatedSuccess = 'data_updated_success';
+  static const String addToFavourites = 'add_to_favourites';
+  static const String addedToFavourites = 'added_to_favourites';
+  static const String booking = 'booking';
+  static const String type = 'type';
 
   //#endregion
 

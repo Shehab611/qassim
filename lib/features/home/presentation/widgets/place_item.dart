@@ -3,14 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:qassim/core/utils/design_utils/app_sizes.dart';
 
 class PlaceItem extends StatelessWidget {
-  const PlaceItem({super.key, required this.imagePath, required this.title, required this.category});
+  const PlaceItem(
+      {super.key, required this.imagePath, required this.title, required this.category, this.onTap});
 
   final String imagePath, title, category;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
+        onTap: onTap,
         subtitle: Text(
           category,
         ),

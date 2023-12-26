@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qassim/core/utils/api_utils/api_error_handler.dart';
 import 'package:qassim/core/utils/api_utils/api_response.dart';
+import 'package:qassim/core/utils/app_routes_utils/app_navigator.dart';
 import 'package:qassim/features/home/data/model/places_model.dart';
 import 'package:qassim/features/home/data/repositories/all_places/all_places_repo.dart';
 
@@ -12,7 +13,6 @@ class AllPlacesCubit extends Cubit<AllPlacesState> {
   AllPlacesCubit(this._allPlacesRepo) : super(const AllPlacesInitial());
 
   static AllPlacesCubit get(BuildContext context) => BlocProvider.of(context);
-
   //#region Private Variables
   final AllPlacesRepo _allPlacesRepo;
 
@@ -30,6 +30,10 @@ class AllPlacesCubit extends Cubit<AllPlacesState> {
         emit(const AllPlacesGetDataFailedState());
       }
     }
+  }
+
+  void navigateToPlaceDetails(BuildContext context, String placeId) {
+    AppNavigator.navigateToPlaceDetailsScreen(context, placeId);
   }
 //#endregion
 }
