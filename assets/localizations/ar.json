@@ -53,5 +53,6 @@
   "add_to_favourites": "إضافة الي المفضلة",
   "booking": "الحجز",
   "type": "النوع",
-  "place_exist": "المكان مٌضاف بالفعل"
+  "place_exist": "المكان مٌضاف بالفعل",
+  "complete_booking": "اتمام الحجز"
 }

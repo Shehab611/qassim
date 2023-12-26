@@ -48,6 +48,7 @@ abstract final class AppStrings{
   static const String booking = 'booking';
   static const String type = 'type';
   static const String placeExist = 'place_exist';
+  static const String completeBooking = 'complete_booking';
 
   //#endregion
 
