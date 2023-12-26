@@ -7,6 +7,7 @@ import 'package:qassim/core/utils/app_constants/app_localization.dart';
 import 'package:qassim/core/utils/app_constants/app_strings.dart';
 import 'package:qassim/core/utils/design_utils/app_text_styles.dart';
 import 'package:qassim/features/drawer/presentation/view/app_drawer.dart';
+import 'package:qassim/features/favourites/data/repositories/favourites_repo_impl.dart';
 import 'package:qassim/features/home/data/repositories/place_details/place_details_repo_impl.dart';
 import 'package:qassim/features/home/presentation/view_model_manger/place_details_cubit/place_details_cubit.dart';
 import 'package:qassim/service_locator.dart';
@@ -18,7 +19,8 @@ class PlaceDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     String placeId = ModalRoute.of(context)?.settings.arguments as String;
     return BlocProvider(
-      create: (context) => PlaceDetailsCubit(sl<PlaceDetailRepoImpl>())..getPlaceDetails(context, placeId),
+      create: (context) => PlaceDetailsCubit(sl<PlaceDetailRepoImpl>(), sl<FavouritesRepoImpl>())
+        ..getPlaceDetails(context, placeId),
       child: Scaffold(
         appBar: AppBar(),
         drawer: const AppDrawer(),
