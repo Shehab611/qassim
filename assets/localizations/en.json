@@ -32,7 +32,7 @@
   "resend": "Resend OTP",
   "confirm": "Confirm",
   "profile": "Profile",
-  "recent_password":"Recent Password",
+  "recent_password": "Recent Password",
   "new_password": "New Password",
   "confirm_new_password": "Confirm New Password",
   "subject": "Subject",
@@ -52,5 +52,6 @@
   "add_to_favourites": "Add to favorites",
   "added_to_favourites": "Place Added To Favourite successfully",
   "booking": "Booking",
-  "type": "Type"
+  "type": "Type",
+  "place_exist": "The Place is already added"
 }

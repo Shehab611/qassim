@@ -6,7 +6,6 @@ import 'package:qassim/core/components/no_data_screen.dart';
 import 'package:qassim/core/utils/app_constants/app_localization.dart';
 import 'package:qassim/core/utils/app_constants/app_strings.dart';
 import 'package:qassim/core/utils/design_utils/app_text_styles.dart';
-import 'package:qassim/features/drawer/presentation/view/app_drawer.dart';
 import 'package:qassim/features/favourites/data/repositories/favourites_repo_impl.dart';
 import 'package:qassim/features/home/data/repositories/place_details/place_details_repo_impl.dart';
 import 'package:qassim/features/home/presentation/view_model_manger/place_details_cubit/place_details_cubit.dart';
@@ -21,13 +20,14 @@ class PlaceDetailsScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => PlaceDetailsCubit(sl<PlaceDetailRepoImpl>(), sl<FavouritesRepoImpl>())
         ..getPlaceDetails(context, placeId),
-      child: Scaffold(
-        appBar: AppBar(),
-        drawer: const AppDrawer(),
-        bottomNavigationBar: BlocBuilder<PlaceDetailsCubit, PlaceDetailsState>(
-          builder: (context, state) {
-            if (state is PlaceDetailsGetDataSuccessState) {
-              return ButtonBar(
+      child: BlocBuilder<PlaceDetailsCubit, PlaceDetailsState>(
+        builder: (context, state) {
+          if (state is PlaceDetailsGetDataSuccessState) {
+            return Scaffold(
+              appBar: AppBar(
+                title: Text(state.model.name),
+              ),
+              bottomNavigationBar: ButtonBar(
                 alignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
@@ -48,17 +48,8 @@ class PlaceDetailsScreen extends StatelessWidget {
                         style: AppTextStyles.elevatedButtonTextStyle,
                       )),
                 ],
-              );
-            }
-            return const SizedBox.shrink();
-          },
-        ),
-        body: BlocBuilder<PlaceDetailsCubit, PlaceDetailsState>(
-          builder: (context, state) {
-            if (state is PlaceDetailsGetDataLoadingState) {
-              return const CustomLoader();
-            } else if (state is PlaceDetailsGetDataSuccessState) {
-              return Column(
+              ),
+              body: Column(
                 children: [
                   ClipRRect(
                     clipBehavior: Clip.hardEdge,
@@ -81,11 +72,18 @@ class PlaceDetailsScreen extends StatelessWidget {
                     child: Text(state.model.data),
                   )
                 ],
-              );
-            }
-            return const NoDataScreen();
-          },
-        ),
+              ),
+            );
+          } else if (state is PlaceDetailsGetDataLoadingState) {
+            return const Scaffold(
+              body: CustomLoader(),
+            );
+          }
+          return Scaffold(
+            appBar: AppBar(),
+            body: const NoDataScreen(),
+          );
+        },
       ),
     );
   }

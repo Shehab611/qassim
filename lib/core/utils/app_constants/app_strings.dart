@@ -47,6 +47,7 @@ abstract final class AppStrings{
   static const String addedToFavourites = 'added_to_favourites';
   static const String booking = 'booking';
   static const String type = 'type';
+  static const String placeExist = 'place_exist';
 
   //#endregion
 
@@ -55,6 +56,7 @@ abstract final class AppStrings{
   static const String invalidPassword = 'password_chars_is_not_valid';
   static const String invalidConfirmPassword = 'confirm_password_not_matched';
   static const String recentPasswordNotCorrect = 'password_not_correct';
+
   //#endregion
 
   //#region network keys

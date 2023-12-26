@@ -127,9 +127,9 @@ abstract final class ApiChecker {
             context);
       } else if (errorResponse.contains('password not correct')) {
         showCustomSnackBar(
-            AppLocalizations.of(context)
-                .translate(AppStrings.recentPasswordNotCorrect),
-            context);
+            AppLocalizations.of(context).translate(AppStrings.recentPasswordNotCorrect), context);
+      } else if (errorResponse.contains('place already exists')) {
+        showCustomSnackBar(AppLocalizations.of(context).translate(AppStrings.placeExist), context);
       }
     } else if (apiResponse.error is ErrorResponse) {
       Map<String, dynamic> errorResponse =
