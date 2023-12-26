@@ -42,6 +42,9 @@ abstract final class AppNavigator {
   static navigateToPlaceDetailsScreen(BuildContext context, String placeId) =>
       Navigator.pushNamed(context, AppPathName.kPlaceDetailsScreen, arguments: placeId);
 
+  static navigateToCompleteBookingScreen(BuildContext context, String placeId) =>
+      Navigator.pushNamed(context, AppPathName.kCompleteBookingScreen, arguments: placeId);
+
   static navigateToScreen(BuildContext context, String routePath) => Navigator.popAndPushNamed(
         context,
         routePath,

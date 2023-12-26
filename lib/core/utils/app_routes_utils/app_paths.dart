@@ -12,4 +12,5 @@ abstract final class AppPathName {
   static const String kFavouritesScreen = '/FavouritesScreen';
   static const String kPreviousBookingScreen = '/PreviousBookingScreen';
   static const String kPlaceDetailsScreen = '/PlaceDetailsScreen';
+  static const String kCompleteBookingScreen = '/CompleteBookingScreen';
 }
