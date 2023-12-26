@@ -54,5 +54,8 @@
   "booking": "الحجز",
   "type": "النوع",
   "place_exist": "المكان مٌضاف بالفعل",
-  "complete_booking": "اتمام الحجز"
+  "complete_booking": "اتمام الحجز",
+  "pick_time": "اختر وقتًا",
+  "morning_time": "فترة صباحية",
+  "evening_time": "فترة مسائية"
 }

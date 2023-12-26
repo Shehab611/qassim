@@ -49,6 +49,9 @@ abstract final class AppStrings{
   static const String type = 'type';
   static const String placeExist = 'place_exist';
   static const String completeBooking = 'complete_booking';
+  static const String pickTime = 'pick_time';
+  static const String morningTime = 'morning_time';
+  static const String eveningTime = 'evening_time';
 
   //#endregion
 

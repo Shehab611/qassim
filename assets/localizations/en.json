@@ -54,5 +54,8 @@
   "booking": "Booking",
   "type": "Type",
   "place_exist": "The Place is already added",
-  "complete_booking": "Complete Booking"
+  "complete_booking": "Complete Booking",
+  "pick_time": "Pick a time",
+  "morning_time": "Morning period",
+  "evening_time": "Evening period"
 }
