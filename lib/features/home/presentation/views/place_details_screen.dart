@@ -9,6 +9,7 @@ import 'package:qassim/core/utils/design_utils/app_text_styles.dart';
 import 'package:qassim/features/favourites/data/repositories/favourites_repo_impl.dart';
 import 'package:qassim/features/home/data/repositories/place_details/place_details_repo_impl.dart';
 import 'package:qassim/features/home/presentation/view_model_manger/place_details_cubit/place_details_cubit.dart';
+import 'package:qassim/features/home/presentation/widgets/complete_booking_sheet.dart';
 import 'package:qassim/service_locator.dart';
 
 class PlaceDetailsScreen extends StatelessWidget {
@@ -40,6 +41,12 @@ class PlaceDetailsScreen extends StatelessWidget {
                       )),
                   ElevatedButton(
                       onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) {
+                            return const CompleteBookingSheet();
+                          },
+                        );
                       },
                       child: Text(
                         AppLocalizations.of(context).translate(AppStrings.booking),
