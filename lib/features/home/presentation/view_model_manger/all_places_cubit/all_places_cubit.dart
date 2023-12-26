@@ -11,8 +11,6 @@ part 'all_places_state.dart';
 class AllPlacesCubit extends Cubit<AllPlacesState> {
   AllPlacesCubit(this._allPlacesRepo) : super(const AllPlacesInitial());
 
-  static AllPlacesCubit get(BuildContext context) => BlocProvider.of(context);
-
   //#region Private Variables
   final AllPlacesRepo _allPlacesRepo;
 
