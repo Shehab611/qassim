@@ -58,5 +58,7 @@
   "pick_time": "اختر وقتًا",
   "morning_time": "فترة صباحية",
   "evening_time": "فترة مسائية",
-  "booked_success": "تم حجز المكان بنجاح"
+  "booked_success": "تم حجز المكان بنجاح",
+  "password_reset_Success": "تم تغير كلمة المرور بنجاح",
+  "email_sent_success": "تم إرسال كلمة المرور علي البريد الإلكتروني"
 }

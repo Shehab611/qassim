@@ -1,17 +1,19 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qassim/core/components/custom_snack_bar.dart';
 import 'package:qassim/core/usable_functions/validate_check.dart';
 import 'package:qassim/core/utils/api_utils/api_error_handler.dart';
 import 'package:qassim/core/utils/api_utils/api_response.dart';
+import 'package:qassim/core/utils/app_constants/app_localization.dart';
+import 'package:qassim/core/utils/app_constants/app_strings.dart';
 import 'package:qassim/core/utils/app_routes_utils/app_navigator.dart';
 import 'package:qassim/features/authentication/data/repositories/forget_password/forget_password_repo.dart';
 
 part 'forget_password_state.dart';
 
 class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
-  ForgetPasswordCubit(this._forgetPasswordRepo)
-      : super(const ForgetPasswordInitial());
+  ForgetPasswordCubit(this._forgetPasswordRepo) : super(const ForgetPasswordInitial());
   final ForgetPasswordRepo _forgetPasswordRepo;
 
   static ForgetPasswordCubit get(BuildContext context) =>
@@ -54,6 +56,8 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
           apiResponse.response?.statusCode == 200) {
         if (context.mounted) {
           _navigateToOtpScreen(context);
+          showCustomSnackBar(AppLocalizations.of(context).translate(AppStrings.emailSentSuccess), context,
+              inTop: true, isError: false);
         }
 
         emit(const ForgetPasswordSuccessfulState());

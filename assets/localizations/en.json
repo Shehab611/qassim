@@ -58,5 +58,7 @@
   "pick_time": "Pick a time",
   "morning_time": "Morning period",
   "evening_time": "Evening period",
-  "booked_success": "Place Booked Successfully"
+  "booked_success": "Place Booked Successfully",
+  "password_reset_Success": "Password Rested Successfully",
+  "email_sent_success": "Email Sent Successfully"
 }
