@@ -57,5 +57,6 @@
   "complete_booking": "Complete Booking",
   "pick_time": "Pick a time",
   "morning_time": "Morning period",
-  "evening_time": "Evening period"
+  "evening_time": "Evening period",
+  "booked_success": "Place Booked Successfully"
 }

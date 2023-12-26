@@ -57,5 +57,6 @@
   "complete_booking": "اتمام الحجز",
   "pick_time": "اختر وقتًا",
   "morning_time": "فترة صباحية",
-  "evening_time": "فترة مسائية"
+  "evening_time": "فترة مسائية",
+  "booked_success": "تم حجز المكان بنجاح"
 }

@@ -52,6 +52,7 @@ abstract final class AppStrings{
   static const String pickTime = 'pick_time';
   static const String morningTime = 'morning_time';
   static const String eveningTime = 'evening_time';
+  static const String bookedSuccess = 'booked_success';
 
   //#endregion
 
