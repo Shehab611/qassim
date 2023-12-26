@@ -48,5 +48,8 @@
   "language": "اللغة",
   "logout_successful": "تم تسجيل الخروج بنجاح",
   "no_data": "لم يتم العثور على بيانات",
-  "data_updated_success": "تم تحديث البيانات بنجاح"
+  "data_updated_success": "تم تحديث البيانات بنجاح",
+  "add_to_favourites": "إضافة الي المفضلة",
+  "booking": "الحجز",
+  "type": "النوع"
 }
