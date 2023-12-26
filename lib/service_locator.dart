@@ -10,6 +10,7 @@ import 'package:qassim/features/categories/data/repositories/categories_repo_imp
 import 'package:qassim/features/customer_service/data/repositories/customer_service_repo_impl.dart';
 import 'package:qassim/features/favourites/data/repositories/favourites_repo_impl.dart';
 import 'package:qassim/features/home/data/repositories/all_places/all_places_repo_impl.dart';
+import 'package:qassim/features/home/data/repositories/place_details/place_details_repo_impl.dart';
 import 'package:qassim/features/previous_booking/data/repositories/previous_booking_repo_impl.dart';
 import 'package:qassim/features/profile/data/repositories/change_password_repo/change_password_repo_impl.dart';
 import 'package:qassim/features/profile/data/repositories/profile_data_repo/profile_data_repo_impl.dart';
@@ -36,6 +37,7 @@ Future<void> initServicesLocator() async {
   sl.registerLazySingleton<FavouritesRepoImpl>(() => FavouritesRepoImpl(sl<DioClient>()));
   sl.registerLazySingleton<AllPlacesRepoImpl>(() => AllPlacesRepoImpl(sl<DioClient>()));
   sl.registerLazySingleton<PreviousBookingRepoImpl>(() => PreviousBookingRepoImpl(sl<DioClient>()));
+  sl.registerLazySingleton<PlaceDetailRepoImpl>(() => PlaceDetailRepoImpl(sl<DioClient>()));
   //#endregion
 
   //#region External
