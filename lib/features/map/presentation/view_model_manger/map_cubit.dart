@@ -26,6 +26,7 @@ class MapCubit extends Cubit<MapState> {
   }
 
   Future<void> getCurrentLocation() async {
+    emit(const MapLoadingState());
     Position position = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );

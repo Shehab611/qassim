@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qassim/core/components/custom_loader.dart';
 import 'package:qassim/core/components/no_data_screen.dart';
 import 'package:qassim/core/utils/app_constants/app_localization.dart';
 import 'package:qassim/core/utils/app_constants/app_strings.dart';
@@ -49,6 +50,8 @@ class MapScreen extends StatelessWidget {
                   }
                 },
               );
+            } else if (state is MapLoadingState) {
+              return const CustomLoader();
             }
             return const NoDataScreen();
           },
