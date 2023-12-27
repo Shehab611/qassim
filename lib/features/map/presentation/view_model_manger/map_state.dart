@@ -27,6 +27,13 @@ class MapSuccessState extends MapState {
   List<Object> get props => [url];
 }
 
+class MapPermitSuccessState extends MapState {
+  const MapPermitSuccessState();
+
+  @override
+  List<Object> get props => [];
+}
+
 class MapFailedState extends MapState {
   const MapFailedState();
 

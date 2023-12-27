@@ -23,6 +23,7 @@ class MapCubit extends Cubit<MapState> {
         }
       }
     }
+    emit(const MapPermitSuccessState());
   }
 
   Future<void> getCurrentLocation() async {

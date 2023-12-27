@@ -57,7 +57,6 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
               inTop: true, isError: false);
         }
       } else {
-        print(apiResponse.error);
         if (context.mounted) {
           ApiChecker.checkApi(apiResponse, context);
           emit(const ResetPasswordFailedState());
