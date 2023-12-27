@@ -13,4 +13,5 @@ abstract final class AppPathName {
   static const String kPreviousBookingScreen = '/PreviousBookingScreen';
   static const String kPlaceDetailsScreen = '/PlaceDetailsScreen';
   static const String kCompleteBookingScreen = '/CompleteBookingScreen';
+  static const String kMapScreen = '/MapScreen';
 }

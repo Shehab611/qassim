@@ -28,6 +28,8 @@ import 'package:qassim/features/home/data/repositories/all_places/all_places_rep
 import 'package:qassim/features/home/presentation/view_model_manger/all_places_cubit/all_places_cubit.dart';
 import 'package:qassim/features/home/presentation/views/home_screen.dart';
 import 'package:qassim/features/home/presentation/views/place_details_screen.dart';
+import 'package:qassim/features/map/presentation/view_model_manger/map_cubit.dart';
+import 'package:qassim/features/map/presentation/views/map_view.dart';
 import 'package:qassim/features/previous_booking/data/repositories/previous_booking_repo_impl.dart';
 import 'package:qassim/features/previous_booking/presentation/view/previous_booking_screen.dart';
 import 'package:qassim/features/previous_booking/presentation/view_model_manger/previous_booking/previous_booking_cubit.dart';
@@ -92,6 +94,10 @@ abstract final class AppRouter {
           child: const HomeScreen(),
         ),
     AppPathName.kPlaceDetailsScreen: (BuildContext context) => const PlaceDetailsScreen(),
+    AppPathName.kMapScreen: (BuildContext context) => BlocProvider(
+          create: (context) => MapCubit()..permitLocationService(),
+          child: const MapScreen(),
+        ),
     AppPathName.kCategoriesScreen: (BuildContext context) => BlocProvider(
           create: (context) => CategoriesCubit(sl<CategoriesRepoImpl>())..getCategories(context),
           child: const CategoriesScreen(),
