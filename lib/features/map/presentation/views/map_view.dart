@@ -25,8 +25,7 @@ class MapScreen extends StatelessWidget {
           }
           if (state is MapSuccessState) {
             return InAppWebView(
-              initialUrlRequest: URLRequest(
-                  url: Uri.parse('https://www.google.com/maps/@30.1584353,31.6448431,15z?entry=ttu')),
+              initialUrlRequest: URLRequest(url: Uri.parse(state.url)),
             );
           } else if (state is MapLoadingState) {
             return const CustomLoader();
