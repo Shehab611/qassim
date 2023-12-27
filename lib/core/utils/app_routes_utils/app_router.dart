@@ -93,7 +93,7 @@ abstract final class AppRouter {
           child: const HomeScreen(),
         ),
     AppPathName.kPlaceDetailsScreen: (BuildContext context) => const PlaceDetailsScreen(),
-    AppPathName.kMopScreen: (BuildContext context) => const MapScreen(),
+    AppPathName.kMapScreen: (BuildContext context) => const MapScreen(),
     AppPathName.kCategoriesScreen: (BuildContext context) => BlocProvider(
           create: (context) => CategoriesCubit(sl<CategoriesRepoImpl>())..getCategories(context),
           child: const CategoriesScreen(),
