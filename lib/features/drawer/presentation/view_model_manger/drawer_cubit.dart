@@ -22,10 +22,8 @@ class DrawerCubit extends Cubit<DrawerState> {
   static const List<({IconData icon, String title, String routePath})>
       _tileData = [
     (
-      icon: Icons.home,
-      title: AppStrings.homePage,
-      routePath: AppPathName.kHomeScreen
-    ),
+      icon: Icons.home, title: AppStrings.homePage, routePath: AppPathName.kHomeScreen),
+    (icon: Icons.map_outlined, title: AppStrings.map, routePath: AppPathName.kMapScreen),
     (
       icon: Icons.bookmark_added_sharp,
       title: AppStrings.previousBooking,
