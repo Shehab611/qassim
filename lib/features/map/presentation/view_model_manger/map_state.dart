@@ -11,13 +11,6 @@ class MapInitial extends MapState {
   List<Object> get props => [];
 }
 
-class MapLoadingState extends MapState {
-  const MapLoadingState();
-
-  @override
-  List<Object> get props => [];
-}
-
 class MapSuccessState extends MapState {
   const MapSuccessState(this.url);
 
