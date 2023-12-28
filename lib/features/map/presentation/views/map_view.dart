@@ -20,9 +20,6 @@ class MapScreen extends StatelessWidget {
       drawer: const AppDrawer(),
       body: BlocBuilder<MapCubit, MapState>(
         builder: (context, state) {
-          if (state is MapPermitSuccessState) {
-            BlocProvider.of<MapCubit>(context).getCurrentLocation();
-          }
           if (state is MapSuccessState) {
             return InAppWebView(
               initialUrlRequest: URLRequest(url: Uri.parse(state.url)),

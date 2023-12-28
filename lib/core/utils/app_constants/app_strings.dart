@@ -63,6 +63,7 @@ abstract final class AppStrings {
   static const String morningTime = 'morning_time';
   static const String eveningTime = 'evening_time';
   static const String map = 'map';
+  static const String search = 'search';
 
   //#endregion
 

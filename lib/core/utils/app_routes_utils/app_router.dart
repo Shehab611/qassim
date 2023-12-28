@@ -95,7 +95,7 @@ abstract final class AppRouter {
         ),
     AppPathName.kPlaceDetailsScreen: (BuildContext context) => const PlaceDetailsScreen(),
     AppPathName.kMapScreen: (BuildContext context) => BlocProvider(
-          create: (context) => MapCubit()..permitLocationService(),
+          create: (context) => MapCubit()..getCurrentLocation(),
           child: const MapScreen(),
         ),
     AppPathName.kCategoriesScreen: (BuildContext context) => BlocProvider(

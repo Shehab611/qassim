@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qassim/core/utils/api_utils/api_error_handler.dart';
 import 'package:qassim/core/utils/api_utils/api_response.dart';
@@ -13,8 +13,21 @@ class AllPlacesCubit extends Cubit<AllPlacesState> {
   AllPlacesCubit(this._allPlacesRepo) : super(const AllPlacesInitial());
 
   static AllPlacesCubit get(BuildContext context) => BlocProvider.of(context);
+
+  @override
+  Future<void> close() {
+    _searchController.dispose();
+    return super.close();
+  }
+
   //#region Private Variables
   final AllPlacesRepo _allPlacesRepo;
+  final SearchController _searchController = SearchController();
+
+  //#endregion
+
+  //#region Getters
+  SearchController get searchController => _searchController;
 
   //#endregion
 

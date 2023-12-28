@@ -63,5 +63,6 @@
   "email_sent_success": "Email Sent Successfully",
   "removed_from_favourites": "Removed From Favorites Successfully",
   "account_created_success": "Your Account Created Successfully",
-  "map": "Map"
+  "map": "Map",
+  "search": "Search"
 }

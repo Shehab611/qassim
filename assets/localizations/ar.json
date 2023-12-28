@@ -63,5 +63,6 @@
   "email_sent_success": "تم إرسال كلمة المرور علي البريد الإلكتروني",
   "removed_from_favourites": "تم حذف المكان من المفضلة بنجاح",
   "account_created_success": "تم إنشاء حسابك بنجاح",
-  "map": "الخريطة"
+  "map": "الخريطة",
+  "search": "بحث"
 }

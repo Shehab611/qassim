@@ -7,7 +7,8 @@ part 'map_state.dart';
 class MapCubit extends Cubit<MapState> {
   MapCubit() : super(const MapInitial());
 
-  Future<void> permitLocationService() async {
+  Future<void> getCurrentLocation() async {
+    emit(const MapLoadingState());
     LocationPermission permission;
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
@@ -23,11 +24,6 @@ class MapCubit extends Cubit<MapState> {
         }
       }
     }
-    emit(const MapPermitSuccessState());
-  }
-
-  Future<void> getCurrentLocation() async {
-    emit(const MapLoadingState());
     Position position = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
