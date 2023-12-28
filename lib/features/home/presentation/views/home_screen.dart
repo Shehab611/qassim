@@ -44,7 +44,7 @@ class HomeScreen extends StatelessWidget {
                                 state.model.data.length,
                                 (index) => PlaceSearchItem(
                                     onTap: () {
-                                      controller.closeView(state.model.data[index].name);
+                                      controller.clear();
                                       FocusScope.of(builderContext).unfocus();
                                       AllPlacesCubit.get(context).navigateToPlaceDetails(
                                           context, state.model.data[index].id.toString());
@@ -69,10 +69,7 @@ class HomeScreen extends StatelessWidget {
                               AllPlacesCubit.get(context)
                                   .navigateToPlaceDetails(context, state.model.data[index].id.toString());
                             },
-                            imagePath:
-                                'https://i.natgeofe.com/n/535f3cba-f8bb-4df2-b0c5-aaca16e9ff31/giza-plateau-pyramids.jpg?w=1200'
-                            // state.model.data[index].images
-                            ,
+                            imagePath: state.model.data[index].images,
                             title: state.model.data[index].name,
                             category: state.model.data[index].type);
                       },
