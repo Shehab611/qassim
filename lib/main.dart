@@ -1,7 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:qassim/core/utils/app_constants/app_constants.dart';
 import 'package:qassim/core/utils/app_constants/app_localization.dart';
 import 'package:qassim/core/utils/app_routes_utils/app_paths.dart';
@@ -21,37 +20,28 @@ void main() async {
   ));
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key, required this.goHome});
 
   final bool goHome;
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   static final AppLanguage appLanguage = sl<AppLanguage>();
 
   @override
   Widget build(BuildContext context) {
-    appLanguage.addListener(() {
-      setState(() {});
-    });
-    return MaterialApp(
-      title: 'Qassim',
-      theme: AppTheme.defaultTheme,
-      debugShowCheckedModeBanner: false,
-      routes: AppRouter.routes,
-      initialRoute: widget.goHome ? AppPathName.kHomeScreen : AppPathName.kOpenScreen,
-      locale: appLanguage.appLocal,
-      supportedLocales: AppConstants.supportedLocales,
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
+    return ListenableBuilder(
+      listenable: appLanguage,
+      builder: (context, child) {
+        return MaterialApp(
+          title: 'Qassim',
+          theme: AppTheme.defaultTheme,
+          debugShowCheckedModeBanner: false,
+          routes: AppRouter.routes,
+          initialRoute: goHome ? AppPathName.kHomeScreen : AppPathName.kOpenScreen,
+          locale: appLanguage.appLocal,
+          supportedLocales: AppConstants.supportedLocales,
+          localizationsDelegates: AppConstants.delegates,
+        );
+      },
     );
   }
 }
