@@ -13,17 +13,17 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initServicesLocator();
   await sl<AppLanguage>().fetchLocale();
-  final bool goHome = sl<SharedPreferences>().getString(AppConstants.currentUserToken) != null;
   runApp(DevicePreview(
     enabled: !kReleaseMode,
-    builder: (context) => MyApp(goHome: goHome),
+    builder: (context) => const MyApp(),
   ));
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key, required this.goHome});
 
-  final bool goHome;
+  static final bool goHome =
+      sl<SharedPreferences>().getString(AppConstants.currentUserToken) != null;
   static final AppLanguage appLanguage = sl<AppLanguage>();
 
   @override
