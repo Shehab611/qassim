@@ -20,7 +20,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key, required this.goHome});
+  const MyApp({super.key});
 
   static final bool goHome =
       sl<SharedPreferences>().getString(AppConstants.currentUserToken) != null;
