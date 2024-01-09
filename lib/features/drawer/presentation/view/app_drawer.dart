@@ -23,14 +23,12 @@ class AppDrawer extends StatelessWidget {
             child: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: AppSizes.paddingSizeEight,
-                    vertical: AppSizes.paddingSizeExtraSmall),
+                    horizontal: AppSizes.paddingSizeEight, vertical: AppSizes.paddingSizeExtraSmall),
                 child: Column(
                   children: [
                     Image.asset(AppImages.blackDarkLogo),
                     Padding(
-                      padding: const EdgeInsets.only(
-                          bottom: AppSizes.paddingSizeDefault),
+                      padding: const EdgeInsets.only(bottom: AppSizes.paddingSizeDefault),
                       child: Center(
                         child: Text(
                           cubit.userName,
@@ -48,26 +46,21 @@ class AppDrawer extends StatelessWidget {
                       elevation: 10,
                       child: ListTile(
                         leading: const Icon(Icons.language),
-                        title: Text(AppLocalizations.of(context)
-                            .translate(AppStrings.language)),
+                        title: Text(AppLocalizations.of(context).translate(AppStrings.language)),
                         trailing: SizedBox(
                           width: 113,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text("AR",
-                                  style: AppTextStyles.switchTextStyle),
+                              const Text("AR", style: AppTextStyles.switchTextStyle),
                               Transform.scale(
                                 scale: 0.88,
                                 child: Switch(
                                     value: cubit.switchValue,
                                     activeColor: AppColors.complementaryColor2,
-                                    onChanged: (bool value) {
-                                      cubit.changeLocale(value);
-                                    }),
+                                    onChanged: cubit.changeLocale),
                               ),
-                              const Text("EN",
-                                  style: AppTextStyles.switchTextStyle),
+                              const Text("EN", style: AppTextStyles.switchTextStyle),
                             ],
                           ),
                         ),
