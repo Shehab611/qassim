@@ -6,8 +6,7 @@
 
 <h2>Project Screenshots:</h2>
 
-<img src="![WhatsApp Image 2024-01-23 at 22 34 47_8bc4d6bb](https://github.com/Shehab611/qassim/assets/77563526/004b924a-52f2-4d5e-975e-49651d9c6274)
-" alt="project-screenshot" width="250" height="520/">
+<img src="https://github.com/Shehab611/qassim/assets/77563526/004b924a-52f2-4d5e-975e-49651d9c6274" alt="project-screenshot" width="250" height="520/">
 
 <img src="![WhatsApp Image 2024-01-23 at 22 34 47_20fc8d38](https://github.com/Shehab611/qassim/assets/77563526/e27e8195-234d-4411-b2cd-440c25a8f12a)
 " alt="project-screenshot" width="250" height="520/">
