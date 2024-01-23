@@ -1,9 +1,11 @@
 abstract final class ApiEndPoints {
   //#region Private variables can not be accessed
   //#region Basic Configurations
-  ///this url used for [LOCALHOST]
+  ///this url used for [Development]
+  static const String _localHost = 'http://192.168.1.8:8000';
 
-  static const String _host = 'http://192.168.1.8:8000';
+  ///this url used for [Production]
+  static const String _host = 'https://nbd.lacasa.website';
   static const String _api = '$_host/api';
 
   //#endregion
