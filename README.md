@@ -15,7 +15,7 @@
 <img src="https://github.com/Shehab611/qassim/assets/77563526/950f6f13-b4b3-463e-b5a9-42dc61081512" alt="project-screenshot" width="250" height="520/">
 
 <img src="https://github.com/Shehab611/qassim/assets/77563526/05564633-d9ff-4cc9-86c7-25e4c35adb4d" alt="project-screenshot" width="250" height="520/">
-<div style="display: inline-block; width: 10px;"></div>
+
 <img src="https://github.com/Shehab611/qassim/assets/77563526/fd549fe1-d30e-4c22-9d8e-7752efc8c53d" alt="project-screenshot" width="250" height="520/">
 
 <img src="https://github.com/Shehab611/qassim/assets/77563526/bc2ab1c8-b968-48d1-878f-f16747502813" alt="project-screenshot" width="250" height="520/">
