@@ -8,29 +8,21 @@
 
 <img src="https://github.com/Shehab611/qassim/assets/77563526/004b924a-52f2-4d5e-975e-49651d9c6274" alt="project-screenshot" width="250" height="520/">
 
-<img src="![WhatsApp Image 2024-01-23 at 22 34 47_20fc8d38](https://github.com/Shehab611/qassim/assets/77563526/e27e8195-234d-4411-b2cd-440c25a8f12a)
-" alt="project-screenshot" width="250" height="520/">
+<img src="https://github.com/Shehab611/qassim/assets/77563526/e27e8195-234d-4411-b2cd-440c25a8f12a" alt="project-screenshot" width="250" height="520/">
 
-<img src="![WhatsApp Image 2024-01-23 at 22 34 47_47ce3ff8](https://github.com/Shehab611/qassim/assets/77563526/f255d1a0-a176-48ea-bfb6-14516e33b294)
-" alt="project-screenshot" width="250" height="520/">
+<img src="https://github.com/Shehab611/qassim/assets/77563526/f255d1a0-a176-48ea-bfb6-14516e33b294" alt="project-screenshot" width="250" height="520/">
 
-<img src="![WhatsApp Image 2024-01-23 at 22 34 48_55f90899](https://github.com/Shehab611/qassim/assets/77563526/950f6f13-b4b3-463e-b5a9-42dc61081512)
-" alt="project-screenshot" width="250" height="520/">
+<img src="https://github.com/Shehab611/qassim/assets/77563526/950f6f13-b4b3-463e-b5a9-42dc61081512" alt="project-screenshot" width="250" height="520/">
 
-<img src="![WhatsApp Image 2024-01-23 at 22 34 48_2782d2f6](https://github.com/Shehab611/qassim/assets/77563526/05564633-d9ff-4cc9-86c7-25e4c35adb4d)
-" alt="project-screenshot" width="250" height="520/">
+<img src="https://github.com/Shehab611/qassim/assets/77563526/05564633-d9ff-4cc9-86c7-25e4c35adb4d" alt="project-screenshot" width="250" height="520/">
 <div style="display: inline-block; width: 10px;"></div>
-<img src="![WhatsApp Image 2024-01-23 at 22 34 48_b618264f](https://github.com/Shehab611/qassim/assets/77563526/fd549fe1-d30e-4c22-9d8e-7752efc8c53d)
-" alt="project-screenshot" width="250" height="520/">
+<img src="https://github.com/Shehab611/qassim/assets/77563526/fd549fe1-d30e-4c22-9d8e-7752efc8c53d" alt="project-screenshot" width="250" height="520/">
 
-<img src="![WhatsApp Image 2024-01-23 at 22 34 48_86a76e97](https://github.com/Shehab611/qassim/assets/77563526/bc2ab1c8-b968-48d1-878f-f16747502813)
-" alt="project-screenshot" width="250" height="520/">
+<img src="https://github.com/Shehab611/qassim/assets/77563526/bc2ab1c8-b968-48d1-878f-f16747502813" alt="project-screenshot" width="250" height="520/">
 
-<img src="![WhatsApp Image 2024-01-23 at 22 34 48_78d4ae3e](https://github.com/Shehab611/qassim/assets/77563526/e5db620d-6623-41a5-991d-a792ede07c15)
-" alt="project-screenshot" width="250" height="520/">
+<img src="https://github.com/Shehab611/qassim/assets/77563526/e5db620d-6623-41a5-991d-a792ede07c15" alt="project-screenshot" width="250" height="520/">
 
-<img src="![WhatsApp Image 2024-01-23 at 22 34 49_fbfaed49](https://github.com/Shehab611/qassim/assets/77563526/5e9ef3fc-d44d-4a22-bdf7-87fe2aed163f)
-" alt="project-screenshot" width="250" height="520/">
+<img src="https://github.com/Shehab611/qassim/assets/77563526/5e9ef3fc-d44d-4a22-bdf7-87fe2aed163f" alt="project-screenshot" width="250" height="520/">
 
 
   
